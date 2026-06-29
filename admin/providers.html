@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Providers — Brisk® Admin</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+<link rel="stylesheet" href="../assets/brisk.css"/>
+</head>
+<body data-role="admin" data-active="providers" data-title="Providers" data-subtitle="Upstream data sources · health, cost, error rate">
+
+<main id="bk-main">
+  <div class="px-5 py-5 max-w-[1400px] mx-auto">
+
+    <!-- KPI -->
+    <div class="grid sm:grid-cols-4 gap-3 mb-4">
+      <div class="card p-3"><div class="text-[10px] uppercase tracking-wider text-[color:var(--soft)]">Providers configured</div><div class="text-[20px] font-semibold mt-1">7</div></div>
+      <div class="card p-3"><div class="text-[10px] uppercase tracking-wider text-[color:var(--soft)]">Up</div><div class="text-[20px] font-semibold mt-1 text-[color:var(--pos)]">6</div></div>
+      <div class="card p-3"><div class="text-[10px] uppercase tracking-wider text-[color:var(--soft)]">Degraded</div><div class="text-[20px] font-semibold mt-1 text-[color:var(--neu)]">1</div></div>
+      <div class="card p-3"><div class="text-[10px] uppercase tracking-wider text-[color:var(--soft)]">Spend (MTD)</div><div class="text-[20px] font-semibold mt-1">$10,098</div></div>
+    </div>
+
+    <!-- Provider cards -->
+    <div class="grid lg:grid-cols-2 gap-3 mb-5">
+
+      <div class="card p-4">
+        <div class="flex items-start justify-between mb-3">
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-md bg-[#1D9BF0]/10 text-[#1D9BF0] flex items-center justify-center"><i data-lucide="at-sign" class="!w-5 !h-5"></i></div>
+            <div>
+              <div class="text-[14px] font-semibold">X (Twitter) — Premium API</div>
+              <div class="text-[11.5px] text-[color:var(--muted)]">v2 · Bearer token · Region: Global</div>
+            </div>
+          </div>
+          <span class="pill pill-pos">Up · 99.94%</span>
+        </div>
+        <div class="grid grid-cols-4 gap-2 mb-3">
+          <div><div class="text-[10px] uppercase tracking-wider text-[color:var(--soft)]">Calls (24h)</div><div class="text-[14px] font-semibold">428K</div></div>
+          <div><div class="text-[10px] uppercase tracking-wider text-[color:var(--soft)]">p95 latency</div><div class="text-[14px] font-semibold">312ms</div></div>
+          <div><div class="text-[10px] uppercase tracking-wider text-[color:var(--soft)]">Error rate</div><div class="text-[14px] font-semibold text-[color:var(--pos)]">0.06%</div></div>
+          <div><div class="text-[10px] uppercase tracking-wider text-[color:var(--soft)]">Cost MTD</div><div class="text-[14px] font-semibold">$4,241</div></div>
+        </div>
+        <div class="flex gap-2"><button class="btn btn-secondary btn-sm flex-1">Rotate key</button><button class="btn btn-secondary btn-sm flex-1">Test</button></div>
+      </div>
+
+      <div class="card p-4">
+        <div class="flex items-start justify-between mb-3">
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-md bg-[#FF4500]/10 text-[#FF4500] flex items-center justify-center"><i data-lucide="message-circle" class="!w-5 !h-5"></i></div>
+            <div>
+              <div class="text-[14px] font-semibold">Reddit — Firecrawl</div>
+              <div class="text-[11.5px] text-[color:var(--muted)]">Scrape API · 30 RPM · Region: US</div>
+            </div>
+          </div>
+          <span class="pill pill-pos">Up · 99.81%</span>
+        </div>
+        <div class="grid grid-cols-4 gap-2 mb-3">
+          <div><div class="text-[10px] uppercase tracking-wider text-[color:var(--soft)]">Calls (24h)</div><div class="text-[14px] font-semibold">82K</div></div>
+          <div><div class="text-[10px] uppercase tracking-wider text-[color:var(--soft)]">p95 latency</div><div class="text-[14px] font-semibold">1.4s</div></div>
+          <div><div class="text-[10px] uppercase tracking-wider text-[color:var(--soft)]">Error rate</div><div class="text-[14px] font-semibold text-[color:var(--pos)]">0.18%</div></div>
+          <div><div class="text-[10px] uppercase tracking-wider text-[color:var(--soft)]">Cost MTD</div><div class="text-[14px] font-semibold">$1,818</div></div>
+        </div>
+        <div class="flex gap-2"><button class="btn btn-secondary btn-sm flex-1">Rotate key</button><button class="btn btn-secondary btn-sm flex-1">Test</button></div>
+      </div>
+
+      <div class="card p-4">
+        <div class="flex items-start justify-between mb-3">
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-md bg-[#FF0000]/10 text-[#FF0000] flex items-center justify-center"><i data-lucide="play" class="!w-5 !h-5"></i></div>
+            <div>
+              <div class="text-[14px] font-semibold">YouTube Data API v3</div>
+              <div class="text-[11.5px] text-[color:var(--muted)]">OAuth · 10K units/day · Region: Global</div>
+            </div>
+          </div>
+          <span class="pill pill-pos">Up · 99.99%</span>
+        </div>
+        <div class="grid grid-cols-4 gap-2 mb-3">
+          <div><div class="text-[10px] uppercase tracking-wider text-[color:var(--soft)]">Calls (24h)</div><div class="text-[14px] font-semibold">14K</div></div>
+          <div><div class="text-[10px] uppercase tracking-wider text-[color:var(--soft)]">p95 latency</div><div class="text-[14px] font-semibold">218ms</div></div>
+          <div><div class="text-[10px] uppercase tracking-wider text-[color:var(--soft)]">Error rate</div><div class="text-[14px] font-semibold text-[color:var(--pos)]">0.02%</div></div>
+          <div><div class="text-[10px] uppercase tracking-wider text-[color:var(--soft)]">Cost MTD</div><div class="text-[14px] font-semibold">$1,212</div></div>
+        </div>
+        <div class="flex gap-2"><button class="btn btn-secondary btn-sm flex-1">Rotate key</button><button class="btn btn-secondary btn-sm flex-1">Test</button></div>
+      </div>
+
+      <div class="card p-4">
+        <div class="flex items-start justify-between mb-3">
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-md bg-[color:var(--line-2)] text-[color:var(--ink)] flex items-center justify-center"><i data-lucide="newspaper" class="!w-5 !h-5"></i></div>
+            <div>
+              <div class="text-[14px] font-semibold">News — NewsAPI + GDELT</div>
+              <div class="text-[11.5px] text-[color:var(--muted)]">Hybrid · 100K calls/mo · Global</div>
+            </div>
+          </div>
+          <span class="pill pill-pos">Up · 99.72%</span>
+        </div>
+        <div class="grid grid-cols-4 gap-2 mb-3">
+          <div><div class="text-[10px] uppercase tracking-wider text-[color:var(--soft)]">Calls (24h)</div><div class="text-[14px] font-semibold">8.4K</div></div>
+          <div><div class="text-[10px] uppercase tracking-wider text-[color:var(--soft)]">p95 latency</div><div class="text-[14px] font-semibold">680ms</div></div>
+          <div><div class="text-[10px] uppercase tracking-wider text-[color:var(--soft)]">Error rate</div><div class="text-[14px] font-semibold text-[color:var(--pos)]">0.28%</div></div>
+          <div><div class="text-[10px] uppercase tracking-wider text-[color:var(--soft)]">Cost MTD</div><div class="text-[14px] font-semibold">$908</div></div>
+        </div>
+        <div class="flex gap-2"><button class="btn btn-secondary btn-sm flex-1">Rotate key</button><button class="btn btn-secondary btn-sm flex-1">Test</button></div>
+      </div>
+
+      <div class="card p-4 border-l-4 border-l-[color:var(--neu)]">
+        <div class="flex items-start justify-between mb-3">
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-md bg-[#E1306C]/10 text-[#E1306C] flex items-center justify-center"><i data-lucide="camera" class="!w-5 !h-5"></i></div>
+            <div>
+              <div class="text-[14px] font-semibold">Instagram — Apify actor</div>
+              <div class="text-[11.5px] text-[color:var(--muted)]">Scraper · 5K results/run · US</div>
+            </div>
+          </div>
+          <span class="pill pill-neu">Degraded · 96.4%</span>
+        </div>
+        <div class="grid grid-cols-4 gap-2 mb-3">
+          <div><div class="text-[10px] uppercase tracking-wider text-[color:var(--soft)]">Calls (24h)</div><div class="text-[14px] font-semibold">2.1K</div></div>
+          <div><div class="text-[10px] uppercase tracking-wider text-[color:var(--soft)]">p95 latency</div><div class="text-[14px] font-semibold text-[color:var(--neu)]">4.2s</div></div>
+          <div><div class="text-[10px] uppercase tracking-wider text-[color:var(--soft)]">Error rate</div><div class="text-[14px] font-semibold text-[color:var(--neu)]">3.6%</div></div>
+          <div><div class="text-[10px] uppercase tracking-wider text-[color:var(--soft)]">Cost MTD</div><div class="text-[14px] font-semibold">$808</div></div>
+        </div>
+        <div class="text-[12px] text-[color:var(--muted)] mb-2"><i data-lucide="alert-triangle" class="!w-3.5 !h-3.5 inline text-[color:var(--neu)]"></i> Apify upstream throttling since 21 Apr 14:00 — auto-retry enabled.</div>
+        <div class="flex gap-2"><button class="btn btn-secondary btn-sm flex-1">Rotate key</button><button class="btn btn-secondary btn-sm flex-1">Test</button></div>
+      </div>
+
+      <div class="card p-4">
+        <div class="flex items-start justify-between mb-3">
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-md bg-[#10A37F]/10 text-[#10A37F] flex items-center justify-center"><i data-lucide="sparkles" class="!w-5 !h-5"></i></div>
+            <div>
+              <div class="text-[14px] font-semibold">OpenAI — gpt-4o-mini</div>
+              <div class="text-[11.5px] text-[color:var(--muted)]">LLM · 10K RPM · Region: US-east-1</div>
+            </div>
+          </div>
+          <span class="pill pill-pos">Up · 99.91%</span>
+        </div>
+        <div class="grid grid-cols-4 gap-2 mb-3">
+          <div><div class="text-[10px] uppercase tracking-wider text-[color:var(--soft)]">Tokens (24h)</div><div class="text-[14px] font-semibold">42M</div></div>
+          <div><div class="text-[10px] uppercase tracking-wider text-[color:var(--soft)]">p95 latency</div><div class="text-[14px] font-semibold">1.8s</div></div>
+          <div><div class="text-[10px] uppercase tracking-wider text-[color:var(--soft)]">Error rate</div><div class="text-[14px] font-semibold text-[color:var(--pos)]">0.04%</div></div>
+          <div><div class="text-[10px] uppercase tracking-wider text-[color:var(--soft)]">Cost MTD</div><div class="text-[14px] font-semibold">$707</div></div>
+        </div>
+        <div class="flex gap-2"><button class="btn btn-secondary btn-sm flex-1">Rotate key</button><button class="btn btn-secondary btn-sm flex-1">Test</button></div>
+      </div>
+    </div>
+
+    <!-- Recent incidents -->
+    <div class="card">
+      <div class="px-4 py-3 border-b border-[color:var(--line-2)]"><h3 class="text-[13px] font-semibold">Recent incidents</h3></div>
+      <table class="table">
+        <thead><tr><th>When</th><th>Provider</th><th>Severity</th><th>Summary</th><th>Duration</th><th>Tenants affected</th></tr></thead>
+        <tbody>
+          <tr><td class="font-mono text-[12px]">21 Apr 14:00 →</td><td>Instagram (Apify)</td><td><span class="pill pill-neu">Degraded</span></td><td>Upstream throttling 429s · auto-retry engaged</td><td>ongoing 18h</td><td>14</td></tr>
+          <tr><td class="font-mono text-[12px]">18 Apr 09:42</td><td>Reddit (Firecrawl)</td><td><span class="pill pill-neg">Down</span></td><td>Provider region us-east outage</td><td>22m</td><td>32</td></tr>
+          <tr><td class="font-mono text-[12px]">12 Apr 03:18</td><td>X Premium API</td><td><span class="pill pill-neu">Degraded</span></td><td>Elevated 5xx errors during X infra change</td><td>1h 14m</td><td>48</td></tr>
+          <tr><td class="font-mono text-[12px]">04 Apr 22:00</td><td>OpenAI</td><td><span class="pill pill-neg">Down</span></td><td>OpenAI API global outage · failed over to Anthropic Claude</td><td>42m</td><td>48</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+</main>
+
+<script src="../assets/shell.js?v=3"></script>
+<script>lucide.createIcons();</script>
+</body>
+</html>

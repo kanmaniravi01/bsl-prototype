@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Sign in — Brisk®</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+<link rel="stylesheet" href="assets/brisk.css"/>
+</head>
+
+<body class="min-h-screen flex flex-col">
+
+<!-- Header -->
+<header class="border-b border-[color:var(--line)] bg-white">
+  <div class="max-w-6xl mx-auto px-6 h-14 flex items-center">
+
+    <a href="index.html" class="flex items-center gap-2">
+      <div class="w-6 h-6 rounded-md bg-[color:var(--accent)] text-white flex items-center justify-center"><i data-lucide="activity" class="!w-3.5 !h-3.5"></i></div>
+      <span class="wordmark">brisk<sup>®</sup></span>
+    </a>
+
+    <div class="flex-1"></div>
+
+    <span class="text-[13px] text-[color:var(--muted)]">
+      No account?
+      <a
+        href="signup.html"
+        class="text-[color:var(--link)] hover:underline"
+      >
+        Start a trial
+      </a>
+    </span>
+  </div>
+</header>
+
+<!-- Main -->
+<main class="flex-1 flex items-center justify-center px-6 py-12">
+  <div class="w-full max-w-sm">
+
+    <!-- Title -->
+    <div class="text-center mb-7">
+      <h1 class="text-[22px] font-semibold tracking-tight">
+        Sign in to Brisk
+      </h1>
+
+      <p class="text-[13px] text-[color:var(--muted)] mt-1">
+        Welcome! We'll route you to your workspace.
+      </p>
+    </div>
+
+    <!-- Card -->
+     <form action="onboarding/1-workspace.html">
+    <div class="card p-6">
+
+      <!-- Tenant -->
+      <div class="mb-4">
+        <label class="label">
+          Tenant name
+        </label>
+
+        <input
+          class="input"
+          type="text"
+          placeholder="demo"
+        />
+      </div>
+
+      <!-- Email -->
+      <div class="mb-4">
+        <label class="label">
+          Email
+        </label>
+
+        <input
+          class="input"
+          type="text"
+          placeholder="admin@local"
+        />
+      </div>
+
+      <!-- Password -->
+      <div class="mb-4">
+        <label class="label">
+          Password
+        </label>
+
+        <input
+          class="input"
+          type="text"
+          placeholder="••••••••"
+        />
+      </div>
+
+      <!-- Button -->
+      <button
+        class="btn btn-primary w-full justify-center"
+        type="submit"
+      >
+        Sign in
+      </button>
+    </div>
+    </form>
+
+    <!-- Hint -->
+    <div class="mt-5 text-center text-[11px] text-[color:var(--soft)]">
+      Operations team?
+      <span class="text-[color:var(--muted)]">
+        Leave "Tenant name" blank.
+      </span>
+    </div>
+  </div>
+</main>
+
+<!-- Footer -->
+<footer class="border-t border-[color:var(--line)] py-5">
+  <div class="max-w-6xl mx-auto px-6 flex items-center justify-between text-[11px] text-[color:var(--soft)]">
+
+    <span>© 2026 Sanrove</span>
+
+    <div class="flex gap-4">
+      <a href="#" class="footer-link">
+        Privacy
+      </a>
+
+      <a href="#" class="footer-link">
+        Terms
+      </a>
+
+      <a href="#" class="footer-link">
+        Status
+      </a>
+    </div>
+  </div>
+</footer>
+<script>lucide.createIcons();</script>
+</body>
+</html>

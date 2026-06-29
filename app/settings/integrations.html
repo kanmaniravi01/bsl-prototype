@@ -1,0 +1,214 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Integrations â€” BriskÂ®</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+<link rel="stylesheet" href="../../assets/brisk.css"/>
+</head>
+<body data-role="owner" data-active="integrations" data-title="Integrations" data-subtitle="Bring your own keys, or use Brisk-managed pulls">
+
+<main id="bk-main">
+  <div class="px-5 py-5 max-w-6xl mx-auto">
+
+    <section class="card p-6">
+      <h2 class="mb-8 text-[28px] font-semibold leading-none">Integrations</h2>
+
+
+      <div class="space-y-5">
+        <div class="flex items-center justify-between gap-5">
+          <div class="flex min-w-0 items-center gap-3">
+            <div class="flex h-10 w-10 items-center justify-center rounded-md bg-[color:var(--line-2)] text-[18px] font-bold text-red-500"><i data-lucide="at-sign" class="!h-5 !w-5 text-emerald-600"></i></div>
+            <div class="min-w-0"><div class="truncate text-[16px] font-semibold">X</div></div>
+          </div>
+          <div class="flex items-center gap-3"><button class="btn btn-secondary" onclick="openModal('x-details-modal')">Details</button><button class="btn btn-ghost">Disconnect</button></div>
+        </div>
+
+        <div class="flex items-center justify-between gap-5">
+          <div class="flex min-w-0 items-center gap-3">
+            <div class="flex h-10 w-10 items-center justify-center rounded-md bg-[color:var(--line-2)]"><i data-lucide="camera" class="!h-5 !w-5 text-emerald-600"></i></div>
+            <div class="min-w-0"><div class="truncate text-[16px] font-semibold">Instagram</div></div>
+          </div>
+          <div class="flex items-center gap-3"><button class="btn btn-secondary" onclick="openModal('instagram-details-modal')">Details</button><button class="btn btn-ghost">Disconnect</button></div>
+        </div>
+
+        <div class="flex items-center justify-between gap-5">
+          <div class="flex min-w-0 items-center gap-3">
+            <div class="flex h-10 w-10 items-center justify-center rounded-md bg-[color:var(--line-2)]"><i data-lucide="play" class="!h-5 !w-5 text-blue-600"></i></div>
+            <div class="min-w-0"><div class="truncate text-[16px] font-semibold">Youtube</div></div>
+          </div>
+          <div class="flex items-center gap-3"><button class="btn btn-secondary" onclick="openModal('youtube-details-modal')">Details</button><button class="btn btn-ghost">Disconnect</button></div>
+        </div>
+
+      </div>
+
+      <div class="my-7 border-t border-[color:var(--line)]"></div>
+
+      <h3 class="mb-5 text-[14px] font-medium text-[color:var(--muted)]">Available integrations</h3>
+      <div class="space-y-5">
+        <div class="flex items-center justify-between gap-5">
+          <div class="flex min-w-0 items-center gap-3">
+            <div class="flex h-10 w-10 items-center justify-center rounded-md bg-[color:var(--line-2)] text-[18px] font-bold text-red-500"><i data-lucide="message-circle" class="!h-5 !w-5 text-indigo-600"></i></div>
+            <div class="truncate text-[16px] font-semibold">Reddit</div></div>
+          <button class="btn btn-secondary">Add account</button>
+        </div>
+        <div class="flex items-center justify-between gap-5">
+          <div class="flex min-w-0 items-center gap-3">
+            <div class="flex h-10 w-10 items-center justify-center rounded-md bg-[color:var(--line-2)]"><i data-lucide="newspaper" class="!h-5 !w-5 text-indigo-600"></i></div>
+            <div class="truncate text-[16px] font-semibold">News</div>
+          </div>
+          <button class="btn btn-secondary">Add account</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="card p-6 mt-5">
+      <h2 class="mb-8 text-[28px] font-semibold leading-none">Notifications</h2>
+
+      <div class="space-y-5">
+        <div class="flex items-center justify-between gap-5">
+          <div class="flex min-w-0 items-center gap-3">
+            <div class="flex h-10 w-10 items-center justify-center rounded-md bg-[color:var(--line-2)]">
+              <i data-lucide="mail" class="!h-5 !w-5 text-blue-600"></i>
+            </div>
+            <div class="min-w-0"><div class="truncate text-[16px] font-semibold">Email</div></div>
+          </div>
+          <div class="flex items-center gap-3"><button class="btn btn-secondary" onclick="openModal('email-details-modal')">Details</button><button class="btn btn-ghost">Disconnect</button></div>
+        </div>
+
+        
+      </div>
+    </section>
+
+  </div>
+
+  <div id="x-details-modal" class="details-modal fixed inset-0 z-50 hidden items-center justify-center bg-black/40 px-4">
+    <div class="w-full max-w-md rounded-lg border border-[color:var(--line)] bg-white shadow-lg">
+      <div class="flex items-center justify-between border-b border-[color:var(--line)] px-5 py-4">
+        <h2 class="text-[18px] font-semibold">Details</h2>
+        <button class="btn btn-ghost btn-sm" onclick="closeModals()" aria-label="Close details"><i data-lucide="x" class="!h-4 !w-4"></i></button>
+      </div>
+      <div class="space-y-5 px-5 py-5">
+        <div>
+          <div class="text-[12px] font-medium text-[color:var(--muted)]">Username</div>
+          <div class="mt-1 text-[15px] font-semibold">@starbucks</div>
+        </div>
+        <div>
+          <div class="text-[12px] font-medium text-[color:var(--muted)]">Permissions allowed</div>
+          <ul class="mt-2 space-y-2 text-[14px]">
+            <li class="flex items-center gap-2"><i data-lucide="check" class="!h-4 !w-4 text-emerald-600"></i><span>Monitor tweets</span></li>
+            <li class="flex items-center gap-2"><i data-lucide="check" class="!h-4 !w-4 text-emerald-600"></i><span>Search mentions</span></li>
+            <li class="flex items-center gap-2"><i data-lucide="check" class="!h-4 !w-4 text-emerald-600"></i><span>Reply to tweets</span></li>
+            <li class="flex items-center gap-2"><i data-lucide="check" class="!h-4 !w-4 text-emerald-600"></i><span>Post tweets</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="instagram-details-modal" class="details-modal fixed inset-0 z-50 hidden items-center justify-center bg-black/40 px-4">
+    <div class="w-full max-w-md rounded-lg border border-[color:var(--line)] bg-white shadow-lg">
+      <div class="flex items-center justify-between border-b border-[color:var(--line)] px-5 py-4">
+        <h2 class="text-[18px] font-semibold">Details</h2>
+        <button class="btn btn-ghost btn-sm" onclick="closeModals()" aria-label="Close details"><i data-lucide="x" class="!h-4 !w-4"></i></button>
+      </div>
+      <div class="space-y-5 px-5 py-5">
+        <div>
+          <div class="text-[12px] font-medium text-[color:var(--muted)]">Username</div>
+          <div class="mt-1 text-[15px] font-semibold">@starbucks</div>
+        </div>
+        <div>
+          <div class="text-[12px] font-medium text-[color:var(--muted)]">Permissions allowed</div>
+          <ul class="mt-2 space-y-2 text-[14px]">
+            <li class="flex items-center gap-2"><i data-lucide="check" class="!h-4 !w-4 text-emerald-600"></i><span>Monitor comments</span></li>
+            <li class="flex items-center gap-2"><i data-lucide="check" class="!h-4 !w-4 text-emerald-600"></i><span>Fetch mentions</span></li>
+            <li class="flex items-center gap-2"><i data-lucide="check" class="!h-4 !w-4 text-emerald-600"></i><span>Reply to comments</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="youtube-details-modal" class="details-modal fixed inset-0 z-50 hidden items-center justify-center bg-black/40 px-4">
+    <div class="w-full max-w-md rounded-lg border border-[color:var(--line)] bg-white shadow-lg">
+      <div class="flex items-center justify-between border-b border-[color:var(--line)] px-5 py-4">
+        <h2 class="text-[18px] font-semibold">Details</h2>
+        <button class="btn btn-ghost btn-sm" onclick="closeModals()" aria-label="Close details"><i data-lucide="x" class="!h-4 !w-4"></i></button>
+      </div>
+      <div class="space-y-5 px-5 py-5">
+        <div>
+          <div class="text-[12px] font-medium text-[color:var(--muted)]">Channel name</div>
+          <div class="mt-1 text-[15px] font-semibold">Starbucks</div>
+        </div>
+        <div>
+          <div class="text-[12px] font-medium text-[color:var(--muted)]">Permissions allowed</div>
+          <ul class="mt-2 space-y-2 text-[14px]">
+            <li class="flex items-center gap-2"><i data-lucide="check" class="!h-4 !w-4 text-emerald-600"></i><span>Monitor comments</span></li>
+            <li class="flex items-center gap-2"><i data-lucide="check" class="!h-4 !w-4 text-emerald-600"></i><span>Fetch videos</span></li>
+            <li class="flex items-center gap-2"><i data-lucide="check" class="!h-4 !w-4 text-emerald-600"></i><span>Reply to comments</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="email-details-modal" class="details-modal fixed inset-0 z-50 hidden items-center justify-center bg-black/40 px-4">
+    <div class="w-full max-w-md rounded-lg border border-[color:var(--line)] bg-white shadow-lg">
+      <div class="flex items-center justify-between border-b border-[color:var(--line)] px-5 py-4">
+        <h2 class="text-[18px] font-semibold">Details</h2>
+        <button class="btn btn-ghost btn-sm" onclick="closeModals()" aria-label="Close details"><i data-lucide="x" class="!h-4 !w-4"></i></button>
+      </div>
+      <div class="space-y-5 px-5 py-5">
+        <div>
+          <div class="text-[12px] font-medium text-[color:var(--muted)]">Email ID</div>
+          <div class="mt-1 text-[15px] font-semibold">alerts@starbucks.com</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="slack-details-modal" class="details-modal fixed inset-0 z-50 hidden items-center justify-center bg-black/40 px-4">
+    <div class="w-full max-w-md rounded-lg border border-[color:var(--line)] bg-white shadow-lg">
+      <div class="flex items-center justify-between border-b border-[color:var(--line)] px-5 py-4">
+        <h2 class="text-[18px] font-semibold">Details</h2>
+        <button class="btn btn-ghost btn-sm" onclick="closeModals()" aria-label="Close details"><i data-lucide="x" class="!h-4 !w-4"></i></button>
+      </div>
+      <div class="space-y-5 px-5 py-5">
+        <div>
+          <div class="text-[12px] font-medium text-[color:var(--muted)]">Slack ID</div>
+          <div class="mt-1 text-[15px] font-semibold">#brand-alerts</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<script src="../../assets/shell.js?v=3"></script>
+<script>
+lucide.createIcons();
+
+function closeModals() {
+  document.querySelectorAll('.details-modal').forEach(modal => {
+    modal.classList.add('hidden');
+    modal.classList.remove('flex');
+  });
+}
+
+function openModal(id) {
+  closeModals();
+  document.getElementById(id).classList.remove('hidden');
+  document.getElementById(id).classList.add('flex');
+  lucide.createIcons();
+}
+
+document.querySelectorAll('.details-modal').forEach(modal => {
+  modal.addEventListener('click', event => {
+    if (event.target === modal) closeModals();
+  });
+});
+</script>
+</body>
+</html>

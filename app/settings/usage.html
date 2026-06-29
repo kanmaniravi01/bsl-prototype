@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Usage &amp; quotas — Brisk®</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<link rel="stylesheet" href="../../assets/brisk.css"/>
+</head>
+<body data-role="owner" data-active="usage" data-title="Usage &amp; quotas" data-subtitle="Cycle 15 Apr → 14 May · 7 days remaining · soft-cap policy">
+
+<main id="bk-main">
+  <div class="px-5 py-5 max-w-6xl mx-auto">
+
+    <nav class="flex items-center gap-1 mb-5 border-b border-[color:var(--line)] -mx-5 px-5 overflow-x-auto">
+      <a href="users.html" class="px-3 py-2 text-[12.5px] text-[color:var(--muted)] hover:text-[color:var(--ink)]">Users</a>
+      <a href="integrations.html" class="px-3 py-2 text-[12.5px] text-[color:var(--muted)] hover:text-[color:var(--ink)]">Integrations</a>
+      <a href="billing.html" class="px-3 py-2 text-[12.5px] text-[color:var(--muted)] hover:text-[color:var(--ink)]">Billing</a>
+      <a href="usage.html" class="px-3 py-2 text-[12.5px] font-medium border-b-2 border-[color:var(--accent)]">Usage &amp; quotas</a>
+      <a href="audit.html" class="px-3 py-2 text-[12.5px] text-[color:var(--muted)] hover:text-[color:var(--ink)]">Audit log</a>
+    </nav>
+
+    <!-- Warning banner -->
+    <div class="card p-3 mb-4 border-[#FCD34D] bg-[#FFFBEB] flex items-center gap-3">
+      <i data-lucide="alert-triangle" class="!w-4 !h-4 text-[color:var(--neu)] flex-shrink-0"></i>
+      <div class="flex-1 text-[12.5px]">
+        Mentions are at <span class="font-medium">94%</span> with 7 days left in this cycle.
+        Soft-cap is on — overage will appear on your next invoice at <span class="font-mono">$0.01/mention</span>.
+      </div>
+      <a href="billing.html" class="btn btn-primary btn-sm">Upgrade plan</a>
+    </div>
+
+    <!-- Headline meters -->
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-3 mb-5">
+      <div class="card kpi">
+        <div class="kpi-label"><i data-lucide="message-square"></i>Mentions</div>
+        <div class="kpi-value">23,510 <span class="text-[12px] text-[color:var(--muted)] font-normal">/ 25,000</span></div>
+        <div class="meter mt-2 warn"><span style="width:94%"></span></div>
+        <div class="kpi-delta">Projected: <span class="text-[color:var(--neg)] font-medium">26,820</span></div>
+      </div>
+      <div class="card kpi">
+        <div class="kpi-label"><i data-lucide="cpu"></i>AI tokens</div>
+        <div class="kpi-value">2.41M <span class="text-[12px] text-[color:var(--muted)] font-normal">/ 3M</span></div>
+        <div class="meter mt-2"><span style="width:80%"></span></div>
+        <div class="kpi-delta">Projected: <span class="font-medium">2.86M</span></div>
+      </div>
+      <div class="card kpi">
+        <div class="kpi-label"><i data-lucide="package"></i>Brands &amp; competitors</div>
+        <div class="kpi-value">3 + 5</div>
+        <div class="meter mt-2"><span style="width:100%"></span></div>
+        <div class="kpi-delta">At plan cap (3 brands · 5 competitors)</div>
+      </div>
+      <div class="card kpi">
+        <div class="kpi-label"><i data-lucide="users"></i>Active seats</div>
+        <div class="kpi-value">6 <span class="text-[12px] text-[color:var(--muted)] font-normal">/ 10</span></div>
+        <div class="meter mt-2"><span style="width:60%"></span></div>
+        <div class="kpi-delta">1 idle &gt; 60 days · <a href="users.html" class="text-[color:var(--link)] hover:underline">review</a></div>
+      </div>
+    </div>
+
+    <!-- Trend -->
+    <div class="card p-4 mb-5">
+      <div class="flex items-center justify-between mb-3">
+        <h3 class="text-[13px] font-semibold">Mentions ingested · last 13 cycles</h3>
+        <select class="select !w-auto !py-1 text-[12px]"><option>Mentions</option><option>AI tokens</option><option>API calls</option><option>Exports</option></select>
+      </div>
+      <div class="h-56"><canvas id="usageTrend"></canvas></div>
+    </div>
+
+    <!-- Detailed meters -->
+    <div class="card mb-5">
+      <div class="px-4 py-3 border-b border-[color:var(--line-2)] flex items-center justify-between">
+        <h3 class="text-[13px] font-semibold">All meters (this cycle)</h3>
+        <button class="btn btn-secondary btn-sm"><i data-lucide="download" class="!w-3.5 !h-3.5"></i>Export CSV</button>
+      </div>
+      <table class="table">
+        <thead><tr><th>Meter</th><th>Used</th><th>Cap</th><th></th><th>Cost so far</th><th>Policy</th></tr></thead>
+        <tbody>
+          <tr><td>Mentions ingested</td><td class="font-mono">23,510</td><td class="font-mono">25,000</td><td><div class="meter w-32 warn"><span style="width:94%"></span></div></td><td class="font-mono">$0.00</td><td><span class="pill pill-neu">Soft-cap</span></td></tr>
+          <tr><td>Mentions stored (GB)</td><td class="font-mono">4.2</td><td class="font-mono">10.0</td><td><div class="meter w-32"><span style="width:42%"></span></div></td><td class="font-mono">included</td><td><span class="pill pill-neutral">—</span></td></tr>
+          <tr><td>AI tokens — input</td><td class="font-mono">1.62M</td><td class="font-mono">2M</td><td><div class="meter w-32"><span style="width:81%"></span></div></td><td class="font-mono">included</td><td><span class="pill pill-neu">Soft-cap</span></td></tr>
+          <tr><td>AI tokens — output</td><td class="font-mono">0.79M</td><td class="font-mono">1M</td><td><div class="meter w-32"><span style="width:79%"></span></div></td><td class="font-mono">included</td><td><span class="pill pill-neu">Soft-cap</span></td></tr>
+          <tr><td>Brands tracked</td><td class="font-mono">3</td><td class="font-mono">3</td><td><div class="meter w-32"><span style="width:100%"></span></div></td><td>—</td><td><span class="pill pill-neg">Hard-cap</span></td></tr>
+          <tr><td>Competitors tracked</td><td class="font-mono">5</td><td class="font-mono">5</td><td><div class="meter w-32"><span style="width:100%"></span></div></td><td>—</td><td><span class="pill pill-neg">Hard-cap</span></td></tr>
+          <tr><td>Tags / topics</td><td class="font-mono">38</td><td class="font-mono">50</td><td><div class="meter w-32"><span style="width:76%"></span></div></td><td>—</td><td><span class="pill pill-neg">Hard-cap</span></td></tr>
+          <tr><td>Saved boolean queries</td><td class="font-mono">12</td><td class="font-mono">25</td><td><div class="meter w-32"><span style="width:48%"></span></div></td><td>—</td><td><span class="pill pill-neutral">—</span></td></tr>
+          <tr><td>Channels enabled</td><td class="font-mono">4</td><td class="font-mono">5</td><td><div class="meter w-32"><span style="width:80%"></span></div></td><td>—</td><td><span class="pill pill-neutral">—</span></td></tr>
+          <tr><td>Active seats (30d)</td><td class="font-mono">6</td><td class="font-mono">10</td><td><div class="meter w-32"><span style="width:60%"></span></div></td><td>—</td><td><span class="pill pill-neg">Hard-cap</span></td></tr>
+          <tr><td>API calls / day (avg)</td><td class="font-mono">3,210</td><td class="font-mono">5,000</td><td><div class="meter w-32"><span style="width:64%"></span></div></td><td>—</td><td><span class="pill pill-info">Throttle</span></td></tr>
+          <tr><td>Webhook deliveries</td><td class="font-mono">8,420</td><td class="font-mono">50,000</td><td><div class="meter w-32"><span style="width:17%"></span></div></td><td>—</td><td><span class="pill pill-info">Throttle</span></td></tr>
+          <tr><td>Exports (PDF / CSV)</td><td class="font-mono">42</td><td class="font-mono">100</td><td><div class="meter w-32"><span style="width:42%"></span></div></td><td>—</td><td><span class="pill pill-neutral">—</span></td></tr>
+          <tr><td>Alerts fired</td><td class="font-mono">1,089</td><td class="font-mono">∞</td><td><div class="meter w-32"><span style="width:8%"></span></div></td><td>—</td><td><span class="pill pill-neutral">—</span></td></tr>
+          <tr><td>SMS notifications</td><td class="font-mono">14</td><td class="font-mono">100</td><td><div class="meter w-32"><span style="width:14%"></span></div></td><td class="font-mono">$1.40</td><td><span class="pill pill-neu">Metered</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Per brand + per channel -->
+    <div class="grid lg:grid-cols-2 gap-3 mb-5">
+      <div class="card p-4">
+        <h3 class="text-[13px] font-semibold mb-3">Mention burn by brand</h3>
+        <div class="space-y-3">
+          <div><div class="flex items-center justify-between text-[12.5px] mb-1"><span>Starbucks</span><span class="font-mono text-[color:var(--muted)]">17,820 (76%)</span></div><div class="meter"><span style="width:76%"></span></div></div>
+          <div><div class="flex items-center justify-between text-[12.5px] mb-1"><span>Starbucks Reserve</span><span class="font-mono text-[color:var(--muted)]">3,940 (17%)</span></div><div class="meter"><span style="width:17%"></span></div></div>
+          <div><div class="flex items-center justify-between text-[12.5px] mb-1"><span>Pumpkin Spice (campaign)</span><span class="font-mono text-[color:var(--muted)]">1,750 (7%)</span></div><div class="meter"><span style="width:7%"></span></div></div>
+        </div>
+      </div>
+      <div class="card p-4">
+        <h3 class="text-[13px] font-semibold mb-3">Cost mix by channel</h3>
+        <div class="space-y-3">
+          <div><div class="flex items-center justify-between text-[12.5px] mb-1"><span>X (paid API)</span><span class="font-mono text-[color:var(--muted)]">52% — biggest</span></div><div class="meter"><span style="width:52%"></span></div></div>
+          <div><div class="flex items-center justify-between text-[12.5px] mb-1"><span>Reddit (Firecrawl)</span><span class="font-mono text-[color:var(--muted)]">22%</span></div><div class="meter"><span style="width:22%"></span></div></div>
+          <div><div class="flex items-center justify-between text-[12.5px] mb-1"><span>YouTube (Data API)</span><span class="font-mono text-[color:var(--muted)]">14%</span></div><div class="meter"><span style="width:14%"></span></div></div>
+          <div><div class="flex items-center justify-between text-[12.5px] mb-1"><span>News &amp; web</span><span class="font-mono text-[color:var(--muted)]">8%</span></div><div class="meter"><span style="width:8%"></span></div></div>
+          <div><div class="flex items-center justify-between text-[12.5px] mb-1"><span>Instagram (Apify)</span><span class="font-mono text-[color:var(--muted)]">4%</span></div><div class="meter"><span style="width:4%"></span></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Per user -->
+    <div class="card mb-5">
+      <div class="px-4 py-3 border-b border-[color:var(--line-2)]"><h3 class="text-[13px] font-semibold">Top consumers (this cycle)</h3></div>
+      <table class="table">
+        <thead><tr><th>Member</th><th>Sessions</th><th>Queries run</th><th>AI tokens</th><th>Reports generated</th><th>Exports</th></tr></thead>
+        <tbody>
+          <tr><td class="font-medium">Marcus Chen <span class="pill pill-accent ml-1">Owner</span></td><td>52</td><td>148</td><td class="font-mono">128,420</td><td>4</td><td>9</td></tr>
+          <tr><td class="font-medium">Sarah Mitchell</td><td>89</td><td>312</td><td class="font-mono">86,210</td><td>2</td><td>14</td></tr>
+          <tr><td class="font-medium">Priya Raman</td><td>146</td><td>72</td><td class="font-mono">42,189</td><td>0</td><td>3</td></tr>
+          <tr><td class="font-medium">James Tanaka</td><td>21</td><td>40</td><td class="font-mono">14,030</td><td>1</td><td>2</td></tr>
+          <tr><td class="font-medium">Elena Marquez</td><td>4</td><td>2</td><td class="font-mono">2,140</td><td>0</td><td>1</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Policy -->
+    <div class="card p-5">
+      <div class="flex items-start justify-between">
+        <div>
+          <h3 class="text-[14px] font-semibold mb-1">Overage policy</h3>
+          <p class="text-[12.5px] text-[color:var(--muted)]">Default is soft-cap — Brisk continues collecting and bills the overage. Switch to hard-cap to block at the limit instead.</p>
+        </div>
+        <label class="inline-flex items-center gap-2 cursor-pointer">
+          <input type="checkbox" checked class="sr-only peer"/>
+          <span class="w-9 h-5 bg-[color:var(--line)] peer-checked:bg-[color:var(--accent)] rounded-full relative transition">
+            <span class="absolute top-0.5 left-0.5 w-4 h-4 bg-white rounded-full peer-checked:translate-x-4 transition" style="transition:transform .15s"></span>
+          </span>
+          <span class="text-[12.5px]">Soft-cap</span>
+        </label>
+      </div>
+    </div>
+
+  </div>
+</main>
+
+<script src="../../assets/shell.js?v=3"></script>
+<script>
+lucide.createIcons();
+new Chart(document.getElementById('usageTrend'),{
+  type:'bar',
+  data:{
+    labels:['Apr 25','May 25','Jun 25','Jul 25','Aug 25','Sep 25','Oct 25','Nov 25','Dec 25','Jan 26','Feb 26','Mar 26','Apr 26'],
+    datasets:[
+      { label:'Used', data:[3200,4100,5800,7200,8900,11400,14200,16800,18200,19400,19320,22140,23510], backgroundColor:'#1E293B', borderRadius:4, barThickness:18 },
+      { label:'Cap',  data:[5000,5000,5000,5000,5000,25000,25000,25000,25000,25000,25000,25000,25000], type:'line', borderColor:'#DC2626', borderDash:[4,4], borderWidth:1.5, pointRadius:0, fill:false }
+    ]
+  },
+  options:{ responsive:true, maintainAspectRatio:false,
+    plugins:{ legend:{ display:false } },
+    scales:{ y:{ grid:{ color:'#F4F4F5' }, ticks:{ font:{ size:10 }, color:'#A1A1AA', callback:v=>v>=1000?(v/1000)+'K':v } }, x:{ grid:{ display:false }, ticks:{ font:{ size:10 }, color:'#A1A1AA' } } } }
+});
+</script>
+</body>
+</html>

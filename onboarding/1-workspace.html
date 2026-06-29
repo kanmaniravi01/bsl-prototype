@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Workspace setup — Brisk®</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+<link rel="stylesheet" href="../assets/brisk.css"/>
+</head>
+<body class="min-h-screen flex flex-col">
+
+<header class="border-b border-[color:var(--line)] bg-white">
+  <div class="max-w-5xl mx-auto px-6 h-14 flex items-center">
+    <a href="../index.html" class="flex items-center gap-2">
+      <div class="w-6 h-6 rounded-md bg-[color:var(--accent)] text-white flex items-center justify-center"><i data-lucide="activity" class="!w-3.5 !h-3.5"></i></div>
+      <span class="wordmark">brisk<sup>®</sup></span>
+    </a>
+    <div class="ml-6 text-[12px] text-[color:var(--muted)]">Workspace setup</div>
+    <div class="flex-1"></div>
+    <a href="../login.html" class="text-[12px] text-[color:var(--muted)] hover:text-[color:var(--ink)]">Save &amp; exit</a>
+  </div>
+</header>
+
+<main class="flex-1 max-w-3xl mx-auto w-full px-6 py-10">
+  <!-- Progress -->
+  <div class="flex items-center gap-3 mb-8">
+    <div class="flex-1">
+      <div class="flex items-center justify-between text-[11px] text-[color:var(--soft)] mb-1.5">
+        <span>Step 1 of 2 · Workspace</span>
+        <span>~5 min total</span>
+      </div>
+      <div class="meter"><span style="width:50%"></span></div>
+    </div>
+  </div>
+
+  <h1 class="text-[24px] font-semibold tracking-tight mb-1">Name your workspace</h1>
+  <p class="text-[13.5px] text-[color:var(--muted)] mb-7">A workspace holds your brands, your team and your data. You can rename it later.</p>
+
+  <form action="2-brand.html" class="space-y-6 card p-6">
+    <div>
+      <label class="label">Workspace name</label>
+      <input class="input" value="Starbucks Marketing"/>
+      <p class="help">Visible to everyone you invite.</p>
+    </div>
+
+    <div>
+      <label class="label">Workspace URL</label>
+      <div class="flex items-center border border-[color:var(--line)] rounded-[var(--radius)] focus-within:border-[color:var(--accent)] focus-within:ring-3 focus-within:ring-[color:var(--accent)]/10">
+        <span class="px-3 py-2 text-[13px] text-[color:var(--soft)] font-mono border-r border-[color:var(--line)] bg-[color:var(--line-2)] rounded-l-[var(--radius)]">brisk.app/</span>
+        <input class="input !border-0 !rounded-l-none focus:!ring-0" value="starbucks"/>
+      </div>
+    </div>
+
+    <div class="flex items-center justify-between pt-2 border-t border-[color:var(--line-2)]">
+      <a href="../signup.html" class="btn btn-ghost"><i data-lucide="arrow-left" class="!w-3.5 !h-3.5"></i>Back</a>
+      <button class="btn btn-primary" type="submit">Continue<i data-lucide="arrow-right" class="!w-3.5 !h-3.5"></i></button>
+    </div>
+  </form>
+</main>
+<script>lucide.createIcons();</script>
+</body>
+</html>

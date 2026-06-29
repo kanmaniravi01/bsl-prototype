@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Usage &amp; margin — Brisk® Admin</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<link rel="stylesheet" href="../assets/brisk.css"/>
+</head>
+<body data-role="admin" data-active="usage" data-title="Usage &amp; margin" data-subtitle="Cross-tenant economics · April 2026">
+
+<main id="bk-main">
+  <div class="px-5 py-5 max-w-[1400px] mx-auto">
+
+    <!-- KPI -->
+    <div class="grid sm:grid-cols-5 gap-3 mb-4">
+      <div class="card p-3"><div class="text-[10px] uppercase tracking-wider text-[color:var(--soft)]">MRR</div><div class="text-[20px] font-semibold mt-1">$34,820</div><div class="text-[11px] text-[color:var(--pos)]">+8.2% MoM</div></div>
+      <div class="card p-3"><div class="text-[10px] uppercase tracking-wider text-[color:var(--soft)]">Provider cost</div><div class="text-[20px] font-semibold mt-1">$10,098</div><div class="text-[11px] text-[color:var(--muted)]">29% of MRR</div></div>
+      <div class="card p-3"><div class="text-[10px] uppercase tracking-wider text-[color:var(--soft)]">Gross margin</div><div class="text-[20px] font-semibold mt-1 text-[color:var(--pos)]">71%</div><div class="text-[11px] text-[color:var(--muted)]">target ≥ 65%</div></div>
+      <div class="card p-3"><div class="text-[10px] uppercase tracking-wider text-[color:var(--soft)]">Tenants below floor</div><div class="text-[20px] font-semibold mt-1 text-[color:var(--neg)]">3</div><div class="text-[11px] text-[color:var(--muted)]">margin &lt; 60%</div></div>
+      <div class="card p-3"><div class="text-[10px] uppercase tracking-wider text-[color:var(--soft)]">Anomalies</div><div class="text-[20px] font-semibold mt-1 text-[color:var(--neu)]">2</div><div class="text-[11px] text-[color:var(--muted)]">flagged for review</div></div>
+    </div>
+
+    <!-- Filters -->
+    <div class="flex flex-wrap items-center gap-2 mb-4">
+      <select class="select !w-auto"><option>April 2026</option><option>March 2026</option><option>Last 90 days</option></select>
+      <select class="select !w-auto"><option>All plans</option><option>Starter</option><option>Growth</option><option>Enterprise</option></select>
+      <select class="select !w-auto"><option>All providers</option><option>X Premium API</option><option>Reddit (Firecrawl)</option><option>YouTube Data API</option><option>News (NewsAPI/GDELT)</option><option>Instagram (Apify)</option><option>OpenAI (LLM)</option></select>
+      <button class="btn btn-secondary btn-sm"><i data-lucide="download" class="!w-3.5 !h-3.5"></i>Export CSV</button>
+      <div class="flex-1"></div>
+      <span class="text-[11.5px] text-[color:var(--muted)]">Last refresh: 22 Apr 09:00 UTC</span>
+    </div>
+
+    <!-- Trend + provider mix -->
+    <div class="grid lg:grid-cols-3 gap-3 mb-4">
+      <div class="card p-4 lg:col-span-2">
+        <h3 class="text-[13px] font-semibold mb-3">Revenue vs cost · last 13 months</h3>
+        <div class="h-56"><canvas id="revCost"></canvas></div>
+      </div>
+      <div class="card p-4">
+        <h3 class="text-[13px] font-semibold mb-3">Cost by provider</h3>
+        <div class="h-56"><canvas id="provMix"></canvas></div>
+      </div>
+    </div>
+
+    <!-- Per-tenant economics -->
+    <div class="card mb-5">
+      <div class="px-4 py-3 border-b border-[color:var(--line-2)] flex items-center justify-between">
+        <h3 class="text-[13px] font-semibold">Per-tenant gross margin</h3>
+        <span class="text-[11.5px] text-[color:var(--muted)]">Sorted: lowest margin first</span>
+      </div>
+      <table class="table">
+        <thead><tr><th>Tenant</th><th>Plan</th><th>MRR</th><th>X cost</th><th>Reddit cost</th><th>YT cost</th><th>News cost</th><th>IG cost</th><th>LLM cost</th><th>Total cost</th><th>Margin</th></tr></thead>
+        <tbody>
+          <tr class="bg-[#FEF2F2]/40"><td class="font-medium">Warby Parker</td><td><span class="pill pill-info">Growth</span></td><td class="font-mono">$500</td><td class="font-mono">$112</td><td class="font-mono">$48</td><td class="font-mono">$22</td><td class="font-mono">$10</td><td class="font-mono">$6</td><td class="font-mono">$12</td><td class="font-mono font-medium">$210</td><td><span class="text-[color:var(--neg)] font-medium">58%</span></td></tr>
+          <tr class="bg-[#FEF2F2]/40"><td class="font-medium">Glossier</td><td><span class="pill pill-neutral">Starter</span></td><td class="font-mono">$250</td><td class="font-mono">$48</td><td class="font-mono">$22</td><td class="font-mono">$8</td><td class="font-mono">$6</td><td class="font-mono">$8</td><td class="font-mono">$4</td><td class="font-mono font-medium">$96</td><td><span class="text-[color:var(--neg)] font-medium">62%</span></td></tr>
+          <tr><td class="font-medium">Allbirds</td><td><span class="pill pill-info">Growth</span></td><td class="font-mono">$500</td><td class="font-mono">$58</td><td class="font-mono">$22</td><td class="font-mono">$14</td><td class="font-mono">$10</td><td class="font-mono">$8</td><td class="font-mono">$8</td><td class="font-mono font-medium">$120</td><td><span class="text-[color:var(--pos)] font-medium">76%</span></td></tr>
+          <tr><td class="font-medium">Starbucks</td><td><span class="pill pill-info">Growth</span></td><td class="font-mono">$542</td><td class="font-mono">$89</td><td class="font-mono">$38</td><td class="font-mono">$24</td><td class="font-mono">$14</td><td class="font-mono">$7</td><td class="font-mono font-medium">$172</td><td class="font-mono">$172</td><td><span class="text-[color:var(--pos)] font-medium">68%</span></td></tr>
+          <tr><td class="font-medium">Lush Cosmetics</td><td><span class="pill pill-info">Growth</span></td><td class="font-mono">$510</td><td class="font-mono">$72</td><td class="font-mono">$32</td><td class="font-mono">$18</td><td class="font-mono">$8</td><td class="font-mono">$10</td><td class="font-mono">$8</td><td class="font-mono font-medium">$148</td><td><span class="text-[color:var(--pos)] font-medium">71%</span></td></tr>
+          <tr><td class="font-medium">Casper Sleep</td><td><span class="pill pill-accent">Enterprise</span></td><td class="font-mono">$1,180</td><td class="font-mono">$182</td><td class="font-mono">$72</td><td class="font-mono">$42</td><td class="font-mono">$24</td><td class="font-mono">$14</td><td class="font-mono">$14</td><td class="font-mono font-medium">$348</td><td><span class="text-[color:var(--pos)] font-medium">72%</span></td></tr>
+          <tr><td class="font-medium">Patagonia</td><td><span class="pill pill-accent">Enterprise</span></td><td class="font-mono">$1,240</td><td class="font-mono">$162</td><td class="font-mono">$78</td><td class="font-mono">$48</td><td class="font-mono">$22</td><td class="font-mono">$12</td><td class="font-mono">$10</td><td class="font-mono font-medium">$332</td><td><span class="text-[color:var(--pos)] font-medium">74%</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Anomalies -->
+    <div class="card">
+      <div class="px-4 py-3 border-b border-[color:var(--line-2)]">
+        <h3 class="text-[13px] font-semibold">Cost anomalies</h3>
+        <p class="text-[11.5px] text-[color:var(--muted)]">Tenants whose provider spend deviates &gt;50% from baseline</p>
+      </div>
+      <table class="table">
+        <thead><tr><th>Tenant</th><th>Provider</th><th>Baseline</th><th>This cycle</th><th>Δ</th><th>Likely cause</th><th></th></tr></thead>
+        <tbody>
+          <tr><td class="font-medium">Warby Parker</td><td>X Premium API</td><td class="font-mono">$58</td><td class="font-mono">$112</td><td><span class="text-[color:var(--neg)] font-medium">+93%</span></td><td>Trial competitor added · query depth doubled</td><td><button class="text-[color:var(--link)] text-[12px] hover:underline">Investigate</button></td></tr>
+          <tr><td class="font-medium">Glossier</td><td>OpenAI (LLM)</td><td class="font-mono">$1.20</td><td class="font-mono">$4.00</td><td><span class="text-[color:var(--neu)] font-medium">+233%</span></td><td>New AI summarization rule firing per-mention</td><td><button class="text-[color:var(--link)] text-[12px] hover:underline">Investigate</button></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+</main>
+
+<script src="../assets/shell.js?v=3"></script>
+<script>
+lucide.createIcons();
+new Chart(document.getElementById('revCost'),{
+  type:'bar',
+  data:{
+    labels:['Apr 25','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec','Jan 26','Feb','Mar','Apr 26'],
+    datasets:[
+      { label:'Revenue', data:[8200,9400,11800,14200,17800,21400,24800,27200,29400,30100,31600,32200,34820], backgroundColor:'#1E293B', borderRadius:4, barThickness:14 },
+      { label:'Provider cost', data:[2820,3210,4040,4860,5980,6720,7510,8210,8740,8900,9180,9520,10098], backgroundColor:'#94A3B8', borderRadius:4, barThickness:14 },
+      { label:'Margin %', data:[66,66,66,66,66,69,70,70,70,70,71,70,71], type:'line', borderColor:'#22C55E', borderWidth:2, pointRadius:0, tension:.35, yAxisID:'y1', fill:false }
+    ]
+  },
+  options:{ responsive:true, maintainAspectRatio:false,
+    plugins:{ legend:{ position:'bottom', labels:{ font:{size:11}, boxWidth:8, boxHeight:8 } } },
+    scales:{
+      y:{ grid:{color:'#F4F4F5'}, ticks:{ font:{size:10}, color:'#A1A1AA', callback:v=>'$'+(v/1000)+'K' } },
+      y1:{ position:'right', min:50, max:80, grid:{display:false}, ticks:{ font:{size:10}, color:'#A1A1AA', callback:v=>v+'%' } },
+      x:{ grid:{display:false}, ticks:{font:{size:10}, color:'#A1A1AA'} }
+    }
+  }
+});
+new Chart(document.getElementById('provMix'),{
+  type:'doughnut',
+  data:{ labels:['X Premium','Reddit (Firecrawl)','YouTube Data API','News','Instagram (Apify)','OpenAI (LLM)','Storage / infra'],
+    datasets:[{ data:[42,18,12,9,8,7,4], backgroundColor:['#1D9BF0','#FF4500','#FF0000','#94A3B8','#E1306C','#10A37F','#1E293B'], borderWidth:0 }] },
+  options:{ responsive:true, maintainAspectRatio:false, cutout:'60%', plugins:{ legend:{ position:'bottom', labels:{ font:{size:10}, boxWidth:8, boxHeight:8 } } } }
+});
+</script>
+</body>
+</html>

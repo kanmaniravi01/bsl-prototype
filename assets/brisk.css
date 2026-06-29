@@ -1,0 +1,125 @@
+/* Brisk design tokens — single source of truth.
+   Do not import another stylesheet. Tailwind via CDN handles utilities. */
+
+:root {
+  --canvas:#FAFAF9;
+  --surface:hsl(0, 0%, 100%);
+  --ink:#0A0A0A;
+  --muted:#52525B;
+  --soft:#A1A1AA;
+  --line:#E4E4E7;
+  --line-2:#F4F4F5;
+  --accent:#1E293B;       /* slate-800 */
+  --accent-ink:#FFFFFF;
+  --link:#2563EB;         /* blue-600 */
+  --link-hover:#1D4ED8;
+  --pos:#059669;
+  --neu:#D97706;
+  --neg:#DC2626;
+  --radius:6px;
+  --radius-lg:8px;
+  --shadow:0 1px 2px rgb(0 0 0 / 0.04);
+  --shadow-lg:0 4px 12px rgb(0 0 0 / 0.06);
+}
+
+html,body { background:var(--canvas); color:var(--ink);
+  font-family:'Inter',ui-sans-serif,system-ui,-apple-system,sans-serif;
+  font-feature-settings:'cv02','cv03','cv04','cv11'; -webkit-font-smoothing:antialiased; }
+
+.font-mono { font-family:'JetBrains Mono',ui-monospace,SFMono-Regular,monospace; }
+
+/* Lucide sizing */
+[data-lucide] { width:1rem; height:1rem; stroke-width:1.75; }
+.icon-sm [data-lucide] { width:0.875rem; height:0.875rem; }
+.icon-lg [data-lucide] { width:1.25rem; height:1.25rem; }
+
+/* Buttons */
+.btn { display:inline-flex; align-items:center; gap:0.4rem; font-size:0.8125rem; font-weight:500;
+  padding:0.4375rem 0.75rem; border-radius:var(--radius); border:1px solid transparent; line-height:1;
+  transition:background .12s, border-color .12s, color .12s; cursor:pointer; white-space:nowrap; }
+.btn-primary { background:var(--accent); color:var(--accent-ink); }
+.btn-primary:hover { background:#0F172A; }
+.btn-secondary { background:var(--surface); color:var(--ink); border-color:var(--line); }
+.btn-secondary:hover { background:var(--line-2); }
+.btn-ghost { background:transparent; color:var(--muted); }
+.btn-ghost:hover { background:var(--line-2); color:var(--ink); }
+.btn-danger { background:#FEF2F2; color:var(--neg); border-color:#FECACA; }
+.btn-link { color:var(--link); background:transparent; padding:0; }
+.btn-link:hover { color:var(--link-hover); text-decoration:underline; }
+.btn-sm { padding:0.3125rem 0.625rem; font-size:0.75rem; }
+
+/* Cards */
+.card { background:var(--surface); border:1px solid var(--line); border-radius:var(--radius-lg);
+  box-shadow:var(--shadow); }
+.card-pad { padding:1.25rem; }
+.card-tight { padding:0.875rem 1rem; }
+
+/* Inputs */
+.input, .select, .textarea {
+  width:100%; font-size:0.875rem; padding:0.5rem 0.75rem; background:var(--surface);
+  border:1px solid var(--line); border-radius:var(--radius); color:var(--ink); line-height:1.4;
+  transition:border-color .12s, box-shadow .12s; }
+.input:focus, .select:focus, .textarea:focus {
+  outline:none; border-color:var(--accent); box-shadow:0 0 0 3px rgb(30 41 59 / 0.08); }
+.label { display:block; font-size:0.75rem; font-weight:500; color:var(--ink); margin-bottom:0.375rem;
+  letter-spacing:0; }
+.help { font-size:0.75rem; color:var(--muted); margin-top:0.375rem; }
+
+/* Tables */
+.table { width:100%; font-size:0.8125rem; border-collapse:separate; border-spacing:0; }
+.table thead th { text-align:left; font-weight:500; font-size:0.6875rem; text-transform:uppercase;
+  letter-spacing:0.04em; color:var(--soft); padding:0.625rem 1rem; background:var(--line-2);
+  border-bottom:1px solid var(--line); }
+.table tbody td { padding:0.75rem 1rem; border-bottom:1px solid var(--line-2); color:var(--ink); }
+.table tbody tr:hover { background:var(--line-2); }
+.table tbody tr:last-child td { border-bottom:0; }
+
+/* Pills / badges */
+.pill { display:inline-flex; align-items:center; gap:0.25rem; padding:0.125rem 0.5rem;
+  font-size:0.6875rem; font-weight:500; border-radius:999px; line-height:1.5; }
+.pill-neutral { background:var(--line-2); color:var(--muted); }
+.pill-pos { background:#ECFDF5; color:#047857; }
+.pill-neu { background:#FFFBEB; color:#B45309; }
+.pill-neg { background:#FEF2F2; color:#B91C1C; }
+.pill-info { background:#EFF6FF; color:#1D4ED8; }
+.pill-accent { background:#F1F5F9; color:#1E293B; }
+
+/* KPI */
+.kpi { padding:1rem 1.125rem; }
+.kpi-label { font-size:0.6875rem; text-transform:uppercase; letter-spacing:0.04em; color:var(--soft);
+  display:flex; align-items:center; gap:0.375rem; }
+.kpi-value { font-size:1.5rem; font-weight:600; margin-top:0.5rem; letter-spacing:-0.01em; color:var(--ink); }
+.kpi-delta { font-size:0.75rem; margin-top:0.25rem; color:var(--muted); }
+
+/* Sidebar nav */
+.nav-link { display:flex; align-items:center; gap:0.625rem; padding:0.4375rem 0.625rem;
+  border-radius:var(--radius); font-size:0.8125rem; color:var(--muted); text-decoration:none;
+  transition:background .1s, color .1s; }
+.nav-link:hover { background:var(--line-2); color:var(--ink); }
+.nav-link.active { background:#F1F5F9; color:var(--accent); font-weight:500; }
+.nav-section { font-size:0.6875rem; text-transform:uppercase; letter-spacing:0.06em; color:var(--soft);
+  font-weight:500; padding:0.75rem 0.625rem 0.25rem; }
+.nav-counter { margin-left:auto; background:var(--neg); color:#fff; font-size:0.625rem; font-weight:600;
+  padding:0.0625rem 0.375rem; border-radius:999px; }
+
+/* Misc */
+.divider { border-top:1px solid var(--line); }
+.muted { color:var(--muted); }
+.soft { color:var(--soft); }
+.kbd { font-family:'JetBrains Mono',monospace; font-size:0.6875rem; padding:0.125rem 0.375rem;
+  border:1px solid var(--line); border-radius:4px; background:var(--surface); color:var(--muted); }
+.meter { height:6px; background:var(--line-2); border-radius:999px; overflow:hidden; }
+.meter > span { display:block; height:100%; background:var(--accent); border-radius:999px; }
+.meter.warn > span { background:var(--neu); }
+.meter.crit > span { background:var(--neg); }
+
+/* Marketing */
+.marketing { background:var(--surface); }
+.marketing h1 { font-size:clamp(2rem, 4.5vw, 3.25rem); line-height:1.1; letter-spacing:-0.02em;
+  font-weight:600; }
+.marketing h2 { font-size:clamp(1.5rem, 3vw, 2.125rem); line-height:1.15; letter-spacing:-0.015em;
+  font-weight:600; }
+
+/* Wordmark */
+.wordmark { font-weight:600; letter-spacing:-0.015em; font-size:1rem; color:var(--ink); }
+.wordmark sup { font-size:0.5em; color:var(--soft); margin-left:1px; }

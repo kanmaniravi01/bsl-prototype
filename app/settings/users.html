@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Users &amp; roles — Brisk®</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+<link rel="stylesheet" href="../../assets/brisk.css"/>
+</head>
+<body data-role="owner" data-active="users" data-title="Users &amp; roles" data-subtitle="6 active members · 2 invited · seat usage 6 / 10">
+
+<main id="bk-main">
+  <div class="px-5 py-5 max-w-6xl mx-auto">
+
+    <!-- Settings sub-nav -->
+    <nav class="flex items-center gap-1 mb-5 border-b border-[color:var(--line)] -mx-5 px-5">
+      <a href="users.html" class="px-3 py-2 text-[12.5px] font-medium border-b-2 border-[color:var(--accent)] text-[color:var(--ink)]">Users</a>
+      <a href="integrations.html" class="px-3 py-2 text-[12.5px] text-[color:var(--muted)] hover:text-[color:var(--ink)]">Integrations</a>
+      <a href="billing.html" class="px-3 py-2 text-[12.5px] text-[color:var(--muted)] hover:text-[color:var(--ink)]">Billing</a>
+      <a href="usage.html" class="px-3 py-2 text-[12.5px] text-[color:var(--muted)] hover:text-[color:var(--ink)]">Usage &amp; quotas</a>
+      <a href="audit.html" class="px-3 py-2 text-[12.5px] text-[color:var(--muted)] hover:text-[color:var(--ink)]">Audit log</a>
+    </nav>
+
+    <div class="flex items-center justify-between mb-4">
+      <div>
+        <h2 class="text-[15px] font-semibold">Members</h2>
+        <p class="text-[12px] text-[color:var(--muted)]">Manage who can sign in, and what they see.</p>
+      </div>
+      <div class="flex items-center gap-2">
+        <button class="btn btn-secondary"><i data-lucide="upload" class="!w-3.5 !h-3.5"></i>SCIM sync</button>
+        <button class="btn btn-primary"><i data-lucide="user-plus" class="!w-3.5 !h-3.5"></i>Invite member</button>
+      </div>
+    </div>
+
+    <!-- Members table -->
+    <div class="card mb-6">
+      <div class="px-4 py-3 border-b border-[color:var(--line-2)] flex items-center gap-2">
+        <div class="relative flex-1 max-w-xs">
+          <i data-lucide="search" class="!w-3.5 !h-3.5 absolute left-2.5 top-1/2 -translate-y-1/2 text-[color:var(--soft)]"></i>
+          <input class="input !pl-8 !py-1.5 text-[12.5px]" placeholder="Search members…"/>
+        </div>
+        <select class="select !w-auto !py-1.5 text-[12px]"><option>All roles</option><option>Owner</option><option>Insight Analyst</option><option>ORM Manager</option><option>Viewer</option></select>
+        <select class="select !w-auto !py-1.5 text-[12px]"><option>All status</option><option>Active</option><option>Invited</option><option>Suspended</option></select>
+      </div>
+      <table class="table">
+        <thead><tr><th>Member</th><th>Role</th><th>Brands</th><th>Last active</th><th>AI tokens (30d)</th><th>Status</th><th></th></tr></thead>
+        <tbody>
+          <tr>
+            <td><div class="flex items-center gap-2.5"><div class="w-7 h-7 rounded-full bg-[color:var(--line-2)] flex items-center justify-center text-[11px] font-semibold">MC</div><div><div class="text-[13px] font-medium">Marcus Chen <span class="pill pill-accent ml-1">You</span></div><div class="text-[11px] text-[color:var(--soft)] font-mono">marcus@starbucks.com</div></div></div></td>
+            <td><span class="pill pill-accent">Owner</span></td>
+            <td class="text-[color:var(--muted)]">All</td>
+            <td class="text-[color:var(--muted)]">just now</td>
+            <td class="font-mono text-[12px]">128,420</td>
+            <td><span class="pill pill-pos"><span class="w-1.5 h-1.5 rounded-full bg-[color:var(--pos)]"></span>Active</span></td>
+            <td><button class="btn btn-ghost btn-sm"><i data-lucide="more-horizontal" class="!w-4 !h-4"></i></button></td>
+          </tr>
+          <tr>
+            <td><div class="flex items-center gap-2.5"><div class="w-7 h-7 rounded-full bg-[color:var(--line-2)] flex items-center justify-center text-[11px] font-semibold">SM</div><div><div class="text-[13px] font-medium">Sarah Mitchell</div><div class="text-[11px] text-[color:var(--soft)] font-mono">sarah@starbucks.com</div></div></div></td>
+            <td><span class="pill pill-info">Insight Analyst</span></td>
+            <td class="text-[color:var(--muted)]">Starbucks · Reserve</td>
+            <td class="text-[color:var(--muted)]">2 min ago</td>
+            <td class="font-mono text-[12px]">86,210</td>
+            <td><span class="pill pill-pos"><span class="w-1.5 h-1.5 rounded-full bg-[color:var(--pos)]"></span>Active</span></td>
+            <td><button class="btn btn-ghost btn-sm"><i data-lucide="more-horizontal" class="!w-4 !h-4"></i></button></td>
+          </tr>
+          <tr>
+            <td><div class="flex items-center gap-2.5"><div class="w-7 h-7 rounded-full bg-[color:var(--line-2)] flex items-center justify-center text-[11px] font-semibold">PR</div><div><div class="text-[13px] font-medium">Priya Raman</div><div class="text-[11px] text-[color:var(--soft)] font-mono">priya@starbucks.com</div></div></div></td>
+            <td><span class="pill pill-info">ORM Manager</span></td>
+            <td class="text-[color:var(--muted)]">All</td>
+            <td class="text-[color:var(--muted)]">8 min ago</td>
+            <td class="font-mono text-[12px]">42,189</td>
+            <td><span class="pill pill-pos"><span class="w-1.5 h-1.5 rounded-full bg-[color:var(--pos)]"></span>Active</span></td>
+            <td><button class="btn btn-ghost btn-sm"><i data-lucide="more-horizontal" class="!w-4 !h-4"></i></button></td>
+          </tr>
+          <tr>
+            <td><div class="flex items-center gap-2.5"><div class="w-7 h-7 rounded-full bg-[color:var(--line-2)] flex items-center justify-center text-[11px] font-semibold">JT</div><div><div class="text-[13px] font-medium">James Tanaka</div><div class="text-[11px] text-[color:var(--soft)] font-mono">james@starbucks.com</div></div></div></td>
+            <td><span class="pill pill-info">Insight Analyst</span></td>
+            <td class="text-[color:var(--muted)]">Starbucks Coffee</td>
+            <td class="text-[color:var(--muted)]">2h ago</td>
+            <td class="font-mono text-[12px]">14,030</td>
+            <td><span class="pill pill-pos"><span class="w-1.5 h-1.5 rounded-full bg-[color:var(--pos)]"></span>Active</span></td>
+            <td><button class="btn btn-ghost btn-sm"><i data-lucide="more-horizontal" class="!w-4 !h-4"></i></button></td>
+          </tr>
+          <tr>
+            <td><div class="flex items-center gap-2.5"><div class="w-7 h-7 rounded-full bg-[color:var(--line-2)] flex items-center justify-center text-[11px] font-semibold">EM</div><div><div class="text-[13px] font-medium">Elena Marquez</div><div class="text-[11px] text-[color:var(--soft)] font-mono">elena@starbucks.com</div></div></div></td>
+            <td><span class="pill pill-neutral">Viewer</span></td>
+            <td class="text-[color:var(--muted)]">All</td>
+            <td class="text-[color:var(--muted)]">3 days ago</td>
+            <td class="font-mono text-[12px]">2,140</td>
+            <td><span class="pill pill-pos"><span class="w-1.5 h-1.5 rounded-full bg-[color:var(--pos)]"></span>Active</span></td>
+            <td><button class="btn btn-ghost btn-sm"><i data-lucide="more-horizontal" class="!w-4 !h-4"></i></button></td>
+          </tr>
+          <tr>
+            <td><div class="flex items-center gap-2.5"><div class="w-7 h-7 rounded-full bg-[color:var(--line-2)] flex items-center justify-center text-[11px] font-semibold">DL</div><div><div class="text-[13px] font-medium">Daniel Lin</div><div class="text-[11px] text-[color:var(--soft)] font-mono">daniel@starbucks.com</div></div></div></td>
+            <td><span class="pill pill-neutral">Viewer</span></td>
+            <td class="text-[color:var(--muted)]">Starbucks</td>
+            <td class="text-[color:var(--muted)]">62 days ago</td>
+            <td class="font-mono text-[12px]">0</td>
+            <td><span class="pill pill-neu"><span class="w-1.5 h-1.5 rounded-full bg-[color:var(--neu)]"></span>Idle — drop seat?</span></td>
+            <td><button class="btn btn-ghost btn-sm"><i data-lucide="more-horizontal" class="!w-4 !h-4"></i></button></td>
+          </tr>
+          <tr class="bg-[color:var(--line-2)]/40">
+            <td><div class="flex items-center gap-2.5"><div class="w-7 h-7 rounded-full bg-[color:var(--line-2)] flex items-center justify-center text-[11px] font-semibold text-[color:var(--soft)]">?</div><div><div class="text-[13px] font-medium text-[color:var(--muted)]">amir@starbucks.com</div><div class="text-[11px] text-[color:var(--soft)]">Invited 2 days ago</div></div></div></td>
+            <td><span class="pill pill-info">Insight Analyst</span></td>
+            <td class="text-[color:var(--muted)]">Reserve Roast</td>
+            <td>—</td>
+            <td>—</td>
+            <td><span class="pill pill-neutral">Pending</span></td>
+            <td><button class="btn btn-ghost btn-sm">Resend</button></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Roles -->
+    <div class="card p-5 mb-6">
+      <h3 class="text-[14px] font-semibold mb-1">Role permissions</h3>
+      <p class="text-[12px] text-[color:var(--muted)] mb-4">Default roles. Build custom roles on Enterprise.</p>
+      <table class="table">
+        <thead><tr><th>Capability</th><th>Owner</th><th>Insight Analyst</th><th>ORM Mgr</th><th>Viewer</th></tr></thead>
+        <tbody>
+          <tr><td>View dashboards &amp; reports</td><td><i data-lucide="check" class="!w-3.5 !h-3.5 text-[color:var(--pos)]"></i></td><td><i data-lucide="check" class="!w-3.5 !h-3.5 text-[color:var(--pos)]"></i></td><td><i data-lucide="check" class="!w-3.5 !h-3.5 text-[color:var(--pos)]"></i></td><td><i data-lucide="check" class="!w-3.5 !h-3.5 text-[color:var(--pos)]"></i></td></tr>
+          <tr><td>Resolve ORM alerts</td><td><i data-lucide="check" class="!w-3.5 !h-3.5 text-[color:var(--pos)]"></i></td><td><i data-lucide="check" class="!w-3.5 !h-3.5 text-[color:var(--pos)]"></i></td><td><i data-lucide="check" class="!w-3.5 !h-3.5 text-[color:var(--pos)]"></i></td><td><i data-lucide="x" class="!w-3.5 !h-3.5 text-[color:var(--soft)]"></i></td></tr>
+          <tr><td>Add brands &amp; competitors</td><td><i data-lucide="check" class="!w-3.5 !h-3.5 text-[color:var(--pos)]"></i></td><td><i data-lucide="check" class="!w-3.5 !h-3.5 text-[color:var(--pos)]"></i></td><td><i data-lucide="x" class="!w-3.5 !h-3.5 text-[color:var(--soft)]"></i></td><td><i data-lucide="x" class="!w-3.5 !h-3.5 text-[color:var(--soft)]"></i></td></tr>
+          <tr><td>Manage integrations &amp; keys</td><td><i data-lucide="check" class="!w-3.5 !h-3.5 text-[color:var(--pos)]"></i></td><td><i data-lucide="x" class="!w-3.5 !h-3.5 text-[color:var(--soft)]"></i></td><td><i data-lucide="x" class="!w-3.5 !h-3.5 text-[color:var(--soft)]"></i></td><td><i data-lucide="x" class="!w-3.5 !h-3.5 text-[color:var(--soft)]"></i></td></tr>
+          <tr><td>Billing &amp; plan changes</td><td><i data-lucide="check" class="!w-3.5 !h-3.5 text-[color:var(--pos)]"></i></td><td><i data-lucide="x" class="!w-3.5 !h-3.5 text-[color:var(--soft)]"></i></td><td><i data-lucide="x" class="!w-3.5 !h-3.5 text-[color:var(--soft)]"></i></td><td><i data-lucide="x" class="!w-3.5 !h-3.5 text-[color:var(--soft)]"></i></td></tr>
+          <tr><td>Invite &amp; remove members</td><td><i data-lucide="check" class="!w-3.5 !h-3.5 text-[color:var(--pos)]"></i></td><td><i data-lucide="x" class="!w-3.5 !h-3.5 text-[color:var(--soft)]"></i></td><td><i data-lucide="x" class="!w-3.5 !h-3.5 text-[color:var(--soft)]"></i></td><td><i data-lucide="x" class="!w-3.5 !h-3.5 text-[color:var(--soft)]"></i></td></tr>
+          <tr><td>Mint API tokens</td><td><i data-lucide="check" class="!w-3.5 !h-3.5 text-[color:var(--pos)]"></i></td><td><i data-lucide="x" class="!w-3.5 !h-3.5 text-[color:var(--soft)]"></i></td><td><i data-lucide="x" class="!w-3.5 !h-3.5 text-[color:var(--soft)]"></i></td><td><i data-lucide="x" class="!w-3.5 !h-3.5 text-[color:var(--soft)]"></i></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+</main>
+
+<script src="../../assets/shell.js?v=3"></script>
+<script>lucide.createIcons();</script>
+</body>
+</html>

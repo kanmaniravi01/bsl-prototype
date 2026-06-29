@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Licensing — Brisk® Admin</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+<link rel="stylesheet" href="../assets/brisk.css"/>
+</head>
+<body data-role="admin" data-active="licensing" data-title="Licensing" data-subtitle="Plan caps, overage policies, custom contracts">
+
+<main id="bk-main">
+  <div class="px-5 py-5 max-w-[1400px] mx-auto">
+
+    <!-- Plan editors -->
+    <div class="grid lg:grid-cols-3 gap-3 mb-5">
+      <div class="card p-4">
+        <div class="flex items-center justify-between mb-2"><h3 class="text-[14px] font-semibold">Starter</h3><span class="pill pill-neutral">15 tenants</span></div>
+        <div class="text-[24px] font-semibold mb-3">$250<span class="text-[12px] text-[color:var(--muted)] font-normal">/mo</span></div>
+        <button class="btn btn-secondary btn-sm w-full">Edit plan</button>
+      </div>
+      <div class="card p-4 border-[color:var(--accent)] border-2">
+        <div class="flex items-center justify-between mb-2"><h3 class="text-[14px] font-semibold">Growth</h3><span class="pill pill-accent">25 tenants · most popular</span></div>
+        <div class="text-[24px] font-semibold mb-3">$500<span class="text-[12px] text-[color:var(--muted)] font-normal">/mo</span></div>
+        <button class="btn btn-secondary btn-sm w-full">Edit plan</button>
+      </div>
+      <div class="card p-4">
+        <div class="flex items-center justify-between mb-2"><h3 class="text-[14px] font-semibold">Enterprise</h3><span class="pill pill-neutral">8 tenants · custom</span></div>
+        <div class="text-[24px] font-semibold mb-3">from $800<span class="text-[12px] text-[color:var(--muted)] font-normal">/mo</span></div>
+        <button class="btn btn-secondary btn-sm w-full">Edit plan</button>
+      </div>
+    </div>
+
+    <!-- Caps matrix -->
+    <div class="card mb-5">
+      <div class="px-4 py-3 border-b border-[color:var(--line-2)] flex items-center justify-between">
+        <div>
+          <h3 class="text-[13px] font-semibold">Plan caps &amp; overage policy</h3>
+          <p class="text-[11.5px] text-[color:var(--muted)]">Changes apply at next billing cycle. Per-tenant overrides below.</p>
+        </div>
+        <button class="btn btn-secondary btn-sm"><i data-lucide="rotate-ccw" class="!w-3.5 !h-3.5"></i>Reset to defaults</button>
+      </div>
+      <table class="table">
+        <thead><tr><th>Meter</th><th>Starter</th><th>Growth</th><th>Enterprise</th><th>Policy</th><th>Overage rate</th></tr></thead>
+        <tbody>
+          <tr><td>Mentions / cycle</td><td><input class="input !py-1 w-24 font-mono text-[12px]" value="10000"/></td><td><input class="input !py-1 w-24 font-mono text-[12px]" value="25000"/></td><td><input class="input !py-1 w-24 font-mono text-[12px]" value="100000"/></td><td><select class="select !py-1 !w-auto text-[12px]"><option>Soft-cap</option><option>Hard-cap</option></select></td><td><input class="input !py-1 w-20 font-mono text-[12px]" value="$0.01"/></td></tr>
+          <tr><td>AI tokens / cycle</td><td><input class="input !py-1 w-24 font-mono text-[12px]" value="1000000"/></td><td><input class="input !py-1 w-24 font-mono text-[12px]" value="3000000"/></td><td><input class="input !py-1 w-24 font-mono text-[12px]" value="15000000"/></td><td><select class="select !py-1 !w-auto text-[12px]"><option>Soft-cap</option><option>Hard-cap</option></select></td><td><input class="input !py-1 w-20 font-mono text-[12px]" value="$2.50/M"/></td></tr>
+          <tr><td>Brands</td><td><input class="input !py-1 w-24 font-mono text-[12px]" value="1"/></td><td><input class="input !py-1 w-24 font-mono text-[12px]" value="3"/></td><td><input class="input !py-1 w-24 font-mono text-[12px]" value="10"/></td><td><select class="select !py-1 !w-auto text-[12px]"><option>Hard-cap</option></select></td><td>—</td></tr>
+          <tr><td>Competitors</td><td><input class="input !py-1 w-24 font-mono text-[12px]" value="3"/></td><td><input class="input !py-1 w-24 font-mono text-[12px]" value="5"/></td><td><input class="input !py-1 w-24 font-mono text-[12px]" value="20"/></td><td><select class="select !py-1 !w-auto text-[12px]"><option>Hard-cap</option></select></td><td>—</td></tr>
+          <tr><td>Tags / topics</td><td><input class="input !py-1 w-24 font-mono text-[12px]" value="20"/></td><td><input class="input !py-1 w-24 font-mono text-[12px]" value="50"/></td><td><input class="input !py-1 w-24 font-mono text-[12px]" value="200"/></td><td><select class="select !py-1 !w-auto text-[12px]"><option>Hard-cap</option></select></td><td>—</td></tr>
+          <tr><td>Channels</td><td><input class="input !py-1 w-24 font-mono text-[12px]" value="3"/></td><td><input class="input !py-1 w-24 font-mono text-[12px]" value="5"/></td><td><input class="input !py-1 w-24 font-mono text-[12px]" value="5"/></td><td><select class="select !py-1 !w-auto text-[12px]"><option>Hard-cap</option></select></td><td>—</td></tr>
+          <tr><td>Active seats</td><td><input class="input !py-1 w-24 font-mono text-[12px]" value="3"/></td><td><input class="input !py-1 w-24 font-mono text-[12px]" value="10"/></td><td><input class="input !py-1 w-24 font-mono text-[12px]" value="25"/></td><td><select class="select !py-1 !w-auto text-[12px]"><option>Hard-cap</option></select></td><td><input class="input !py-1 w-20 font-mono text-[12px]" value="$50/seat"/></td></tr>
+          <tr><td>API calls/day</td><td><input class="input !py-1 w-24 font-mono text-[12px]" value="1000"/></td><td><input class="input !py-1 w-24 font-mono text-[12px]" value="5000"/></td><td><input class="input !py-1 w-24 font-mono text-[12px]" value="25000"/></td><td><select class="select !py-1 !w-auto text-[12px]"><option>Throttle</option></select></td><td>—</td></tr>
+          <tr><td>Webhook deliveries</td><td><input class="input !py-1 w-24 font-mono text-[12px]" value="10000"/></td><td><input class="input !py-1 w-24 font-mono text-[12px]" value="50000"/></td><td><input class="input !py-1 w-24 font-mono text-[12px]" value="500000"/></td><td><select class="select !py-1 !w-auto text-[12px]"><option>Throttle</option></select></td><td>—</td></tr>
+          <tr><td>Exports / cycle</td><td><input class="input !py-1 w-24 font-mono text-[12px]" value="25"/></td><td><input class="input !py-1 w-24 font-mono text-[12px]" value="100"/></td><td><input class="input !py-1 w-24 font-mono text-[12px]" value="1000"/></td><td><select class="select !py-1 !w-auto text-[12px]"><option>Soft-cap</option></select></td><td><input class="input !py-1 w-20 font-mono text-[12px]" value="$1/each"/></td></tr>
+          <tr><td>SMS notifications</td><td><input class="input !py-1 w-24 font-mono text-[12px]" value="0"/></td><td><input class="input !py-1 w-24 font-mono text-[12px]" value="100"/></td><td><input class="input !py-1 w-24 font-mono text-[12px]" value="1000"/></td><td><select class="select !py-1 !w-auto text-[12px]"><option>Metered</option></select></td><td><input class="input !py-1 w-20 font-mono text-[12px]" value="$0.10"/></td></tr>
+        </tbody>
+      </table>
+      <div class="px-4 py-3 border-t border-[color:var(--line-2)] flex items-center justify-end gap-2">
+        <button class="btn btn-secondary btn-sm">Discard</button>
+        <button class="btn btn-primary btn-sm">Save plan caps</button>
+      </div>
+    </div>
+
+    <!-- Per-tenant overrides -->
+    <div class="card mb-5">
+      <div class="px-4 py-3 border-b border-[color:var(--line-2)] flex items-center justify-between">
+        <div>
+          <h3 class="text-[13px] font-semibold">Per-tenant overrides</h3>
+          <p class="text-[11.5px] text-[color:var(--muted)]">Custom contracts that override the plan defaults</p>
+        </div>
+        <button class="btn btn-secondary btn-sm"><i data-lucide="plus" class="!w-3.5 !h-3.5"></i>Add override</button>
+      </div>
+      <table class="table">
+        <thead><tr><th>Tenant</th><th>Plan</th><th>Override</th><th>Effective</th><th>Set by</th><th></th></tr></thead>
+        <tbody>
+          <tr><td class="font-medium">Patagonia</td><td><span class="pill pill-accent">Enterprise</span></td><td><span class="font-mono text-[12px]">mentions: 200K · seats: 40 · price: $1,800</span></td><td>04 Jan 2026</td><td>sidharthan@</td><td><button class="text-[color:var(--link)] text-[12px] hover:underline">Edit</button></td></tr>
+          <tr><td class="font-medium">Casper Sleep</td><td><span class="pill pill-accent">Enterprise</span></td><td><span class="font-mono text-[12px]">discount: 10% annual · margin floor: 65%</span></td><td>14 Nov 2025</td><td>sidharthan@</td><td><button class="text-[color:var(--link)] text-[12px] hover:underline">Edit</button></td></tr>
+          <tr><td class="font-medium">Aesop</td><td><span class="pill pill-neutral">Starter</span></td><td><span class="font-mono text-[12px]">trial extended to 30d</span></td><td>12 Apr 2026</td><td>sidharthan@</td><td><button class="text-[color:var(--link)] text-[12px] hover:underline">Edit</button></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Add-ons -->
+    <div class="card">
+      <div class="px-4 py-3 border-b border-[color:var(--line-2)]"><h3 class="text-[13px] font-semibold">Add-ons</h3></div>
+      <table class="table">
+        <thead><tr><th>SKU</th><th>Description</th><th>Price</th><th>Sold to (count)</th><th></th></tr></thead>
+        <tbody>
+          <tr><td class="font-mono text-[12px]">EXTRA_BRAND</td><td>+1 brand</td><td class="font-mono">$80/mo</td><td>4</td><td><button class="text-[color:var(--link)] text-[12px] hover:underline">Edit</button></td></tr>
+          <tr><td class="font-mono text-[12px]">EXTRA_SEATS_5</td><td>+5 active seats</td><td class="font-mono">$200/mo</td><td>9</td><td><button class="text-[color:var(--link)] text-[12px] hover:underline">Edit</button></td></tr>
+          <tr><td class="font-mono text-[12px]">SSO_SAML</td><td>SAML SSO + SCIM</td><td class="font-mono">$150/mo</td><td>6</td><td><button class="text-[color:var(--link)] text-[12px] hover:underline">Edit</button></td></tr>
+          <tr><td class="font-mono text-[12px]">DATA_RETENTION_24M</td><td>24-month retention</td><td class="font-mono">$200/mo</td><td>3</td><td><button class="text-[color:var(--link)] text-[12px] hover:underline">Edit</button></td></tr>
+          <tr><td class="font-mono text-[12px]">PRIORITY_SUPPORT</td><td>1h SLA · dedicated CSM</td><td class="font-mono">$400/mo</td><td>5</td><td><button class="text-[color:var(--link)] text-[12px] hover:underline">Edit</button></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+</main>
+
+<script src="../assets/shell.js?v=3"></script>
+<script>lucide.createIcons();</script>
+</body>
+</html>

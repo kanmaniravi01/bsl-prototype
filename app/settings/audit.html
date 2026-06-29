@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Audit log — Brisk®</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+<link rel="stylesheet" href="../../assets/brisk.css"/>
+</head>
+<body data-role="owner" data-active="audit" data-title="Audit log" data-subtitle="Workspace activity · last 90 days retained">
+
+<main id="bk-main">
+  <div class="px-5 py-5 max-w-6xl mx-auto">
+
+    <nav class="flex items-center gap-1 mb-5 border-b border-[color:var(--line)] -mx-5 px-5 overflow-x-auto">
+      <a href="users.html" class="px-3 py-2 text-[12.5px] text-[color:var(--muted)] hover:text-[color:var(--ink)]">Users</a>
+      <a href="integrations.html" class="px-3 py-2 text-[12.5px] text-[color:var(--muted)] hover:text-[color:var(--ink)]">Integrations</a>
+      <a href="billing.html" class="px-3 py-2 text-[12.5px] text-[color:var(--muted)] hover:text-[color:var(--ink)]">Billing</a>
+      <a href="usage.html" class="px-3 py-2 text-[12.5px] text-[color:var(--muted)] hover:text-[color:var(--ink)]">Usage &amp; quotas</a>
+      <a href="audit.html" class="px-3 py-2 text-[12.5px] font-medium border-b-2 border-[color:var(--accent)]">Audit log</a>
+    </nav>
+
+    <!-- Filters -->
+    <div class="card p-3 mb-4 flex flex-wrap items-center gap-2">
+      <div class="relative flex-1 min-w-[220px]">
+        <i data-lucide="search" class="absolute left-2.5 top-1/2 -translate-y-1/2 !w-3.5 !h-3.5 text-[color:var(--muted)]"></i>
+        <input class="input pl-8" placeholder="Search actor, action, target, IP…"/>
+      </div>
+      <select class="select !w-auto"><option>All actors</option><option>Marcus Chen</option><option>Sarah Mitchell</option><option>Priya Raman</option><option>System</option></select>
+      <select class="select !w-auto"><option>All actions</option><option>Auth</option><option>Settings</option><option>Brand / tag</option><option>Integration</option><option>Export</option><option>Billing</option></select>
+      <select class="select !w-auto"><option>Last 7 days</option><option>Last 30 days</option><option>Last 90 days</option><option>Custom…</option></select>
+      <button class="btn btn-secondary btn-sm"><i data-lucide="download" class="!w-3.5 !h-3.5"></i>Export CSV</button>
+    </div>
+
+    <!-- Log -->
+    <div class="card overflow-hidden">
+      <table class="table">
+        <thead><tr><th>When</th><th>Actor</th><th>Action</th><th>Target</th><th>IP</th><th></th></tr></thead>
+        <tbody>
+          <tr><td class="font-mono text-[12px] whitespace-nowrap">22 Apr 09:14</td><td>Marcus Chen</td><td><span class="pill pill-info">billing.plan.upgrade</span></td><td>Starter → Growth</td><td class="font-mono text-[12px]">98.142.18.4</td><td><button class="text-[color:var(--link)] text-[12px] hover:underline">View</button></td></tr>
+          <tr><td class="font-mono text-[12px] whitespace-nowrap">22 Apr 08:51</td><td>Sarah Mitchell</td><td><span class="pill pill-info">brand.competitor.add</span></td><td>“Blue Bottle Coffee”</td><td class="font-mono text-[12px]">98.142.18.4</td><td><button class="text-[color:var(--link)] text-[12px] hover:underline">View</button></td></tr>
+          <tr><td class="font-mono text-[12px] whitespace-nowrap">22 Apr 02:11</td><td>System</td><td><span class="pill pill-neu">quota.warn</span></td><td>mentions @ 90%</td><td>—</td><td><button class="text-[color:var(--link)] text-[12px] hover:underline">View</button></td></tr>
+          <tr><td class="font-mono text-[12px] whitespace-nowrap">21 Apr 18:22</td><td>Priya Raman</td><td><span class="pill pill-pos">orm.alert.respond</span></td><td>Alert #1422 (Twitter)</td><td class="font-mono text-[12px]">73.214.5.92</td><td><button class="text-[color:var(--link)] text-[12px] hover:underline">View</button></td></tr>
+          <tr><td class="font-mono text-[12px] whitespace-nowrap">21 Apr 17:09</td><td>Sarah Mitchell</td><td><span class="pill pill-info">report.export</span></td><td>“Q1 brand health.pdf”</td><td class="font-mono text-[12px]">98.142.18.4</td><td><button class="text-[color:var(--link)] text-[12px] hover:underline">View</button></td></tr>
+          <tr><td class="font-mono text-[12px] whitespace-nowrap">21 Apr 14:50</td><td>Marcus Chen</td><td><span class="pill pill-info">user.invite</span></td><td>elena@starbucks.com (Viewer)</td><td class="font-mono text-[12px]">98.142.18.4</td><td><button class="text-[color:var(--link)] text-[12px] hover:underline">View</button></td></tr>
+          <tr><td class="font-mono text-[12px] whitespace-nowrap">21 Apr 11:32</td><td>Marcus Chen</td><td><span class="pill pill-neg">user.role.change</span></td><td>James Tanaka: Viewer → Insight Analyst</td><td class="font-mono text-[12px]">98.142.18.4</td><td><button class="text-[color:var(--link)] text-[12px] hover:underline">View</button></td></tr>
+          <tr><td class="font-mono text-[12px] whitespace-nowrap">21 Apr 09:18</td><td>System</td><td><span class="pill pill-info">integration.sync</span></td><td>X Premium API · 14,820 mentions</td><td>—</td><td><button class="text-[color:var(--link)] text-[12px] hover:underline">View</button></td></tr>
+          <tr><td class="font-mono text-[12px] whitespace-nowrap">20 Apr 22:04</td><td>Priya Raman</td><td><span class="pill pill-pos">auth.login</span></td><td>SSO · Google</td><td class="font-mono text-[12px]">73.214.5.92</td><td><button class="text-[color:var(--link)] text-[12px] hover:underline">View</button></td></tr>
+          <tr><td class="font-mono text-[12px] whitespace-nowrap">20 Apr 16:41</td><td>Marcus Chen</td><td><span class="pill pill-info">settings.integration.update</span></td><td>Reddit Firecrawl key rotated</td><td class="font-mono text-[12px]">98.142.18.4</td><td><button class="text-[color:var(--link)] text-[12px] hover:underline">View</button></td></tr>
+          <tr><td class="font-mono text-[12px] whitespace-nowrap">20 Apr 10:12</td><td>Sarah Mitchell</td><td><span class="pill pill-info">tag.create</span></td><td>“#PSL2026 launch”</td><td class="font-mono text-[12px]">98.142.18.4</td><td><button class="text-[color:var(--link)] text-[12px] hover:underline">View</button></td></tr>
+          <tr><td class="font-mono text-[12px] whitespace-nowrap">19 Apr 14:00</td><td>System</td><td><span class="pill pill-neg">auth.login.fail</span></td><td>elena@starbucks.com · expired magic link (3x)</td><td class="font-mono text-[12px]">12.55.110.8</td><td><button class="text-[color:var(--link)] text-[12px] hover:underline">View</button></td></tr>
+        </tbody>
+      </table>
+      <div class="px-4 py-3 border-t border-[color:var(--line-2)] flex items-center justify-between text-[12px] text-[color:var(--muted)]">
+        <span>Showing 12 of 1,482 events</span>
+        <div class="flex gap-1">
+          <button class="btn btn-secondary btn-sm" disabled>Previous</button>
+          <button class="btn btn-secondary btn-sm">Next</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</main>
+
+<script src="../../assets/shell.js?v=3"></script>
+<script>lucide.createIcons();</script>
+</body>
+</html>

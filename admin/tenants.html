@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Tenants — Brisk® Admin</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+<link rel="stylesheet" href="../assets/brisk.css"/>
+</head>
+<body data-role="admin" data-active="tenants" data-title="Tenants" data-subtitle="48 active · MRR $34,820 · 3 trials expiring this week">
+
+<main id="bk-main">
+  <div class="px-5 py-5 max-w-[1400px] mx-auto">
+
+    <!-- KPI strip -->
+    <div class="grid sm:grid-cols-5 gap-3 mb-4">
+      <div class="card p-3"><div class="text-[10px] uppercase tracking-wider text-[color:var(--soft)]">Active tenants</div><div class="text-[20px] font-semibold mt-1">48</div></div>
+      <div class="card p-3"><div class="text-[10px] uppercase tracking-wider text-[color:var(--soft)]">MRR</div><div class="text-[20px] font-semibold mt-1">$34,820</div></div>
+      <div class="card p-3"><div class="text-[10px] uppercase tracking-wider text-[color:var(--soft)]">Trial</div><div class="text-[20px] font-semibold mt-1">7</div></div>
+      <div class="card p-3"><div class="text-[10px] uppercase tracking-wider text-[color:var(--soft)]">Past due</div><div class="text-[20px] font-semibold mt-1 text-[color:var(--neg)]">2</div></div>
+      <div class="card p-3"><div class="text-[10px] uppercase tracking-wider text-[color:var(--soft)]">Gross margin (avg)</div><div class="text-[20px] font-semibold mt-1 text-[color:var(--pos)]">71%</div></div>
+    </div>
+
+    <!-- Filters -->
+    <div class="flex flex-wrap items-center gap-2 mb-4">
+      <div class="relative flex-1 min-w-[260px]">
+        <i data-lucide="search" class="absolute left-2.5 top-1/2 -translate-y-1/2 !w-3.5 !h-3.5 text-[color:var(--muted)]"></i>
+        <input class="input pl-8" placeholder="Search tenant, owner, domain…"/>
+      </div>
+      <select class="select !w-auto"><option>All status</option><option>Active</option><option>Trial</option><option>Past due</option><option>Suspended</option><option>Cancelled</option></select>
+      <select class="select !w-auto"><option>All plans</option><option>Starter</option><option>Growth</option><option>Enterprise</option></select>
+      <select class="select !w-auto"><option>All regions</option><option>US</option><option>EU</option></select>
+      <button class="btn btn-secondary btn-sm"><i data-lucide="download" class="!w-3.5 !h-3.5"></i>Export</button>
+      <button class="btn btn-primary btn-sm"><i data-lucide="plus" class="!w-3.5 !h-3.5"></i>New tenant</button>
+    </div>
+
+    <!-- Tenants table -->
+    <div class="card">
+      <table class="table">
+        <thead><tr><th>Tenant</th><th>Plan</th><th>Status</th><th>Region</th><th>Seats</th><th>Mentions / cap</th><th>MRR</th><th>Margin</th><th>Created</th><th></th></tr></thead>
+        <tbody>
+          <tr><td><a href="tenant.html" class="font-medium hover:text-[color:var(--link)]">Starbucks</a><div class="text-[11px] text-[color:var(--muted)]">marcus@starbucks.com</div></td><td><span class="pill pill-info">Growth</span></td><td><span class="pill pill-pos">Active</span></td><td>US</td><td>6/10</td><td><div class="flex items-center gap-2"><span class="font-mono text-[12px]">23.5K/25K</span><div class="meter w-16 warn"><span style="width:94%"></span></div></div></td><td class="font-mono">$542</td><td><span class="text-[color:var(--pos)] font-medium">68%</span></td><td class="text-[12px] text-[color:var(--muted)]">Mar 12</td><td><a href="tenant.html" class="text-[color:var(--link)] text-[12px] hover:underline">Open</a></td></tr>
+          <tr><td><a href="tenant.html" class="font-medium hover:text-[color:var(--link)]">Patagonia</a><div class="text-[11px] text-[color:var(--muted)]">comms@patagonia.com</div></td><td><span class="pill pill-accent">Enterprise</span></td><td><span class="pill pill-pos">Active</span></td><td>US</td><td>14/25</td><td><div class="flex items-center gap-2"><span class="font-mono text-[12px]">38K/100K</span><div class="meter w-16"><span style="width:38%"></span></div></div></td><td class="font-mono">$1,240</td><td><span class="text-[color:var(--pos)] font-medium">74%</span></td><td class="text-[12px] text-[color:var(--muted)]">Jan 04</td><td><a href="tenant.html" class="text-[color:var(--link)] text-[12px] hover:underline">Open</a></td></tr>
+          <tr><td><a href="tenant.html" class="font-medium hover:text-[color:var(--link)]">Lush Cosmetics</a><div class="text-[11px] text-[color:var(--muted)]">brand@lush.com</div></td><td><span class="pill pill-info">Growth</span></td><td><span class="pill pill-pos">Active</span></td><td>EU</td><td>8/10</td><td><div class="flex items-center gap-2"><span class="font-mono text-[12px]">19K/25K</span><div class="meter w-16"><span style="width:76%"></span></div></div></td><td class="font-mono">$510</td><td><span class="text-[color:var(--pos)] font-medium">71%</span></td><td class="text-[12px] text-[color:var(--muted)]">Feb 18</td><td><a href="tenant.html" class="text-[color:var(--link)] text-[12px] hover:underline">Open</a></td></tr>
+          <tr><td><a href="tenant.html" class="font-medium hover:text-[color:var(--link)]">Allbirds</a><div class="text-[11px] text-[color:var(--muted)]">marketing@allbirds.com</div></td><td><span class="pill pill-info">Growth</span></td><td><span class="pill pill-pos">Active</span></td><td>US</td><td>5/10</td><td><div class="flex items-center gap-2"><span class="font-mono text-[12px]">14K/25K</span><div class="meter w-16"><span style="width:56%"></span></div></div></td><td class="font-mono">$500</td><td><span class="text-[color:var(--pos)] font-medium">76%</span></td><td class="text-[12px] text-[color:var(--muted)]">Feb 22</td><td><a href="tenant.html" class="text-[color:var(--link)] text-[12px] hover:underline">Open</a></td></tr>
+          <tr><td><a href="tenant.html" class="font-medium hover:text-[color:var(--link)]">Glossier</a><div class="text-[11px] text-[color:var(--muted)]">social@glossier.com</div></td><td><span class="pill pill-neutral">Starter</span></td><td><span class="pill pill-pos">Active</span></td><td>US</td><td>3/3</td><td><div class="flex items-center gap-2"><span class="font-mono text-[12px]">7.8K/10K</span><div class="meter w-16"><span style="width:78%"></span></div></div></td><td class="font-mono">$250</td><td><span class="text-[color:var(--pos)] font-medium">62%</span></td><td class="text-[12px] text-[color:var(--muted)]">Apr 02</td><td><a href="tenant.html" class="text-[color:var(--link)] text-[12px] hover:underline">Open</a></td></tr>
+          <tr><td><a href="tenant.html" class="font-medium hover:text-[color:var(--link)]">Aesop</a><div class="text-[11px] text-[color:var(--muted)]">comms@aesop.com</div></td><td><span class="pill pill-neutral">Starter</span></td><td><span class="pill pill-neu">Trial · 4d left</span></td><td>EU</td><td>2/3</td><td><div class="flex items-center gap-2"><span class="font-mono text-[12px]">3.2K/10K</span><div class="meter w-16"><span style="width:32%"></span></div></div></td><td class="font-mono">$0</td><td><span class="text-[color:var(--muted)]">—</span></td><td class="text-[12px] text-[color:var(--muted)]">Apr 12</td><td><a href="tenant.html" class="text-[color:var(--link)] text-[12px] hover:underline">Open</a></td></tr>
+          <tr><td><a href="tenant.html" class="font-medium hover:text-[color:var(--link)]">Warby Parker</a><div class="text-[11px] text-[color:var(--muted)]">brand@warbyparker.com</div></td><td><span class="pill pill-info">Growth</span></td><td><span class="pill pill-neg">Past due</span></td><td>US</td><td>4/10</td><td><div class="flex items-center gap-2"><span class="font-mono text-[12px]">11K/25K</span><div class="meter w-16"><span style="width:44%"></span></div></div></td><td class="font-mono">$500</td><td><span class="text-[color:var(--neg)] font-medium">58%</span></td><td class="text-[12px] text-[color:var(--muted)]">Dec 01</td><td><a href="tenant.html" class="text-[color:var(--link)] text-[12px] hover:underline">Open</a></td></tr>
+          <tr><td><a href="tenant.html" class="font-medium hover:text-[color:var(--link)]">Casper Sleep</a><div class="text-[11px] text-[color:var(--muted)]">orm@casper.com</div></td><td><span class="pill pill-accent">Enterprise</span></td><td><span class="pill pill-pos">Active</span></td><td>US</td><td>22/25</td><td><div class="flex items-center gap-2"><span class="font-mono text-[12px]">68K/100K</span><div class="meter w-16"><span style="width:68%"></span></div></div></td><td class="font-mono">$1,180</td><td><span class="text-[color:var(--pos)] font-medium">72%</span></td><td class="text-[12px] text-[color:var(--muted)]">Nov 14</td><td><a href="tenant.html" class="text-[color:var(--link)] text-[12px] hover:underline">Open</a></td></tr>
+          <tr><td><a href="tenant.html" class="font-medium hover:text-[color:var(--link)]">Oatly</a><div class="text-[11px] text-[color:var(--muted)]">comms@oatly.se</div></td><td><span class="pill pill-info">Growth</span></td><td><span class="pill pill-pos">Active</span></td><td>EU</td><td>7/10</td><td><div class="flex items-center gap-2"><span class="font-mono text-[12px]">21K/25K</span><div class="meter w-16 warn"><span style="width:84%"></span></div></div></td><td class="font-mono">$520</td><td><span class="text-[color:var(--pos)] font-medium">69%</span></td><td class="text-[12px] text-[color:var(--muted)]">Jan 28</td><td><a href="tenant.html" class="text-[color:var(--link)] text-[12px] hover:underline">Open</a></td></tr>
+        </tbody>
+      </table>
+      <div class="px-4 py-3 border-t border-[color:var(--line-2)] flex items-center justify-between text-[12px] text-[color:var(--muted)]">
+        <span>Showing 9 of 48 tenants</span>
+        <div class="flex gap-1">
+          <button class="btn btn-secondary btn-sm" disabled>Previous</button>
+          <button class="btn btn-secondary btn-sm">Next</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</main>
+
+<script src="../assets/shell.js?v=3"></script>
+<script>lucide.createIcons();</script>
+</body>
+</html>

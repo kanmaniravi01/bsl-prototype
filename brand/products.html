@@ -1,0 +1,415 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Brand portfolio - Tags & topics - Brisk</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<link rel="stylesheet" href="../assets/brisk.css"/>
+
+<style>
+  .portfolio-card {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    box-shadow: var(--shadow);
+  }
+  .metric-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 8px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .mini-tab {
+    display: inline-flex;
+    align-items: center;
+    gap: .35rem;
+    height: 34px;
+    padding: 0 .75rem;
+    border-radius: 6px;
+    font-size: 12px;
+    color: var(--muted);
+    white-space: nowrap;
+  }
+  .mini-tab.active {
+    background: #F5F0FF;
+    color: #5B21B6;
+    font-weight: 600;
+  }
+  .sparkline {
+    width: 86px;
+    height: 28px;
+  }
+  .channel-mark {
+    width: 22px;
+    height: 22px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+    font-size: 10px;
+    font-weight: 800;
+    color: white;
+  }
+  .tag-icon {
+    width: 16px;
+    height: 16px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .related-row {
+    padding: .7rem .75rem;
+    border-radius: 8px;
+  }
+  .related-row.active {
+    background: #F4F4F5;
+  }
+  .related-bar {
+    height: 4px;
+    background: #E4E4E7;
+    border-radius: 999px;
+    overflow: hidden;
+  }
+  .related-bar span {
+    display: block;
+    height: 100%;
+    border-radius: 999px;
+  }
+</style>
+</head>
+
+<body
+  data-role="brand"
+  data-active="products"
+  data-title="Starbucks - Brand portfolio - Tags & topics"
+  data-subtitle="Manage, monitor and organize all tags, aliases and campaigns linked to your brand."
+>
+
+<main id="bk-main">
+  <div class="px-5 py-5 max-w-[1440px] mx-auto">
+
+    <section class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-5 gap-3 mb-4">
+      <div class="portfolio-card p-4">
+        <div class="flex items-center gap-3">
+          <div class="metric-icon bg-violet-50 text-violet-600"><i data-lucide="tag"></i></div>
+          <div>
+            <div class="text-[11px] font-semibold text-[color:var(--muted)]">Total tags</div>
+            <div class="text-[27px] leading-tight font-bold">126</div>
+            <div class="text-[11px] text-[color:var(--muted)]"><span class="font-semibold text-emerald-600">+18%</span> vs last 30d</div>
+          </div>
+        </div>
+      </div>
+      <div class="portfolio-card p-4">
+        <div class="flex items-center gap-3">
+          <div class="metric-icon bg-slate-100 text-slate-600"><i data-lucide="diamond"></i></div>
+          <div>
+            <div class="text-[11px] font-semibold text-[color:var(--muted)]">Brand tags</div>
+            <div class="text-[27px] leading-tight font-bold">18</div>
+            <div class="text-[11px] text-[color:var(--muted)]"><span class="font-semibold text-emerald-600">+8%</span> vs last 30d</div>
+          </div>
+        </div>
+      </div>
+      <div class="portfolio-card p-4">
+        <div class="flex items-center gap-3">
+          <div class="metric-icon bg-emerald-50 text-emerald-600"><i data-lucide="box"></i></div>
+          <div>
+            <div class="text-[11px] font-semibold text-[color:var(--muted)]">Product tags</div>
+            <div class="text-[27px] leading-tight font-bold">38</div>
+            <div class="text-[11px] text-[color:var(--muted)]"><span class="font-semibold text-emerald-600">+12%</span> vs last 30d</div>
+          </div>
+        </div>
+      </div>
+      <div class="portfolio-card p-4">
+        <div class="flex items-center gap-3">
+          <div class="metric-icon bg-blue-50 text-blue-600"><i data-lucide="megaphone"></i></div>
+          <div>
+            <div class="text-[11px] font-semibold text-[color:var(--muted)]">Campaign tags</div>
+            <div class="text-[27px] leading-tight font-bold">12</div>
+            <div class="text-[11px] text-[color:var(--muted)]"><span class="font-semibold text-emerald-600">+33%</span> vs last 30d</div>
+          </div>
+        </div>
+      </div>
+      <div class="portfolio-card p-4">
+        <div class="flex items-center gap-3">
+          <div class="metric-icon bg-orange-50 text-orange-500"><i data-lucide="messages-square"></i></div>
+          <div>
+            <div class="text-[11px] font-semibold text-[color:var(--muted)]">Topic tags</div>
+            <div class="text-[27px] leading-tight font-bold">58</div>
+            <div class="text-[11px] text-[color:var(--muted)]"><span class="font-semibold text-emerald-600">+21%</span> vs last 30d</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="grid grid-cols-1 xl:grid-cols-[minmax(0,1fr)_360px] gap-4">
+      <section class="portfolio-card overflow-hidden">
+        <div class="px-4 py-3 border-b border-[color:var(--line)] flex flex-wrap items-center gap-1">
+          <button class="mini-tab active">All tags</button>
+          <button class="mini-tab">Brand tags <span class="pill pill-neutral">18</span></button>
+          <button class="mini-tab">Product tags <span class="pill pill-neutral">38</span></button>
+          <button class="mini-tab">Campaign tags <span class="pill pill-neutral">12</span></button>
+          <button class="mini-tab">Topic tags <span class="pill pill-neutral">58</span></button>
+        </div>
+
+        <div class="px-4 py-4 border-b border-[color:var(--line-2)] flex flex-col gap-3 lg:flex-row lg:items-center">
+          <div class="relative flex-1 min-w-[220px]">
+            <i data-lucide="search" class="absolute left-3 top-1/2 -translate-y-1/2 !w-4 !h-4 text-[color:var(--soft)]"></i>
+            <input class="input !pl-9 !py-2 !text-[12px]" placeholder="Search tags..."/>
+          </div>
+          <button class="btn btn-secondary btn-sm bg-violet-50 text-violet-700 border-violet-100"><i data-lucide="list-filter" class="!w-3.5 !h-3.5"></i>Filters <span class="pill bg-violet-100 text-violet-700">1</span></button>
+          <select class="select !w-auto !min-w-[150px] !py-2 !text-[12px]"><option>All channels</option><option>X</option><option>Reddit</option><option>Instagram</option></select>
+          <select class="select !w-auto !min-w-[140px] !py-2 !text-[12px]"><option>All status</option><option>Trending</option><option>Attention</option><option>Stable</option></select>
+          <button class="btn btn-secondary btn-sm !p-2" aria-label="Table settings"><i data-lucide="settings" class="!w-4 !h-4"></i></button>
+        </div>
+
+        <div class="overflow-x-auto">
+          <table class="table min-w-[980px]">
+            <thead>
+              <tr>
+                <th>Tag</th>
+                <th>Type</th>
+                <th>Status</th>
+                <th>Mentions (30d)</th>
+                <th>Growth</th>
+                <th>Sentiment</th>
+                <th>Top channel</th>
+                <th class="text-right">Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><a href="timeline.html" class="font-semibold text-blue-600 flex items-center gap-2"><span class="tag-icon text-violet-600"><i data-lucide="tag" class="!w-3.5 !h-3.5 fill-violet-600"></i></span>#PSL2026 launch</a></td>
+                <td><span class="flex items-center gap-2"><i data-lucide="megaphone" class="!w-3.5 !h-3.5 text-blue-600"></i>Campaign</span></td>
+                <td><span class="pill pill-pos">Trending</span></td>
+                <td class="font-mono">1,420</td>
+                <td class="font-semibold text-emerald-600">+318%</td>
+                <td><canvas id="sparkA" class="sparkline"></canvas></td>
+                <td><span class="channel-mark bg-black">X</span></td>
+                <td class="text-right"><div class="flex justify-end gap-2 text-[color:var(--muted)]"><i data-lucide="pencil" class="!w-3.5 !h-3.5"></i><i data-lucide="copy" class="!w-3.5 !h-3.5"></i><i data-lucide="trash-2" class="!w-3.5 !h-3.5"></i><i data-lucide="more-horizontal" class="!w-3.5 !h-3.5"></i></div></td>
+              </tr>
+              <tr>
+                <td><a href="timeline.html" class="font-semibold text-blue-600 flex items-center gap-2"><span class="tag-icon text-violet-600"><i data-lucide="tag" class="!w-3.5 !h-3.5 fill-violet-600"></i></span>Mobile app - order issues</a></td>
+                <td><span class="flex items-center gap-2"><i data-lucide="message-circle" class="!w-3.5 !h-3.5 text-slate-600"></i>Topic</span></td>
+                <td><span class="pill pill-neg">Attention</span></td>
+                <td class="font-mono">842</td>
+                <td class="font-semibold text-emerald-600">+62%</td>
+                <td><canvas id="sparkB" class="sparkline"></canvas></td>
+                <td><span class="channel-mark bg-orange-600">r</span></td>
+                <td class="text-right"><div class="flex justify-end gap-2 text-[color:var(--muted)]"><i data-lucide="pencil" class="!w-3.5 !h-3.5"></i><i data-lucide="copy" class="!w-3.5 !h-3.5"></i><i data-lucide="trash-2" class="!w-3.5 !h-3.5"></i><i data-lucide="more-horizontal" class="!w-3.5 !h-3.5"></i></div></td>
+              </tr>
+              <tr>
+                <td><a href="timeline.html" class="font-semibold text-blue-600 flex items-center gap-2"><span class="tag-icon text-violet-600"><i data-lucide="tag" class="!w-3.5 !h-3.5 fill-violet-600"></i></span>Barista experience</a></td>
+                <td><span class="flex items-center gap-2"><i data-lucide="message-circle" class="!w-3.5 !h-3.5 text-slate-600"></i>Topic</span></td>
+                <td><span class="pill pill-info">Stable</span></td>
+                <td class="font-mono">2,140</td>
+                <td class="font-semibold text-[color:var(--muted)]">2%</td>
+                <td><canvas id="sparkC" class="sparkline"></canvas></td>
+                <td><span class="channel-mark bg-gradient-to-br from-purple-500 via-pink-500 to-orange-400">IG</span></td>
+                <td class="text-right"><div class="flex justify-end gap-2 text-[color:var(--muted)]"><i data-lucide="pencil" class="!w-3.5 !h-3.5"></i><i data-lucide="copy" class="!w-3.5 !h-3.5"></i><i data-lucide="trash-2" class="!w-3.5 !h-3.5"></i><i data-lucide="more-horizontal" class="!w-3.5 !h-3.5"></i></div></td>
+              </tr>
+              <tr>
+                <td><a href="timeline.html" class="font-semibold text-blue-600 flex items-center gap-2"><span class="tag-icon text-emerald-600"><i data-lucide="box" class="!w-3.5 !h-3.5 fill-emerald-600"></i></span>Loyalty / Stars program</a></td>
+                <td><span class="flex items-center gap-2"><i data-lucide="box" class="!w-3.5 !h-3.5 text-slate-600"></i>Product</span></td>
+                <td><span class="pill pill-info">Stable</span></td>
+                <td class="font-mono">1,810</td>
+                <td class="font-semibold text-red-600">-8%</td>
+                <td><canvas id="sparkD" class="sparkline"></canvas></td>
+                <td><span class="channel-mark bg-black">X</span></td>
+                <td class="text-right"><div class="flex justify-end gap-2 text-[color:var(--muted)]"><i data-lucide="pencil" class="!w-3.5 !h-3.5"></i><i data-lucide="copy" class="!w-3.5 !h-3.5"></i><i data-lucide="trash-2" class="!w-3.5 !h-3.5"></i><i data-lucide="more-horizontal" class="!w-3.5 !h-3.5"></i></div></td>
+              </tr>
+              <tr>
+                <td><a href="timeline.html" class="font-semibold text-blue-600 flex items-center gap-2"><span class="tag-icon text-emerald-600"><i data-lucide="box" class="!w-3.5 !h-3.5 fill-emerald-600"></i></span>Reserve Roastery NY</a></td>
+                <td><span class="flex items-center gap-2"><i data-lucide="diamond" class="!w-3.5 !h-3.5 text-slate-600"></i>Brand term</span></td>
+                <td><span class="pill pill-neu">Growing</span></td>
+                <td class="font-mono">980</td>
+                <td class="font-semibold text-emerald-600">+24%</td>
+                <td><canvas id="sparkE" class="sparkline"></canvas></td>
+                <td><span class="channel-mark bg-gradient-to-br from-purple-500 via-pink-500 to-orange-400">IG</span></td>
+                <td class="text-right"><div class="flex justify-end gap-2 text-[color:var(--muted)]"><i data-lucide="pencil" class="!w-3.5 !h-3.5"></i><i data-lucide="copy" class="!w-3.5 !h-3.5"></i><i data-lucide="trash-2" class="!w-3.5 !h-3.5"></i><i data-lucide="more-horizontal" class="!w-3.5 !h-3.5"></i></div></td>
+              </tr>
+              <tr>
+                <td><a href="timeline.html" class="font-semibold text-blue-600 flex items-center gap-2"><span class="tag-icon text-violet-600"><i data-lucide="tag" class="!w-3.5 !h-3.5 fill-violet-600"></i></span>Sustainability / cups</a></td>
+                <td><span class="flex items-center gap-2"><i data-lucide="message-circle" class="!w-3.5 !h-3.5 text-slate-600"></i>Topic</span></td>
+                <td><span class="pill pill-info">Stable</span></td>
+                <td class="font-mono">612</td>
+                <td class="font-semibold text-[color:var(--muted)]">3%</td>
+                <td><canvas id="sparkF" class="sparkline"></canvas></td>
+                <td><span class="channel-mark bg-white text-black border border-[color:var(--line)]">News</span></td>
+                <td class="text-right"><div class="flex justify-end gap-2 text-[color:var(--muted)]"><i data-lucide="pencil" class="!w-3.5 !h-3.5"></i><i data-lucide="copy" class="!w-3.5 !h-3.5"></i><i data-lucide="trash-2" class="!w-3.5 !h-3.5"></i><i data-lucide="more-horizontal" class="!w-3.5 !h-3.5"></i></div></td>
+              </tr>
+              <tr>
+                <td><a href="timeline.html" class="font-semibold text-blue-600 flex items-center gap-2"><span class="tag-icon text-violet-600"><i data-lucide="tag" class="!w-3.5 !h-3.5 fill-violet-600"></i></span>Union / labour discussion</a></td>
+                <td><span class="flex items-center gap-2"><i data-lucide="message-circle" class="!w-3.5 !h-3.5 text-slate-600"></i>Topic</span></td>
+                <td><span class="pill pill-neg">Attention</span></td>
+                <td class="font-mono">724</td>
+                <td class="font-semibold text-red-600">+12%</td>
+                <td><canvas id="sparkG" class="sparkline"></canvas></td>
+                <td><span class="channel-mark bg-black">X</span></td>
+                <td class="text-right"><div class="flex justify-end gap-2 text-[color:var(--muted)]"><i data-lucide="pencil" class="!w-3.5 !h-3.5"></i><i data-lucide="copy" class="!w-3.5 !h-3.5"></i><i data-lucide="trash-2" class="!w-3.5 !h-3.5"></i><i data-lucide="more-horizontal" class="!w-3.5 !h-3.5"></i></div></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="px-4 py-3 border-t border-[color:var(--line)] flex items-center justify-between text-[12px] text-[color:var(--muted)]">
+          <span>Showing 1-7 of 126 tags</span>
+          <div class="flex items-center gap-2">
+            <button class="btn btn-secondary btn-sm !p-2"><i data-lucide="chevron-left" class="!w-3.5 !h-3.5"></i></button>
+            <button class="btn btn-primary btn-sm bg-violet-600">1</button>
+            <button class="btn btn-ghost btn-sm">2</button>
+            <button class="btn btn-ghost btn-sm">3</button>
+            <span class="px-2">...</span>
+            <button class="btn btn-ghost btn-sm">18</button>
+            <button class="btn btn-secondary btn-sm !p-2"><i data-lucide="chevron-right" class="!w-3.5 !h-3.5"></i></button>
+          </div>
+        </div>
+      </section>
+
+      <aside class="space-y-4">
+        <div class="portfolio-card p-4">
+          <div class="flex items-center justify-between mb-3">
+            <h3 class="text-[13px] font-semibold flex items-center gap-2"><i data-lucide="sparkles" class="!w-4 !h-4 text-violet-600"></i>Highlights</h3>
+            <a href="reports.html" class="text-[12px] font-semibold text-violet-700">View all</a>
+          </div>
+          <div class="space-y-3">
+            <div class="flex gap-3"><span class="metric-icon !w-7 !h-7 bg-emerald-50 text-emerald-600"><i data-lucide="trending-up" class="!w-3.5 !h-3.5"></i></span><p class="text-[12px] leading-5"><b>Pumpkin Spice Latte</b> is the fastest-growing campaign tag this period.</p></div>
+            <div class="flex gap-3"><span class="metric-icon !w-7 !h-7 bg-blue-50 text-blue-600"><i data-lucide="star" class="!w-3.5 !h-3.5"></i></span><p class="text-[12px] leading-5"><b>Starbucks Rewards</b> is now the 2nd most discussed brand topic.</p></div>
+            <div class="flex gap-3"><span class="metric-icon !w-7 !h-7 bg-red-50 text-red-600"><i data-lucide="triangle-alert" class="!w-3.5 !h-3.5"></i></span><p class="text-[12px] leading-5"><b>Mobile app - order issues</b> needs attention across Reddit and X.</p></div>
+            <div class="flex gap-3"><span class="metric-icon !w-7 !h-7 bg-violet-50 text-violet-600"><i data-lucide="badge-check" class="!w-3.5 !h-3.5"></i></span><p class="text-[12px] leading-5"><b>Barista experience</b> remains stable with the highest positive sentiment.</p></div>
+          </div>
+        </div>
+
+        <div class="portfolio-card p-4">
+          <div class="flex items-center justify-between mb-3">
+            <h3 class="text-[13px] font-semibold">Tags by type</h3>
+            <a href="#" class="text-[12px] font-semibold text-violet-700">View all</a>
+          </div>
+          <div class="grid grid-cols-[150px_minmax(0,1fr)] items-center gap-3">
+            <div class="relative h-[150px]">
+              <canvas id="typeChart"></canvas>
+              <div class="absolute inset-0 flex flex-col items-center justify-center pointer-events-none">
+                <div class="text-[24px] font-bold leading-none">126</div>
+                <div class="text-[10px] text-[color:var(--muted)]">Total tags</div>
+              </div>
+            </div>
+            <div class="space-y-2 text-[12px]">
+              <div class="flex items-center justify-between gap-2"><span class="flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-violet-600"></span>Brand tags</span><span class="text-[color:var(--muted)]">18 (14%)</span></div>
+              <div class="flex items-center justify-between gap-2"><span class="flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-emerald-500"></span>Product tags</span><span class="text-[color:var(--muted)]">38 (30%)</span></div>
+              <div class="flex items-center justify-between gap-2"><span class="flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-blue-500"></span>Campaign tags</span><span class="text-[color:var(--muted)]">12 (10%)</span></div>
+              <div class="flex items-center justify-between gap-2"><span class="flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-orange-500"></span>Topic tags</span><span class="text-[color:var(--muted)]">58 (46%)</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="portfolio-card p-4">
+          <div class="flex items-center justify-between mb-3">
+            <h3 class="text-[13px] font-semibold">Related tags</h3>
+            <a href="#" class="text-[12px] font-semibold text-violet-700">Show more</a>
+          </div>
+          <div class="grid gap-5 md:grid-cols-2 xl:grid-cols-1">
+            <div>
+              <div class="text-[11px] uppercase tracking-wider text-[color:var(--soft)] font-semibold mb-2">Related keywords</div>
+              <div class="space-y-1">
+                <div class="related-row">
+                  <div class="flex items-center justify-between mb-1"><span class="text-[15px] font-semibold">starbucks</span><span class="font-semibold">242</span></div>
+                  <div class="text-[11px] text-[color:var(--muted)] mb-2">shaken know go need see</div>
+                  <div class="related-bar"><span class="bg-teal-500" style="width:100%"></span></div>
+                </div>
+                <div class="related-row">
+                  <div class="flex items-center justify-between mb-1"><span class="text-[15px] font-semibold">espresso</span><span class="font-semibold">181</span></div>
+                  <div class="text-[11px] text-[color:var(--muted)] mb-2">shaken drink espresso starbucks order</div>
+                  <div class="related-bar"><span class="bg-teal-500" style="width:75%"></span></div>
+                </div>
+                <div class="related-row active">
+                  <div class="flex items-center justify-between mb-1"><span class="text-[15px] font-semibold">coffee</span><span class="font-semibold">84</span></div>
+                  <div class="text-[11px] text-[color:var(--muted)] mb-2">drink coffee espresso actually made</div>
+                  <div class="related-bar"><span class="bg-teal-500" style="width:35%"></span></div>
+                </div>
+                <div class="related-row">
+                  <div class="flex items-center justify-between mb-1"><span class="text-[15px] font-semibold">drink</span><span class="font-semibold">57</span></div>
+                  <div class="text-[11px] text-[color:var(--muted)] mb-2">right see know back drink</div>
+                  <div class="related-bar"><span class="bg-teal-500" style="width:24%"></span></div>
+                </div>
+              </div>
+            </div>
+            <div>
+              <div class="text-[11px] uppercase tracking-wider text-[color:var(--soft)] font-semibold mb-2">Related hashtags</div>
+              <div class="space-y-1">
+                <div class="related-row">
+                  <div class="flex items-center justify-between mb-1"><span class="text-[15px] font-semibold">#starbucks</span><span class="font-semibold">8</span></div>
+                  <div class="text-[11px] text-[color:var(--muted)] mb-2">afternoon coffee starbucks aesthetic background</div>
+                  <div class="related-bar"><span class="bg-violet-500" style="width:100%"></span></div>
+                </div>
+                <div class="related-row">
+                  <div class="flex items-center justify-between mb-1"><span class="text-[15px] font-semibold">#espresso</span><span class="font-semibold">5</span></div>
+                  <div class="text-[11px] text-[color:var(--muted)] mb-2">coffee espresso starbucks aesthetic afternoon</div>
+                  <div class="related-bar"><span class="bg-violet-500" style="width:63%"></span></div>
+                </div>
+                <div class="related-row">
+                  <div class="flex items-center justify-between mb-1"><span class="text-[15px] font-semibold">#shorts</span><span class="font-semibold">4</span></div>
+                  <div class="text-[11px] text-[color:var(--muted)] mb-2">coffee espresso starbucks caffeine day</div>
+                  <div class="related-bar"><span class="bg-violet-500" style="width:50%"></span></div>
+                </div>
+                <div class="related-row">
+                  <div class="flex items-center justify-between mb-1"><span class="text-[15px] font-semibold">#coffee</span><span class="font-semibold">3</span></div>
+                  <div class="text-[11px] text-[color:var(--muted)] mb-2">love aesthetic afternoon background best</div>
+                  <div class="related-bar"><span class="bg-violet-500" style="width:38%"></span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </div>
+</main>
+
+<script src="../assets/shell.js?v=3"></script>
+<script>
+lucide.createIcons();
+
+const sparkOptions = {
+  responsive: true,
+  maintainAspectRatio: false,
+  plugins: { legend: { display: false }, tooltip: { enabled: false } },
+  scales: { x: { display: false }, y: { display: false } },
+  elements: { point: { radius: 0 } }
+};
+
+function spark(id, data, color) {
+  const canvas = document.getElementById(id);
+  if (!canvas) return;
+  new Chart(canvas, {
+    type: 'line',
+    data: { labels: data.map((_, i) => i), datasets: [{ data, borderColor: color, borderWidth: 1.8, tension: .42 }] },
+    options: sparkOptions
+  });
+}
+
+spark('sparkA', [2, 4, 3, 7, 6, 8, 5, 9, 7, 11, 10, 13], '#10B981');
+spark('sparkB', [5, 7, 4, 8, 6, 9, 5, 12, 7, 10, 6, 11], '#FB7185');
+spark('sparkC', [6, 5, 6, 4, 5, 7, 6, 5, 7, 6, 8, 7], '#94A3B8');
+spark('sparkD', [9, 7, 8, 6, 7, 5, 6, 4, 5, 3, 4, 3], '#FB7185');
+spark('sparkE', [3, 4, 5, 4, 7, 6, 8, 7, 9, 8, 10, 11], '#10B981');
+spark('sparkF', [4, 5, 4, 6, 5, 4, 5, 6, 4, 5, 4, 5], '#94A3B8');
+spark('sparkG', [3, 5, 4, 8, 5, 9, 6, 10, 7, 11, 8, 12], '#FB7185');
+
+new Chart(document.getElementById('typeChart'), {
+  type: 'doughnut',
+  data: {
+    labels: ['Brand tags', 'Product tags', 'Campaign tags', 'Topic tags'],
+    datasets: [{ data: [18, 38, 12, 58], backgroundColor: ['#7C3AED', '#10B981', '#3B82F6', '#F97316'], borderWidth: 2, borderColor: '#fff' }]
+  },
+  options: { responsive: true, maintainAspectRatio: false, cutout: '64%', plugins: { legend: { display: false }, tooltip: { enabled: false } } }
+});
+
+</script>
+</body>
+</html>

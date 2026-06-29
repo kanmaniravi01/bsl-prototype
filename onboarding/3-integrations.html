@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Connect data sources — Brisk®</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+<link rel="stylesheet" href="../assets/brisk.css"/>
+</head>
+<body class="min-h-screen flex flex-col">
+
+<header class="border-b border-[color:var(--line)] bg-white">
+  <div class="max-w-5xl mx-auto px-6 h-14 flex items-center">
+    <a href="../index.html" class="flex items-center gap-2">
+      <div class="w-6 h-6 rounded-md bg-[color:var(--accent)] text-white flex items-center justify-center"><i data-lucide="activity" class="!w-3.5 !h-3.5"></i></div>
+      <span class="wordmark">brisk<sup>®</sup></span>
+    </a>
+    <div class="ml-6 text-[12px] text-[color:var(--muted)]">Workspace setup</div>
+    <div class="flex-1"></div>
+    <a href="../app/dashboard.html" class="text-[12px] text-[color:var(--muted)] hover:text-[color:var(--ink)]">Skip — use Brisk-managed defaults</a>
+  </div>
+</header>
+
+<main class="flex-1 max-w-3xl mx-auto w-full px-6 py-10">
+  <div class="flex items-center gap-3 mb-8">
+    <div class="flex-1">
+      <div class="flex items-center justify-between text-[11px] text-[color:var(--soft)] mb-1.5">
+        <span>Step 3 of 3 · Integrations</span>
+        <span>Almost there</span>
+      </div>
+      <div class="meter"><span style="width:100%"></span></div>
+    </div>
+  </div>
+
+   <form action="../app/dashboard.html" class="space-y-3">
+
+
+
+    <!-- Channels -->
+    <div class="card p-6">
+      <div class="flex items-center gap-2 mb-3"><i data-lucide="radio" class="!w-4 !h-4 text-[color:var(--accent)]"></i><h2 class="text-[14px] font-semibold">Channels to monitor</h2></div>
+      <p class="text-[12px] text-[color:var(--muted)] mb-3">Each channel uses a separate provider. You'll connect keys in the next step.</p>
+      <div class="grid sm:grid-cols-3 gap-2">
+        <label class="card card-pad cursor-pointer flex items-center gap-2 has-[:checked]:border-[color:var(--accent)] has-[:checked]:bg-[color:var(--line-2)]"><input type="checkbox" checked/><i data-lucide="at-sign" class="!w-4 !h-4"></i><span class="text-[13px]">X</span></label>
+        <label class="card card-pad cursor-pointer flex items-center gap-2 has-[:checked]:border-[color:var(--accent)] has-[:checked]:bg-[color:var(--line-2)]"><input type="checkbox" checked/><i data-lucide="message-circle" class="!w-4 !h-4"></i><span class="text-[13px]">Reddit</span></label>
+        <label class="card card-pad cursor-pointer flex items-center gap-2 has-[:checked]:border-[color:var(--accent)] has-[:checked]:bg-[color:var(--line-2)]"><input type="checkbox" checked/><i data-lucide="play" class="!w-4 !h-4"></i><span class="text-[13px]">YouTube</span></label>
+        <label class="card card-pad cursor-pointer flex items-center gap-2 has-[:checked]:border-[color:var(--accent)] has-[:checked]:bg-[color:var(--line-2)]"><input type="checkbox" checked/><i data-lucide="newspaper" class="!w-4 !h-4"></i><span class="text-[13px]">News</span></label>
+        <label class="card card-pad cursor-pointer flex items-center gap-2 has-[:checked]:border-[color:var(--accent)] has-[:checked]:bg-[color:var(--line-2)]"><input type="checkbox"/><i data-lucide="camera" class="!w-4 !h-4"></i><span class="text-[13px]">Instagram <span class="text-[10px] text-[color:var(--soft)]">(beta)</span></span></label>
+      </div>
+    </div>
+
+    <!-- Notifications -->
+    <div class="card p-5">
+      <div class="flex items-center gap-2 mb-3">
+        <i data-lucide="bell" class="!w-4 !h-4 text-[color:var(--accent)]"></i>
+        <h2 class="text-[14px] font-semibold">Where should alerts go?</h2>
+      </div>
+
+      <!-- Options -->
+      <div class="grid sm:grid-cols-3 gap-2 mb-4">
+
+        <!-- Email -->
+        <div class="flex items-center gap-3">
+        <label for="emailInput" class="text-[13px] font-medium">Email</label>
+        <input type="email" id="emailInput" placeholder="Enter email address" class="card card-pad text-[13px] outline-none flex-1 w-full h-11 px-4"/>
+        </div>
+
+        <!-- Slack 
+        <label class="card card-pad cursor-pointer flex items-center gap-2 has-[:checked]:border-[color:var(--accent)] has-[:checked]:bg-[color:var(--line-2)]">
+          <input type="checkbox" id="slackCheck" onchange="toggleFields()"/>
+          <i data-lucide="hash" class="!w-4 !h-4"></i>
+          <span class="text-[13px]">Slack</span>
+        </label>
+
+        
+        <label class="card card-pad cursor-pointer flex items-center gap-2 has-[:checked]:border-[color:var(--accent)] has-[:checked]:bg-[color:var(--line-2)]">
+          <input type="checkbox" id="teamsCheck" onchange="toggleFields()"/>
+          <i data-lucide="message-square" class="!w-4 !h-4"></i>
+          <span class="text-[13px]">Microsoft Teams</span>
+        </label>
+        -->
+      </div>
+
+      <!-- Dynamic Fields -->
+      <div id="alertFields" class="space-y-3"></div>
+    </div>
+
+    <script>
+      function toggleFields() {
+        const container = document.getElementById("alertFields");
+
+        const emailChecked = document.getElementById("emailCheck").checked;
+        const slackChecked = document.getElementById("slackCheck").checked;
+        const teamsChecked = document.getElementById("teamsCheck").checked;
+
+        let html = "";
+
+        if (emailChecked) {
+          html += `
+            <div>
+              <label class="label">Email address</label>
+              <input
+                class="input"
+                placeholder="Enter email address"
+              />
+            </div>
+          `;
+        }
+
+        if (slackChecked) {
+          html += `
+            <div>
+              <label class="label">Slack webhook URL</label>
+              <input
+                class="input font-mono"
+                placeholder="https://hooks.slack.com/services/..."
+              />
+            </div>
+          `;
+        }
+
+        if (teamsChecked) {
+          html += `
+            <div>
+              <label class="label">Microsoft Teams webhook URL</label>
+              <input
+                class="input font-mono"
+                placeholder="https://outlook.office.com/webhook/..."
+              />
+            </div>
+          `;
+        }
+
+        container.innerHTML = html;
+      }
+    </script>
+
+    <!-- Invite team -->
+    <div class="card p-5">
+      <div class="flex items-center gap-2 mb-3"><i data-lucide="user-plus" class="!w-4 !h-4 text-[color:var(--accent)]"></i><h2 class="text-[14px] font-semibold">Invite teammates <span class="text-[11px] text-[color:var(--soft)] font-normal">(optional)</span></h2></div>
+      <div class="space-y-2">
+        <div class="flex gap-2"><input class="input flex-1" placeholder="email@company.com" value="sarah@starbucks.com"/><select class="select w-44"><option>Insight Analyst</option><option>ORM Manager</option><option>Viewer</option></select></div>
+        <div class="flex gap-2"><input class="input flex-1" placeholder="email@company.com" value="priya@starbucks.com"/><select class="select w-44"><option>ORM Manager</option><option>Insight Analyst</option><option>Viewer</option></select></div>
+      </div>
+      <button type="button" class="btn btn-link mt-2"><i data-lucide="plus" class="!w-3.5 !h-3.5"></i>Add another</button>
+    </div>
+
+    <div class="flex items-center justify-between pt-3">
+      <a href="2-brand.html" class="btn btn-ghost"><i data-lucide="arrow-left" class="!w-3.5 !h-3.5"></i>Back</a>
+      <button class="btn btn-primary" type="submit">Finish setup &amp; ingest<i data-lucide="check" class="!w-3.5 !h-3.5"></i></button>
+    </div>
+  </form>
+</main>
+<script>lucide.createIcons();</script>
+</body>
+</html>

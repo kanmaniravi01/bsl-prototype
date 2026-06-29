@@ -1,0 +1,214 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Brisk® — Social listening built for operators</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+<link rel="stylesheet" href="assets/brisk.css"/>
+</head>
+<body class="marketing">
+
+<!-- Top nav -->
+<header class="border-b border-[color:var(--line)] bg-white/80 backdrop-blur sticky top-0 z-30">
+  <div class="max-w-6xl mx-auto px-6 h-14 flex items-center gap-6">
+    <a href="index.html" class="flex items-center gap-2">
+      <div class="w-6 h-6 rounded-md bg-[color:var(--accent)] text-white flex items-center justify-center"><i data-lucide="activity" class="!w-3.5 !h-3.5"></i></div>
+      <span class="wordmark">brisk<sup>®</sup></span>
+    </a>
+    <nav class="hidden md:flex items-center gap-5 text-[13px] text-[color:var(--muted)]">
+      <a href="#features" class="hover:text-[color:var(--ink)]">Product</a>
+      <a href="pricing.html" class="hover:text-[color:var(--ink)]">Pricing</a>
+      <a href="#integrations" class="hover:text-[color:var(--ink)]">Integrations</a>
+    </nav>
+    <div class="flex-1"></div>
+    <a href="login.html" class="text-[13px] text-[color:var(--muted)] hover:text-[color:var(--ink)]">Sign in</a>
+    <a href="signup.html" class="btn btn-primary btn-sm">Start free trial</a>
+  </div>
+</header>
+
+<!-- Hero -->
+<section class="border-b border-[color:var(--line)]">
+  <div class="max-w-6xl mx-auto px-6 py-20 md:py-28 grid lg:grid-cols-2 gap-12 items-center">
+    <div>
+      <span class="pill pill-accent mb-5"><i data-lucide="sparkles" class="!w-3 !h-3"></i>Built for operators, not analysts</span>
+      <h1 class="mb-5">Brand intelligence<br/>without the dashboards-and-PhDs tax.</h1>
+      <p class="text-[15px] text-[color:var(--muted)] leading-relaxed max-w-md mb-8">
+        Brisk monitors what people say about your brand across X, Reddit, YouTube, news and Instagram —
+        and tells you what to do about it. No boolean wizardry. No quarterly setup calls.
+      </p>
+      <div class="flex items-center gap-3">
+        <a href="signup.html" class="btn btn-primary">Start 14-day trial</a>
+        <a href="pricing.html" class="btn btn-secondary">See pricing</a>
+      </div>
+      <div class="mt-8 flex items-center gap-5 text-[12px] text-[color:var(--soft)]">
+        <span class="flex items-center gap-1.5"><i data-lucide="check" class="!w-3.5 !h-3.5 text-[color:var(--pos)]"></i>No credit card</span>
+        <span class="flex items-center gap-1.5"><i data-lucide="check" class="!w-3.5 !h-3.5 text-[color:var(--pos)]"></i>EU + US data residency</span>
+        <span class="flex items-center gap-1.5"><i data-lucide="check" class="!w-3.5 !h-3.5 text-[color:var(--pos)]"></i>SOC 2 Type II</span>
+      </div>
+    </div>
+    <!-- Dashboard preview -->
+    <div class="card p-1 lg:p-1.5 shadow-[var(--shadow-lg)]">
+      <div class="rounded-md overflow-hidden border border-[color:var(--line-2)]">
+        <div class="px-3 py-2 bg-[color:var(--line-2)] flex items-center gap-1.5 border-b border-[color:var(--line)]">
+          <span class="w-2 h-2 rounded-full bg-[#FCA5A5]"></span>
+          <span class="w-2 h-2 rounded-full bg-[#FCD34D]"></span>
+          <span class="w-2 h-2 rounded-full bg-[#86EFAC]"></span>
+          <span class="ml-3 text-[11px] text-[color:var(--soft)] font-mono">brisk.app/dashboard</span>
+        </div>
+        <div class="p-4 space-y-3 bg-white">
+          <div class="grid grid-cols-3 gap-2">
+            <div class="p-2.5 rounded-md border border-[color:var(--line-2)]">
+              <div class="text-[10px] uppercase tracking-wider text-[color:var(--soft)]">Sentiment</div>
+              <div class="text-lg font-semibold mt-0.5">72%</div>
+              <div class="text-[10px] text-[color:var(--pos)]">▲ 5 pts</div>
+            </div>
+            <div class="p-2.5 rounded-md border border-[color:var(--line-2)]">
+              <div class="text-[10px] uppercase tracking-wider text-[color:var(--soft)]">Mentions</div>
+              <div class="text-lg font-semibold mt-0.5">12.3k</div>
+              <div class="text-[10px] text-[color:var(--pos)]">▲ 12%</div>
+            </div>
+            <div class="p-2.5 rounded-md border border-[color:var(--line-2)]">
+              <div class="text-[10px] uppercase tracking-wider text-[color:var(--soft)]">SoV</div>
+              <div class="text-lg font-semibold mt-0.5">38%</div>
+              <div class="text-[10px] text-[color:var(--neg)]">▼ 2 pts</div>
+            </div>
+          </div>
+          <div class="h-32 rounded-md border border-[color:var(--line-2)] p-2 flex items-end gap-1">
+            <template id="bars"></template>
+            <script>
+              const bars = [];
+              const seed=[28,32,30,38,42,40,52,48,56,62,60,72,68,74,82,78,80,76,72];
+              document.write(seed.map(v=>`<div style="height:${v}%;width:6%" class="bg-[color:var(--accent)]/80 rounded-sm"></div>`).join(''));
+            </script>
+          </div>
+          <div class="grid grid-cols-2 gap-2">
+            <div class="p-2.5 rounded-md border border-[color:var(--line-2)]">
+              <div class="text-[10px] uppercase tracking-wider text-[color:var(--soft)] mb-1">Top theme</div>
+              <div class="text-[12px]">"holiday menu"</div>
+              <div class="text-[10px] text-[color:var(--pos)]">+34% vs last week</div>
+            </div>
+            <div class="p-2.5 rounded-md border border-[color:var(--line-2)]">
+              <div class="text-[10px] uppercase tracking-wider text-[color:var(--soft)] mb-1">Crisis alerts</div>
+              <div class="text-[12px]">3 open</div>
+              <div class="text-[10px] text-[color:var(--neg)]">2 critical</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Logos -->
+<section class="border-b border-[color:var(--line)] py-10">
+  <div class="max-w-6xl mx-auto px-6">
+    <div class="text-[11px] uppercase tracking-wider text-[color:var(--soft)] text-center mb-6">Trusted by brand teams replacing $50K/yr enterprise tools</div>
+    <div class="flex flex-wrap items-center justify-center gap-x-12 gap-y-4 opacity-70">
+      <span class="text-[15px] font-semibold text-[color:var(--muted)] tracking-tight">monzo</span>
+      <span class="text-[15px] font-semibold text-[color:var(--muted)] tracking-tight">Allbirds</span>
+      <span class="text-[15px] font-semibold text-[color:var(--muted)] tracking-tight italic">Glossier.</span>
+      <span class="text-[15px] font-semibold text-[color:var(--muted)] tracking-tight">REVOLUT</span>
+      <span class="text-[15px] font-semibold text-[color:var(--muted)] tracking-tight">OATLY</span>
+      <span class="text-[15px] font-semibold text-[color:var(--muted)] tracking-tight">Gymshark</span>
+      <span class="text-[15px] font-semibold text-[color:var(--muted)] tracking-tight">CASPER</span>
+    </div>
+  </div>
+</section>
+
+<!-- Features -->
+<section id="features" class="border-b border-[color:var(--line)] py-20">
+  <div class="max-w-6xl mx-auto px-6">
+    <div class="max-w-2xl mb-14">
+      <span class="pill pill-accent mb-4">Six things, done well</span>
+      <h2 class="mb-3">Everything a brand team needs. Nothing they don't.</h2>
+      <p class="text-[15px] text-[color:var(--muted)]">No agency hand-offs, no analyst certifications, no 90-day onboarding.</p>
+    </div>
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-px bg-[color:var(--line)] border border-[color:var(--line)] rounded-lg overflow-hidden">
+      <div class="bg-white p-6">
+        <div class="w-9 h-9 rounded-md bg-[color:var(--line-2)] flex items-center justify-center mb-4"><i data-lucide="activity" class="!w-4 !h-4 text-[color:var(--accent)]"></i></div>
+        <h3 class="text-[15px] font-semibold mb-1.5">Brand health, live</h3>
+        <p class="text-[13px] text-[color:var(--muted)] leading-relaxed">Sentiment, share-of-voice and theme drift updated continuously. No "refresh in 24 hours."</p>
+      </div>
+      <div class="bg-white p-6">
+        <div class="w-9 h-9 rounded-md bg-[color:var(--line-2)] flex items-center justify-center mb-4"><i data-lucide="swords" class="!w-4 !h-4 text-[color:var(--accent)]"></i></div>
+        <h3 class="text-[15px] font-semibold mb-1.5">Competitor intelligence</h3>
+        <p class="text-[13px] text-[color:var(--muted)] leading-relaxed">Side-by-side share-of-voice and a theme heatmap that shows where rivals are eating your lunch.</p>
+      </div>
+      <div class="bg-white p-6">
+        <div class="w-9 h-9 rounded-md bg-[color:var(--line-2)] flex items-center justify-center mb-4"><i data-lucide="bell-ring" class="!w-4 !h-4 text-[color:var(--accent)]"></i></div>
+        <h3 class="text-[15px] font-semibold mb-1.5">Crisis inbox</h3>
+        <p class="text-[13px] text-[color:var(--muted)] leading-relaxed">Severity × reach × velocity scoring. Slack/Teams routing. SLA timer per alert.</p>
+      </div>
+      <div class="bg-white p-6">
+        <div class="w-9 h-9 rounded-md bg-[color:var(--line-2)] flex items-center justify-center mb-4"><i data-lucide="package" class="!w-4 !h-4 text-[color:var(--accent)]"></i></div>
+        <h3 class="text-[15px] font-semibold mb-1.5">Per-product sentiment</h3>
+        <p class="text-[13px] text-[color:var(--muted)] leading-relaxed">Track every SKU and seasonal launch separately. Find the Oleato before retail does.</p>
+      </div>
+      <div class="bg-white p-6">
+        <div class="w-9 h-9 rounded-md bg-[color:var(--line-2)] flex items-center justify-center mb-4"><i data-lucide="search" class="!w-4 !h-4 text-[color:var(--accent)]"></i></div>
+        <h3 class="text-[15px] font-semibold mb-1.5">Plain-English queries</h3>
+        <p class="text-[13px] text-[color:var(--muted)] leading-relaxed">Ask "how did Gen-Z react to the price hike last week" — get an answer, not a boolean string.</p>
+      </div>
+      <div class="bg-white p-6">
+        <div class="w-9 h-9 rounded-md bg-[color:var(--line-2)] flex items-center justify-center mb-4"><i data-lucide="file-text" class="!w-4 !h-4 text-[color:var(--accent)]"></i></div>
+        <h3 class="text-[15px] font-semibold mb-1.5">Auto-reports</h3>
+        <p class="text-[13px] text-[color:var(--muted)] leading-relaxed">Branded monthly reports written for you. Goes straight to your CMO, not your inbox.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Integrations strip -->
+<section id="integrations" class="border-b border-[color:var(--line)] py-16">
+  <div class="max-w-6xl mx-auto px-6 grid lg:grid-cols-2 gap-12 items-start">
+    <div>
+      <span class="pill pill-accent mb-4">Bring your own keys</span>
+      <h2 class="mb-3">Five validated channels.<br/>Zero vendor lock-in.</h2>
+      <p class="text-[15px] text-[color:var(--muted)] mb-5">Use Brisk-managed pulls or plug in your own keys for X, Reddit, YouTube, News and Instagram. Either way, the data lands in the same warehouse — yours.</p>
+      <a href="signup.html" class="btn btn-secondary">Start a workspace<i data-lucide="arrow-right" class="!w-3.5 !h-3.5"></i></a>
+    </div>
+    <div class="grid grid-cols-2 gap-3">
+      <div class="card card-pad"><div class="flex items-center gap-2 mb-1.5"><i data-lucide="at-sign" class="!w-4 !h-4 text-[color:var(--accent)]"></i><span class="text-[13px] font-semibold">X / Twitter</span></div><p class="text-[12px] text-[color:var(--muted)]">Official paid · twitterapi.io · Bright Data</p></div>
+      <div class="card card-pad"><div class="flex items-center gap-2 mb-1.5"><i data-lucide="message-circle" class="!w-4 !h-4 text-[color:var(--accent)]"></i><span class="text-[13px] font-semibold">Reddit</span></div><p class="text-[12px] text-[color:var(--muted)]">Arctic Shift · Firecrawl · ScrapeCreators</p></div>
+      <div class="card card-pad"><div class="flex items-center gap-2 mb-1.5"><i data-lucide="play" class="!w-4 !h-4 text-[color:var(--accent)]"></i><span class="text-[13px] font-semibold">YouTube</span></div><p class="text-[12px] text-[color:var(--muted)]">Data API v3 · Socialkit</p></div>
+      <div class="card card-pad"><div class="flex items-center gap-2 mb-1.5"><i data-lucide="newspaper" class="!w-4 !h-4 text-[color:var(--accent)]"></i><span class="text-[13px] font-semibold">News &amp; web</span></div><p class="text-[12px] text-[color:var(--muted)]">NewsAPI · GDELT · Webz.io</p></div>
+      <div class="card card-pad"><div class="flex items-center gap-2 mb-1.5"><i data-lucide="camera" class="!w-4 !h-4 text-[color:var(--accent)]"></i><span class="text-[13px] font-semibold">Instagram</span></div><p class="text-[12px] text-[color:var(--muted)]">Apify hashtag actor</p></div>
+      <div class="card card-pad"><div class="flex items-center gap-2 mb-1.5"><i data-lucide="hash" class="!w-4 !h-4 text-[color:var(--accent)]"></i><span class="text-[13px] font-semibold">Notifications</span></div><p class="text-[12px] text-[color:var(--muted)]">Slack · Teams · webhooks · email</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="py-20">
+  <div class="max-w-4xl mx-auto px-6 text-center">
+    <h2 class="mb-3">See your brand the way the internet does.</h2>
+    <p class="text-[15px] text-[color:var(--muted)] mb-7">Two minutes to spin up a workspace. Fourteen days, no card.</p>
+    <div class="flex items-center justify-center gap-3">
+      <a href="signup.html" class="btn btn-primary">Start free trial</i></a>
+      <a href="pricing.html" class="btn btn-secondary">Compare plans</a>
+    </div>
+  </div>
+</section>
+
+<footer class="border-t border-[color:var(--line)] py-8">
+  <div class="max-w-6xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-[12px] text-[color:var(--soft)]">
+    <div class="flex items-center gap-2">
+      <div class="w-5 h-5 rounded bg-[color:var(--accent)] text-white flex items-center justify-center"><i data-lucide="activity" class="!w-3 !h-3"></i></div>
+      <span>© 2026 · Brisk® is a registered trademark</span>
+    </div>
+    <div class="flex items-center gap-5">
+      <a href="pricing.html" class="hover:text-[color:var(--ink)]">Security</a>
+      <a href="pricing.html" class="hover:text-[color:var(--ink)]">GDPR</a>
+      <a href="pricing.html" class="hover:text-[color:var(--ink)]">Status</a>
+      <a href="pricing.html" class="hover:text-[color:var(--ink)]">Contact</a>
+    </div>
+  </div>
+</footer>
+<script>lucide.createIcons();</script>
+</body>
+</html>

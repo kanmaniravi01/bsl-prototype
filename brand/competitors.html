@@ -1,0 +1,1113 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+
+<title>Competitors — Brisk®</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<link rel="stylesheet" href="../assets/brisk.css"/>
+
+<style>
+
+.competitor-content{
+  transition: all .25s ease;
+}
+
+.competitor-chevron{
+  transition: transform .2s ease;
+}
+
+.chart-card{
+  min-height: 360px;
+}
+
+</style>
+
+</head>
+
+<body
+data-role="brand"
+data-active="competitors"
+data-title="Competitive landscape"
+data-subtitle="Starbucks vs 5 competitors · last 30 days"
+>
+
+<main id="bk-main">
+
+<div class="px-5 py-5 max-w-7xl mx-auto">
+
+  <!-- Header -->
+  <div class="flex items-center justify-between mb-5">
+
+    <div>
+      <h1 class="text-[20px] font-semibold text-[color:var(--ink)]">
+        Competitor Intelligence
+      </h1>
+
+      <p class="text-[12px] text-[color:var(--muted)] mt-1">
+        Monitor competitor keywords, sentiment and reach across channels
+      </p>
+    </div>
+
+    <div class="flex items-center gap-2">
+
+      <select class="select !w-auto">
+        <option>Last 30 days</option>
+        <option>Last 7 days</option>
+        <option>Last 90 days</option>
+      </select>
+
+      <button class="btn btn-secondary btn-sm">
+        <i data-lucide="plus" class="!w-3.5 !h-3.5"></i>
+        Add competitor
+      </button>
+
+    </div>
+
+  </div>
+
+  <!-- Analytics Charts -->
+  <div class="space-y-4 mb-5">
+
+    <!-- Top Row -->
+    <div class="grid lg:grid-cols-3 gap-4">
+
+      <!-- Share of Voice -->
+      <div class="card p-4 chart-card">
+
+        <div class="mb-4">
+
+          <h3 class="text-[13px] font-semibold">
+            Share of Voice
+          </h3>
+
+          <p class="text-[11px] text-[color:var(--muted)] mt-0.5">
+            Conversation ownership by competitor
+          </p>
+
+        </div>
+
+        <div class="h-[280px]">
+          <canvas id="sovChart"></canvas>
+        </div>
+
+      </div>
+
+      <!-- Sentiment Comparison -->
+      <div class="card p-4 chart-card lg:col-span-2">
+
+        <div class="mb-4">
+
+          <h3 class="text-[13px] font-semibold">
+            Sentiment Comparison
+          </h3>
+
+          <p class="text-[11px] text-[color:var(--muted)] mt-0.5">
+            Audience perception across competitors
+          </p>
+
+        </div>
+
+        <div class="h-[280px]">
+          <canvas id="sentimentChart"></canvas>
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- Bottom Row -->
+    <div class="grid lg:grid-cols-2 gap-4">
+
+      <!-- Mentions Trend -->
+      <div class="card p-4 chart-card">
+
+        <div class="mb-4">
+
+          <h3 class="text-[13px] font-semibold">
+            Mentions Trend
+          </h3>
+
+          <p class="text-[11px] text-[color:var(--muted)] mt-0.5">
+            Conversation volume over time
+          </p>
+
+        </div>
+
+        <div class="h-[300px]">
+          <canvas id="mentionsChart"></canvas>
+        </div>
+
+      </div>
+
+      <!-- Reach Comparison -->
+      <div class="card p-4 chart-card">
+
+        <div class="mb-4">
+
+          <h3 class="text-[13px] font-semibold">
+            Reach Comparison
+          </h3>
+
+          <p class="text-[11px] text-[color:var(--muted)] mt-0.5">
+            Estimated audience visibility
+          </p>
+
+        </div>
+
+        <div class="h-[300px]">
+          <canvas id="reachChart"></canvas>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- Competitor Cards -->
+  <div class="space-y-4">
+
+    <!-- Dunkin -->
+    <div class="card overflow-hidden">
+
+      <div class="p-4 border-b border-[color:var(--line)] cursor-pointer competitor-toggle">
+
+        <div class="flex items-center justify-between gap-4 flex-wrap">
+
+          <div>
+
+            <div class="flex items-center gap-2">
+
+              <i
+                data-lucide="chevron-down"
+                class="w-4 h-4 competitor-chevron rotate-180"
+              ></i>
+
+              <h2 class="text-[16px] font-semibold">
+                Dunkin'
+              </h2>
+
+              <span class="pill pill-pos">
+                +0.42 sentiment
+              </span>
+
+            </div>
+
+            <div class="text-[12px] text-[color:var(--muted)] mt-1">
+              4 tracked keywords · X · Reddit · Instagram
+            </div>
+
+          </div>
+
+          <div class="flex items-center gap-6">
+
+            <div>
+              <div class="text-[11px] text-[color:var(--muted)]">
+                Mentions
+              </div>
+
+              <div class="text-[15px] font-semibold">
+                18.2K
+              </div>
+            </div>
+
+            <div>
+              <div class="text-[11px] text-[color:var(--muted)]">
+                Reach
+              </div>
+
+              <div class="text-[15px] font-semibold">
+                42M
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+      <div class="competitor-content p-4">
+
+        <table class="table">
+
+          <thead>
+            <tr>
+              <th>Keyword</th>
+              <th>Mentions</th>
+              <th>Sentiment</th>
+              <th>Reach</th>
+              <th>Top Channel</th>
+            </tr>
+          </thead>
+
+          <tbody>
+
+            <tr>
+              <td>cold brew</td>
+              <td class="font-mono">8,420</td>
+              <td><span class="pill pill-pos">+0.52</span></td>
+              <td class="font-mono">12.4M</td>
+              <td>X</td>
+            </tr>
+
+            <tr>
+              <td>refreshers</td>
+              <td class="font-mono">4,210</td>
+              <td><span class="pill pill-pos">+0.31</span></td>
+              <td class="font-mono">8.1M</td>
+              <td>Instagram</td>
+            </tr>
+
+            <tr>
+              <td>dunkin donuts</td>
+              <td class="font-mono">3,990</td>
+              <td><span class="pill pill-neu">+0.08</span></td>
+              <td class="font-mono">10.2M</td>
+              <td>News</td>
+            </tr>
+
+            <tr>
+              <td>iced coffee</td>
+              <td class="font-mono">1,680</td>
+              <td><span class="pill pill-neg">-0.18</span></td>
+              <td class="font-mono">4.2M</td>
+              <td>Reddit</td>
+            </tr>
+
+          </tbody>
+
+        </table>
+
+      </div>
+
+    </div>
+
+    <!-- Tim Hortons -->
+    <div class="card overflow-hidden">
+
+      <div class="p-4 border-b border-[color:var(--line)] cursor-pointer competitor-toggle">
+
+        <div class="flex items-center justify-between gap-4 flex-wrap">
+
+          <div>
+
+            <div class="flex items-center gap-2">
+
+              <i
+                data-lucide="chevron-down"
+                class="w-4 h-4 competitor-chevron"
+              ></i>
+
+              <h2 class="text-[16px] font-semibold">
+                Tim Hortons
+              </h2>
+
+              <span class="pill pill-neu">
+                +0.14 sentiment
+              </span>
+
+            </div>
+
+            <div class="text-[12px] text-[color:var(--muted)] mt-1">
+              4 tracked keywords · X · News · Reddit
+            </div>
+
+          </div>
+
+          <div class="flex items-center gap-6">
+
+            <div>
+              <div class="text-[11px] text-[color:var(--muted)]">
+                Mentions
+              </div>
+
+              <div class="text-[15px] font-semibold">
+                11.8K
+              </div>
+            </div>
+
+            <div>
+              <div class="text-[11px] text-[color:var(--muted)]">
+                Reach
+              </div>
+
+              <div class="text-[15px] font-semibold">
+                21M
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+      <div class="competitor-content p-4 hidden">
+
+        <table class="table">
+
+          <thead>
+            <tr>
+              <th>Keyword</th>
+              <th>Mentions</th>
+              <th>Sentiment</th>
+              <th>Reach</th>
+              <th>Top Channel</th>
+            </tr>
+          </thead>
+
+          <tbody>
+
+            <tr>
+              <td>iced capp</td>
+              <td class="font-mono">4,420</td>
+              <td><span class="pill pill-pos">+0.28</span></td>
+              <td class="font-mono">8.2M</td>
+              <td>X</td>
+            </tr>
+
+            <tr>
+              <td>timbits</td>
+              <td class="font-mono">3,140</td>
+              <td><span class="pill pill-pos">+0.19</span></td>
+              <td class="font-mono">5.4M</td>
+              <td>Instagram</td>
+            </tr>
+
+            <tr>
+              <td>breakfast wrap</td>
+              <td class="font-mono">2,020</td>
+              <td><span class="pill pill-neg">-0.08</span></td>
+              <td class="font-mono">4.1M</td>
+              <td>Reddit</td>
+            </tr>
+
+          </tbody>
+
+        </table>
+
+      </div>
+
+    </div>
+
+    <!-- Blue Bottle -->
+    <div class="card overflow-hidden">
+
+      <div class="p-4 border-b border-[color:var(--line)] cursor-pointer competitor-toggle">
+
+        <div class="flex items-center justify-between gap-4 flex-wrap">
+
+          <div>
+
+            <div class="flex items-center gap-2">
+
+              <i
+                data-lucide="chevron-down"
+                class="w-4 h-4 competitor-chevron"
+              ></i>
+
+              <h2 class="text-[16px] font-semibold">
+                Blue Bottle
+              </h2>
+
+              <span class="pill pill-pos">
+                +0.58 sentiment
+              </span>
+
+            </div>
+
+            <div class="text-[12px] text-[color:var(--muted)] mt-1">
+              4 tracked keywords · Instagram · News
+            </div>
+
+          </div>
+
+          <div class="flex items-center gap-6">
+
+            <div>
+              <div class="text-[11px] text-[color:var(--muted)]">
+                Mentions
+              </div>
+
+              <div class="text-[15px] font-semibold">
+                8.2K
+              </div>
+            </div>
+
+            <div>
+              <div class="text-[11px] text-[color:var(--muted)]">
+                Reach
+              </div>
+
+              <div class="text-[15px] font-semibold">
+                16M
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+      <div class="competitor-content p-4 hidden">
+
+        <table class="table">
+
+          <thead>
+            <tr>
+              <th>Keyword</th>
+              <th>Mentions</th>
+              <th>Sentiment</th>
+              <th>Reach</th>
+              <th>Top Channel</th>
+            </tr>
+          </thead>
+
+          <tbody>
+
+            <tr>
+              <td>single origin</td>
+              <td class="font-mono">3,920</td>
+              <td><span class="pill pill-pos">+0.71</span></td>
+              <td class="font-mono">6.2M</td>
+              <td>Instagram</td>
+            </tr>
+
+            <tr>
+              <td>craft coffee</td>
+              <td class="font-mono">2,410</td>
+              <td><span class="pill pill-pos">+0.64</span></td>
+              <td class="font-mono">4.8M</td>
+              <td>News</td>
+            </tr>
+
+          </tbody>
+
+        </table>
+
+      </div>
+
+    </div>
+    <!-- Peet's Coffee -->
+<div class="card overflow-hidden">
+
+  <div class="p-4 border-b border-[color:var(--line)] cursor-pointer competitor-toggle">
+
+    <div class="flex items-center justify-between gap-4 flex-wrap">
+
+      <div>
+
+        <div class="flex items-center gap-2">
+
+          <i
+            data-lucide="chevron-down"
+            class="w-4 h-4 competitor-chevron"
+          ></i>
+
+          <h2 class="text-[16px] font-semibold">
+            Peet's Coffee
+          </h2>
+
+          <span class="pill pill-pos">
+            +0.36 sentiment
+          </span>
+
+        </div>
+
+        <div class="text-[12px] text-[color:var(--muted)] mt-1">
+          4 tracked keywords · X · News · Instagram
+        </div>
+
+      </div>
+
+      <div class="flex items-center gap-6">
+
+        <div>
+          <div class="text-[11px] text-[color:var(--muted)]">
+            Mentions
+          </div>
+
+          <div class="text-[15px] font-semibold">
+            6.1K
+          </div>
+        </div>
+
+        <div>
+          <div class="text-[11px] text-[color:var(--muted)]">
+            Reach
+          </div>
+
+          <div class="text-[15px] font-semibold">
+            11M
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="competitor-content p-4 hidden">
+
+    <table class="table">
+
+      <thead>
+        <tr>
+          <th>Keyword</th>
+          <th>Mentions</th>
+          <th>Sentiment</th>
+          <th>Reach</th>
+          <th>Top Channel</th>
+        </tr>
+      </thead>
+
+      <tbody>
+
+        <tr>
+          <td>major dickason</td>
+          <td class="font-mono">2,210</td>
+          <td><span class="pill pill-pos">+0.42</span></td>
+          <td class="font-mono">4.4M</td>
+          <td>News</td>
+        </tr>
+
+        <tr>
+          <td>espresso forte</td>
+          <td class="font-mono">1,720</td>
+          <td><span class="pill pill-pos">+0.38</span></td>
+          <td class="font-mono">3.1M</td>
+          <td>Instagram</td>
+        </tr>
+
+        <tr>
+          <td>dark roast</td>
+          <td class="font-mono">1,480</td>
+          <td><span class="pill pill-neu">+0.11</span></td>
+          <td class="font-mono">2.6M</td>
+          <td>X</td>
+        </tr>
+
+        <tr>
+          <td>coffee beans</td>
+          <td class="font-mono">690</td>
+          <td><span class="pill pill-neg">-0.06</span></td>
+          <td class="font-mono">1.2M</td>
+          <td>Reddit</td>
+        </tr>
+
+      </tbody>
+
+    </table>
+
+  </div>
+
+</div>
+
+<!-- Costa Coffee -->
+<div class="card overflow-hidden">
+
+  <div class="p-4 border-b border-[color:var(--line)] cursor-pointer competitor-toggle">
+
+    <div class="flex items-center justify-between gap-4 flex-wrap">
+
+      <div>
+
+        <div class="flex items-center gap-2">
+
+          <i
+            data-lucide="chevron-down"
+            class="w-4 h-4 competitor-chevron"
+          ></i>
+
+          <h2 class="text-[16px] font-semibold">
+            Costa Coffee
+          </h2>
+
+          <span class="pill pill-neu">
+            +0.09 sentiment
+          </span>
+
+        </div>
+
+        <div class="text-[12px] text-[color:var(--muted)] mt-1">
+          4 tracked keywords · News · Instagram
+        </div>
+
+      </div>
+
+      <div class="flex items-center gap-6">
+
+        <div>
+          <div class="text-[11px] text-[color:var(--muted)]">
+            Mentions
+          </div>
+
+          <div class="text-[15px] font-semibold">
+            5.2K
+          </div>
+        </div>
+
+        <div>
+          <div class="text-[11px] text-[color:var(--muted)]">
+            Reach
+          </div>
+
+          <div class="text-[15px] font-semibold">
+            9M
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="competitor-content p-4 hidden">
+
+    <table class="table">
+
+      <thead>
+        <tr>
+          <th>Keyword</th>
+          <th>Mentions</th>
+          <th>Sentiment</th>
+          <th>Reach</th>
+          <th>Top Channel</th>
+        </tr>
+      </thead>
+
+      <tbody>
+
+        <tr>
+          <td>costa club</td>
+          <td class="font-mono">2,020</td>
+          <td><span class="pill pill-pos">+0.18</span></td>
+          <td class="font-mono">3.8M</td>
+          <td>Instagram</td>
+        </tr>
+
+        <tr>
+          <td>iced latte</td>
+          <td class="font-mono">1,610</td>
+          <td><span class="pill pill-neu">+0.03</span></td>
+          <td class="font-mono">2.9M</td>
+          <td>X</td>
+        </tr>
+
+        <tr>
+          <td>coffee cans</td>
+          <td class="font-mono">940</td>
+          <td><span class="pill pill-neg">-0.11</span></td>
+          <td class="font-mono">1.6M</td>
+          <td>News</td>
+        </tr>
+
+        <tr>
+          <td>drive thru</td>
+          <td class="font-mono">630</td>
+          <td><span class="pill pill-neu">+0.02</span></td>
+          <td class="font-mono">920K</td>
+          <td>Reddit</td>
+        </tr>
+
+      </tbody>
+
+    </table>
+
+  </div>
+
+</div>
+
+  </div>
+
+</div>
+
+</main>
+
+<script src="../assets/shell.js?v=3"></script>
+
+<script>
+
+lucide.createIcons();
+
+/* =========================
+   COLLAPSIBLE CARDS
+========================= */
+
+document.querySelectorAll('.competitor-toggle').forEach(toggle => {
+
+  toggle.addEventListener('click', () => {
+
+    const currentCard = toggle.closest('.card');
+    const currentContent = currentCard.querySelector('.competitor-content');
+    const currentChevron = currentCard.querySelector('.competitor-chevron');
+
+    document.querySelectorAll('.competitor-content').forEach(content => {
+
+      if(content !== currentContent){
+        content.classList.add('hidden');
+      }
+
+    });
+
+    document.querySelectorAll('.competitor-chevron').forEach(icon => {
+
+      if(icon !== currentChevron){
+        icon.classList.remove('rotate-180');
+      }
+
+    });
+
+    currentContent.classList.toggle('hidden');
+    currentChevron.classList.toggle('rotate-180');
+
+  });
+
+});
+
+/* =========================
+   SHARE OF VOICE
+========================= */
+
+new Chart(document.getElementById('sovChart'), {
+
+  type: 'doughnut',
+
+  data: {
+
+    labels: [
+      'Dunkin',
+      'Tim Hortons',
+      'Blue Bottle',
+      'Peet’s',
+      'Costa'
+    ],
+
+    datasets: [{
+      data: [38, 24, 16, 12, 10],
+      backgroundColor: [
+        '#6366F1',
+        '#0EA5E9',
+        '#14B8A6',
+        '#F59E0B',
+        '#8B5CF6'
+      ],
+      borderWidth: 0
+    }]
+
+  },
+
+  options: {
+
+    responsive: true,
+    maintainAspectRatio: false,
+
+    plugins: {
+
+      legend: {
+        position: 'bottom'
+      }
+
+    },
+
+    cutout: '70%'
+
+  }
+
+});
+
+/* =========================
+   SENTIMENT
+========================= */
+
+new Chart(document.getElementById('sentimentChart'), {
+
+  type: 'bar',
+
+  data: {
+
+    labels: [
+      'Dunkin',
+      'Tim Hortons',
+      'Blue Bottle',
+      'Peet’s',
+      'Costa'
+    ],
+
+    datasets: [{
+
+      label: 'Sentiment',
+
+      data: [
+        0.42,
+        0.14,
+        0.58,
+        0.36,
+        0.09
+      ],
+
+      backgroundColor: [
+        '#6366F1',
+        '#0EA5E9',
+        '#14B8A6',
+        '#F59E0B',
+        '#8B5CF6'
+      ],
+
+      borderRadius: 10
+
+    }]
+
+  },
+
+  options: {
+
+    responsive: true,
+    maintainAspectRatio: false,
+
+    plugins: {
+      legend: {
+        display: false
+      }
+    },
+
+    scales: {
+
+      y: {
+
+        min: -0.2,
+        max: 0.8,
+
+        grid: {
+          color: '#F4F4F5'
+        }
+
+      },
+
+      x: {
+
+        grid: {
+          display: false
+        }
+
+      }
+
+    }
+
+  }
+
+});
+
+/* =========================
+   MENTIONS TREND
+========================= */
+
+new Chart(document.getElementById('mentionsChart'), {
+
+  type: 'line',
+
+  data: {
+
+    labels: [
+      'Apr 1',
+      'Apr 5',
+      'Apr 10',
+      'Apr 15',
+      'Apr 20',
+      'Apr 25'
+    ],
+
+    datasets: [
+
+  {
+    label: 'Dunkin',
+    data: [1200,1480,1620,1810,1720,1920],
+    borderColor: '#6366F1',
+    backgroundColor: 'transparent',
+    tension: .4,
+    borderWidth: 2,
+    pointRadius: 0
+  },
+
+  {
+    label: 'Tim Hortons',
+    data: [720,840,980,1120,1040,1180],
+    borderColor: '#0EA5E9',
+    backgroundColor: 'transparent',
+    tension: .4,
+    borderWidth: 2,
+    pointRadius: 0
+  },
+
+  {
+    label: 'Blue Bottle',
+    data: [320,410,520,640,720,840],
+    borderColor: '#14B8A6',
+    backgroundColor: 'transparent',
+    tension: .4,
+    borderWidth: 2,
+    pointRadius: 0
+  },
+
+  {
+    label: "Peet's Coffee",
+    data: [280,340,420,510,590,660],
+    borderColor: '#F59E0B',
+    backgroundColor: 'transparent',
+    tension: .4,
+    borderWidth: 2,
+    pointRadius: 0
+  },
+
+  {
+    label: 'Costa Coffee',
+    data: [210,260,320,410,470,540],
+    borderColor: '#C084FC',
+    backgroundColor: 'transparent',
+    tension: .4,
+    borderWidth: 2,
+    pointRadius: 0
+  }
+
+]
+
+  },
+
+  options: {
+
+    responsive: true,
+    maintainAspectRatio: false,
+
+    plugins: {
+
+      legend: {
+        position: 'bottom'
+      }
+
+    },
+
+    scales: {
+
+      y: {
+        grid: {
+          color: '#F4F4F5'
+        }
+      },
+
+      x: {
+        grid: {
+          display: false
+        }
+      }
+
+    }
+
+  }
+
+});
+
+/* =========================
+   REACH
+========================= */
+
+new Chart(document.getElementById('reachChart'), {
+
+  type: 'bar',
+
+  data: {
+
+    labels: [
+      'Dunkin',
+      'Tim Hortons',
+      'Blue Bottle',
+      'Peet’s',
+      'Costa'
+    ],
+
+    datasets: [{
+
+      label: 'Reach',
+
+      data: [
+        42,
+        21,
+        16,
+        11,
+        9
+      ],
+
+      backgroundColor: [
+        '#6366F1',
+        '#0EA5E9',
+        '#14B8A6',
+        '#F59E0B',
+        '#8B5CF6'
+      ],
+
+      borderRadius: 10
+
+    }]
+
+  },
+
+  options: {
+
+    indexAxis: 'y',
+
+    responsive: true,
+    maintainAspectRatio: false,
+
+    plugins: {
+      legend: {
+        display: false
+      }
+    },
+
+    scales: {
+
+      x: {
+
+        grid: {
+          color: '#F4F4F5'
+        },
+
+        ticks: {
+
+          callback: function(value) {
+            return value + 'M';
+          }
+
+        }
+
+      },
+
+      y: {
+
+        grid: {
+          display: false
+        }
+
+      }
+
+    }
+
+  }
+
+});
+
+</script>
+
+</body>
+</html>

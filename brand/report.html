@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Q1 2026 brand health — Brisk®</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<link rel="stylesheet" href="../assets/brisk.css"/>
+</head>
+<body data-role="brand" data-active="reports" data-title="Q1 2026 brand health" data-subtitle="Brand health · Sarah Mitchell · 21 Apr 17:09">
+
+<main id="bk-main">
+  <div class="px-5 py-5 max-w-5xl mx-auto">
+
+    <!-- Breadcrumb + actions -->
+    <div class="flex items-center justify-between mb-4">
+      <div class="flex items-center gap-2 text-[12px] text-[color:var(--muted)]">
+        <a href="reports.html" class="hover:text-[color:var(--ink)]">Reports</a>
+        <i data-lucide="chevron-right" class="!w-3 !h-3"></i>
+        <span class="text-[color:var(--ink)]">Q1 2026 brand health</span>
+      </div>
+      <div class="flex items-center gap-2">
+        <button class="btn btn-ghost btn-sm" onclick="window.print()"><i data-lucide="printer" class="!w-3.5 !h-3.5"></i>Print</button>
+        <a href="reports.html" class="btn btn-secondary btn-sm"><i data-lucide="download" class="!w-3.5 !h-3.5"></i>Download PDF</a>
+        <a href="mailto:?subject=Q1%202026%20brand%20health" class="btn btn-secondary btn-sm"><i data-lucide="share-2" class="!w-3.5 !h-3.5"></i>Share</a>
+        <a href="reports.html" class="btn btn-primary btn-sm"><i data-lucide="edit-3" class="!w-3.5 !h-3.5"></i>Edit report</a>
+      </div>
+    </div>
+
+    <!-- Report header -->
+    <div class="card p-6 mb-4">
+      <div class="flex items-start justify-between mb-3">
+        <div>
+          <span class="pill pill-info">Brand health</span>
+          <h1 class="text-[22px] font-semibold mt-2">Q1 2026 brand health</h1>
+          <p class="text-[13px] text-[color:var(--muted)] mt-1">Period: 1 January – 31 March 2026 · Brand: Starbucks (primary) · Channels: X, Reddit, YouTube, News</p>
+        </div>
+        <div class="text-right text-[12px] text-[color:var(--muted)]">
+          <div>Generated 21 Apr 17:09</div>
+          <div>Author: Sarah Mitchell</div>
+          <div>Format: PDF · 24 pages</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- KPIs -->
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-3 mb-4">
+      <div class="card kpi"><div class="kpi-label"><i data-lucide="smile"></i>Sentiment</div><div class="kpi-value">+0.42</div><div class="kpi-delta text-[color:var(--pos)]">▲ 8 pts vs Q4</div></div>
+      <div class="card kpi"><div class="kpi-label"><i data-lucide="message-square"></i>Mentions</div><div class="kpi-value">38,420</div><div class="kpi-delta text-[color:var(--pos)]">▲ 14% vs Q4</div></div>
+      <div class="card kpi"><div class="kpi-label"><i data-lucide="pie-chart"></i>Share of voice</div><div class="kpi-value">38.4%</div><div class="kpi-delta text-[color:var(--neg)]">▼ 2 pts vs Q4</div></div>
+      <div class="card kpi"><div class="kpi-label"><i data-lucide="megaphone"></i>EMV</div><div class="kpi-value">$1.04M</div><div class="kpi-delta text-[color:var(--pos)]">▲ $128K vs Q4</div></div>
+    </div>
+
+    <!-- Trend chart -->
+    <div class="card p-4 mb-4">
+      <h3 class="text-[13px] font-semibold mb-3">Sentiment &amp; volume trend</h3>
+      <div class="h-64"><canvas id="trend"></canvas></div>
+    </div>
+
+    <!-- Themes -->
+    <div class="card p-4 mb-4">
+      <h3 class="text-[13px] font-semibold mb-3">Top themes (Q1)</h3>
+      <table class="table">
+        <thead><tr><th>Theme</th><th>Mentions</th><th>Sentiment</th><th>Δ vs Q4</th></tr></thead>
+        <tbody>
+          <tr><td>Mobile app — order issues</td><td class="font-mono">4,210</td><td><span class="pill pill-neg">−0.41</span></td><td class="text-[color:var(--neg)]">+62%</td></tr>
+          <tr><td>Barista experience</td><td class="font-mono">8,140</td><td><span class="pill pill-pos">+0.58</span></td><td>±2%</td></tr>
+          <tr><td>Loyalty / Stars program</td><td class="font-mono">5,810</td><td><span class="pill pill-neu">+0.12</span></td><td class="text-[color:var(--muted)]">−8%</td></tr>
+          <tr><td>Sustainability / cups</td><td class="font-mono">2,612</td><td><span class="pill pill-neu">+0.04</span></td><td class="text-[color:var(--muted)]">±3%</td></tr>
+          <tr><td>Union / labour discussion</td><td class="font-mono">2,124</td><td><span class="pill pill-neg">−0.32</span></td><td class="text-[color:var(--neg)]">+12%</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Narrative -->
+    <div class="card p-6 mb-4">
+      <h3 class="text-[14px] font-semibold mb-3">Quarter summary</h3>
+      <div class="text-[13.5px] leading-relaxed space-y-3 text-[color:var(--ink)]">
+        <p>Q1 2026 saw <strong>net-positive sentiment recovery</strong> after the December app outage, driven primarily by the new loyalty tier and the "Reserve Roastery NY" reopening. Total mention volume grew 14% quarter-over-quarter, but share-of-voice dipped 2 points as Dunkin' and Tim Hortons amplified value-pricing messaging in February.</p>
+        <p>The single biggest <strong>negative driver</strong> remains the mobile app order-fulfilment theme (−0.41 sentiment, +62% volume). Two distinct outage windows (Jan 18, Mar 04) accounted for 38% of negative mentions in the quarter. ORM response time improved from 14h to 4.2h median.</p>
+        <p>Recommended focus for Q2: (1) ship the order-status push-notification fix scheduled for May, (2) lean into Reserve / specialty coverage where competitor SoV is rising fastest, (3) prepare crisis playbook for the seasonal union vote in late June.</p>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="text-center text-[11px] text-[color:var(--soft)] py-4">
+      Brisk® · Generated from live data on 21 Apr 17:09 · Brand: Starbucks · Workspace: starbucks
+    </div>
+
+  </div>
+</main>
+
+<script src="../assets/shell.js?v=3"></script>
+<script>
+lucide.createIcons();
+new Chart(document.getElementById('trend'), {
+  type:'line',
+  data:{
+    labels:['Jan 1','Jan 15','Feb 1','Feb 15','Mar 1','Mar 15','Mar 31'],
+    datasets:[
+      { label:'Sentiment', data:[0.32,0.28,0.34,0.41,0.36,0.44,0.46], borderColor:'#22C55E', backgroundColor:'rgba(34,197,94,.08)', borderWidth:1.8, tension:.35, yAxisID:'y' },
+      { label:'Mentions', data:[4200,4800,5100,5400,6200,6800,7100], borderColor:'#1E293B', backgroundColor:'rgba(30,41,59,.06)', borderWidth:1.8, borderDash:[4,3], tension:.35, yAxisID:'y1' }
+    ]
+  },
+  options:{
+    responsive:true, maintainAspectRatio:false,
+    plugins:{ legend:{ position:'bottom', labels:{ font:{ size:11 } } } },
+    scales:{
+      y:{ position:'left', beginAtZero:false, ticks:{ font:{ size:10 } } },
+      y1:{ position:'right', grid:{ display:false }, ticks:{ font:{ size:10 } } }
+    }
+  }
+});
+</script>
+</body>
+</html>
