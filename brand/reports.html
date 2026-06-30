@@ -3,97 +3,436 @@
 <head>
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1"/>
-<title>Reports — Brisk®</title>
+<title>Reports - Brisk</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <script src="https://cdn.tailwindcss.com"></script>
 <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
 <link rel="stylesheet" href="../assets/brisk.css"/>
+<style>
+  .report-shell { max-width: 1440px; }
+  .report-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 60;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    background: rgb(10 10 10 / .42);
+  }
+  .report-modal.is-open { display: flex; }
+  .report-dialog {
+    width: min(760px, 100%);
+    max-height: calc(100vh - 2rem);
+    overflow-y: auto;
+  }
+  .action-icon {
+    width: 2rem;
+    height: 2rem;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+  }
+  .table-wrap { overflow-x: auto; }
+  .table-actions { display: flex; justify-content: flex-end; gap: .4rem; }
+  @media (max-width: 760px) {
+    .report-form-grid { grid-template-columns: 1fr; }
+    .table-actions { justify-content: flex-start; }
+  }
+</style>
 </head>
-<body data-role="brand" data-active="reports" data-title="Reports" data-subtitle="Scheduled · ad-hoc · templates">
+<body data-role="brand" data-active="reports" data-title="Reports" data-subtitle="Generated reports by tag, date and owner">
 
 <main id="bk-main">
-  <div class="px-5 py-5 max-w-7xl mx-auto">
+  <div class="report-shell px-5 py-5 mx-auto">
 
-    <!-- Toolbar -->
-    <div class="flex flex-wrap items-center gap-2 mb-4 bk-viewer-hide">
-      <div class="relative flex-1 min-w-[260px]">
-        <i data-lucide="search" class="absolute left-2.5 top-1/2 -translate-y-1/2 !w-3.5 !h-3.5 text-[color:var(--muted)]"></i>
-        <input class="input pl-8" placeholder="Search reports…"/>
+    <section class="card p-4 mb-4 bk-viewer-hide">
+      <div class="flex flex-wrap items-center gap-3">
+        <div class="relative flex-1 min-w-[260px]">
+          <i data-lucide="search" class="absolute left-2.5 top-1/2 -translate-y-1/2 !w-3.5 !h-3.5 text-[color:var(--muted)]"></i>
+          <input class="input pl-8" placeholder="Search reports, tags, users"/>
+        </div>
+        <select class="select !w-auto min-w-[150px]">
+          <option>All tags</option>
+          <option>KitKat</option>
+          <option>#BreakTimeKitKat</option>
+          <option>Mobile app</option>
+          <option>Union narrative</option>
+        </select>
+        <select class="select !w-auto min-w-[150px]">
+          <option>All users</option>
+          <option>Sarah Mitchell</option>
+          <option>Marcus Chen</option>
+          <option>Priya Shah</option>
+          <option>AI auto-generated</option>
+        </select>
+        <button id="newReportBtn" class="btn btn-primary" type="button">
+          <i data-lucide="plus" class="!w-3.5 !h-3.5"></i>New report
+        </button>
       </div>
-      <select class="select !w-auto"><option>All types</option><option>Brand health</option><option>Competitive</option><option>Campaign</option><option>Crisis recap</option></select>
-      <select class="select !w-auto"><option>All authors</option><option>Sarah Mitchell</option><option>Marcus Chen</option><option>AI auto-generated</option></select>
-      <a href="report.html" class="btn btn-secondary btn-sm"><i data-lucide="calendar" class="!w-3.5 !h-3.5"></i>Schedule</a>
-      <a href="report.html" class="btn btn-primary btn-sm"><i data-lucide="plus" class="!w-3.5 !h-3.5"></i>New report</a>
-    </div>
+    </section>
 
-    <!-- Templates -->
-    <h3 class="text-[12px] uppercase tracking-wider text-[color:var(--soft)] font-medium mb-2">Start from a template</h3>
-    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-3 mb-6">
-      <a href="report.html" class="card p-4 text-left hover:border-[color:var(--ink)] transition block">
-        <div class="w-8 h-8 rounded-md bg-[color:var(--line-2)] flex items-center justify-center mb-2"><i data-lucide="activity" class="!w-4 !h-4"></i></div>
-        <div class="text-[13px] font-semibold mb-0.5">Brand health</div>
-        <div class="text-[11.5px] text-[color:var(--muted)]">Sentiment, SoV, themes, week-over-week</div>
-      </a>
-      <a href="report.html" class="card p-4 text-left hover:border-[color:var(--ink)] transition block">
-        <div class="w-8 h-8 rounded-md bg-[color:var(--line-2)] flex items-center justify-center mb-2"><i data-lucide="swords" class="!w-4 !h-4"></i></div>
-        <div class="text-[13px] font-semibold mb-0.5">Competitive snapshot</div>
-        <div class="text-[11.5px] text-[color:var(--muted)]">Side-by-side vs your tracked peers</div>
-      </a>
-      <a href="report.html" class="card p-4 text-left hover:border-[color:var(--ink)] transition block">
-        <div class="w-8 h-8 rounded-md bg-[color:var(--line-2)] flex items-center justify-center mb-2"><i data-lucide="megaphone" class="!w-4 !h-4"></i></div>
-        <div class="text-[13px] font-semibold mb-0.5">Campaign recap</div>
-        <div class="text-[11.5px] text-[color:var(--muted)]">Pre/during/post measurement</div>
-      </a>
-      <a href="report.html" class="card p-4 text-left hover:border-[color:var(--ink)] transition block">
-        <div class="w-8 h-8 rounded-md bg-[color:var(--line-2)] flex items-center justify-center mb-2"><i data-lucide="alert-triangle" class="!w-4 !h-4"></i></div>
-        <div class="text-[13px] font-semibold mb-0.5">Crisis post-mortem</div>
-        <div class="text-[11.5px] text-[color:var(--muted)]">Velocity, reach, sentiment recovery</div>
-      </a>
-    </div>
-
-    <!-- Recent -->
-    <div class="card mb-5">
-      <div class="px-4 py-3 border-b border-[color:var(--line-2)]"><h3 class="text-[13px] font-semibold">Recent reports</h3></div>
-      <table class="table">
-        <thead><tr><th>Title</th><th>Type</th><th>Author</th><th>Period</th><th>Generated</th><th>Format</th><th></th></tr></thead>
-        <tbody>
-          <tr><td class="font-medium">Q1 2026 brand health</td><td><span class="pill pill-info">Brand health</span></td><td>Sarah Mitchell</td><td>Jan – Mar 2026</td><td class="text-[12px] text-[color:var(--muted)]">21 Apr 17:09</td><td>PDF · 24p</td><td><div class="flex gap-2"><a href="report.html" class="text-[color:var(--link)] text-[12px] hover:underline">Open</a><a href="mailto:?subject=Brisk%20report" class="text-[color:var(--soft)] text-[12px] hover:text-[color:var(--ink)]">Share</a></div></td></tr>
-          <tr><td class="font-medium">PSL 2026 launch — week 1</td><td><span class="pill pill-info">Campaign recap</span></td><td>Sarah Mitchell</td><td>Apr 14 – 21</td><td class="text-[12px] text-[color:var(--muted)]">22 Apr 06:00 <span class="pill pill-accent ml-1">Auto</span></td><td>PDF · 12p</td><td><div class="flex gap-2"><a href="report.html" class="text-[color:var(--link)] text-[12px] hover:underline">Open</a><a href="mailto:?subject=Brisk%20report" class="text-[color:var(--soft)] text-[12px] hover:text-[color:var(--ink)]">Share</a></div></td></tr>
-          <tr><td class="font-medium">Mobile app sentiment deep-dive</td><td><span class="pill pill-info">Brand health</span></td><td>Marcus Chen</td><td>Mar 1 – Apr 1</td><td class="text-[12px] text-[color:var(--muted)]">02 Apr 11:24</td><td>PDF · 18p</td><td><div class="flex gap-2"><a href="report.html" class="text-[color:var(--link)] text-[12px] hover:underline">Open</a><a href="mailto:?subject=Brisk%20report" class="text-[color:var(--soft)] text-[12px] hover:text-[color:var(--ink)]">Share</a></div></td></tr>
-          <tr><td class="font-medium">vs Blue Bottle — specialty share</td><td><span class="pill pill-info">Competitive</span></td><td>Sarah Mitchell</td><td>Q1 2026</td><td class="text-[12px] text-[color:var(--muted)]">28 Mar 14:50</td><td>CSV + PDF</td><td><div class="flex gap-2"><a href="report.html" class="text-[color:var(--link)] text-[12px] hover:underline">Open</a><a href="mailto:?subject=Brisk%20report" class="text-[color:var(--soft)] text-[12px] hover:text-[color:var(--ink)]">Share</a></div></td></tr>
-          <tr><td class="font-medium">Union narrative — March</td><td><span class="pill pill-info">Crisis recap</span></td><td>Marcus Chen</td><td>Mar 2026</td><td class="text-[12px] text-[color:var(--muted)]">03 Apr 09:18</td><td>PDF · 9p</td><td><div class="flex gap-2"><a href="report.html" class="text-[color:var(--link)] text-[12px] hover:underline">Open</a><a href="mailto:?subject=Brisk%20report" class="text-[color:var(--soft)] text-[12px] hover:text-[color:var(--ink)]">Share</a></div></td></tr>
-        </tbody>
-      </table>
-    </div>
-
-    <!-- Scheduled -->
-    <div class="card">
-      <div class="px-4 py-3 border-b border-[color:var(--line-2)] flex items-center justify-between">
-        <h3 class="text-[13px] font-semibold">Scheduled deliveries</h3>
-        <a href="report.html" class="btn btn-secondary btn-sm"><i data-lucide="plus" class="!w-3.5 !h-3.5"></i>Add schedule</a>
+    <section class="grid sm:grid-cols-2 xl:grid-cols-4 gap-3 mb-5">
+      <div class="card kpi">
+        <div class="kpi-label"><i data-lucide="file-text"></i>Total reports</div>
+        <div class="kpi-value">48</div>
+        <div class="kpi-delta text-[color:var(--pos)]">12 generated this month</div>
       </div>
-      <table class="table">
-        <thead><tr><th>Report</th><th>Cadence</th><th>Next run</th><th>Recipients</th><th>Format</th><th>Status</th><th></th></tr></thead>
-        <tbody>
-          <tr><td>Weekly brand health</td><td>Every Mon · 08:00 ET</td><td class="text-[12px] text-[color:var(--muted)]">28 Apr 08:00</td><td>marcus@, sarah@, james@ + Slack</td><td>PDF</td><td><span class="pill pill-pos">Active</span></td><td><a href="report.html" class="text-[color:var(--link)] text-[12px] hover:underline">Edit</a></td></tr>
-          <tr><td>Daily ORM brief</td><td>Daily · 07:00 ET</td><td class="text-[12px] text-[color:var(--muted)]">23 Apr 07:00</td><td>priya@ + #orm Slack</td><td>Email digest</td><td><span class="pill pill-pos">Active</span></td><td><a href="report.html" class="text-[color:var(--link)] text-[12px] hover:underline">Edit</a></td></tr>
-          <tr><td>Monthly competitive</td><td>1st of month · 09:00</td><td class="text-[12px] text-[color:var(--muted)]">01 May 09:00</td><td>marcus@, sarah@, leadership@</td><td>PDF + CSV</td><td><span class="pill pill-pos">Active</span></td><td><a href="report.html" class="text-[color:var(--link)] text-[12px] hover:underline">Edit</a></td></tr>
-          <tr><td>PSL campaign — pulse</td><td>Daily until 31 May</td><td class="text-[12px] text-[color:var(--muted)]">23 Apr 06:00</td><td>sarah@ + #psl-launch Slack</td><td>PDF</td><td><span class="pill pill-neu">Ends in 39d</span></td><td><a href="report.html" class="text-[color:var(--link)] text-[12px] hover:underline">Edit</a></td></tr>
-        </tbody>
-      </table>
-    </div>
+      <div class="card kpi">
+        <div class="kpi-label"><i data-lucide="users"></i>Created by users</div>
+        <div class="kpi-value">9</div>
+        <div class="kpi-delta">Marketing, ORM, leadership</div>
+      </div>
+      <div class="card kpi">
+        <div class="kpi-label"><i data-lucide="tag"></i>Tracked tags</div>
+        <div class="kpi-value">21</div>
+        <div class="kpi-delta">Across brand and product tags</div>
+      </div>
+      <div class="card kpi">
+        <div class="kpi-label"><i data-lucide="calendar-clock"></i>Scheduled reports</div>
+        <div class="kpi-value">7</div>
+        <div class="kpi-delta">5 active, 2 paused</div>
+      </div>
+    </section>
+
+    <section class="card mb-5">
+      <div class="px-4 py-3 border-b border-[color:var(--line-2)] flex flex-wrap items-center justify-between gap-3">
+        <div>
+          <h3 class="text-[14px] font-semibold">Report management</h3>
+          <p class="text-[12px] text-[color:var(--muted)] mt-0.5">Generated reports from all users and automations.</p>
+        </div>
+        <span class="pill pill-accent">Updated 23 Apr 2026, 09:30</span>
+      </div>
+      <div class="table-wrap">
+        <table class="table min-w-[980px]">
+          <thead>
+            <tr>
+              <th>Report</th>
+              <th>Tag</th>
+              <th>User</th>
+              <th>Date filter</th>
+              <th>Location</th>
+              <th>Language</th>
+              <th>Generated</th>
+              <th class="text-right">Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="font-medium">KitKat brand pulse - last 30 days</td>
+              <td><span class="pill pill-info">KitKat</span></td>
+              <td>Sarah Mitchell</td>
+              <td>Last 30 Days</td>
+              <td>India</td>
+              <td>English</td>
+              <td class="text-[12px] text-[color:var(--muted)]">23 Apr 09:18</td>
+              <td><div class="table-actions"><a href="report.html" class="btn btn-secondary btn-sm action-icon" aria-label="View report"><i data-lucide="eye" class="!w-3.5 !h-3.5"></i></a><a href="#" class="btn btn-secondary btn-sm action-icon" aria-label="Download report"><i data-lucide="download" class="!w-3.5 !h-3.5"></i></a></div></td>
+            </tr>
+            <tr>
+              <td class="font-medium">PSL 2026 launch - week 1</td>
+              <td><span class="pill pill-info">#PSL2026</span></td>
+              <td>Sarah Mitchell</td>
+              <td>Apr 14 - Apr 21</td>
+              <td>All locations</td>
+              <td>English</td>
+              <td class="text-[12px] text-[color:var(--muted)]">22 Apr 06:00 <span class="pill pill-accent ml-1">Auto</span></td>
+              <td><div class="table-actions"><a href="report.html" class="btn btn-secondary btn-sm action-icon" aria-label="View report"><i data-lucide="eye" class="!w-3.5 !h-3.5"></i></a><a href="#" class="btn btn-secondary btn-sm action-icon" aria-label="Download report"><i data-lucide="download" class="!w-3.5 !h-3.5"></i></a></div></td>
+            </tr>
+            <tr>
+              <td class="font-medium">Mobile app sentiment deep-dive</td>
+              <td><span class="pill pill-info">Mobile app</span></td>
+              <td>Marcus Chen</td>
+              <td>Mar 1 - Apr 1</td>
+              <td>United States</td>
+              <td>English</td>
+              <td class="text-[12px] text-[color:var(--muted)]">02 Apr 11:24</td>
+              <td><div class="table-actions"><a href="report.html" class="btn btn-secondary btn-sm action-icon" aria-label="View report"><i data-lucide="eye" class="!w-3.5 !h-3.5"></i></a><a href="#" class="btn btn-secondary btn-sm action-icon" aria-label="Download report"><i data-lucide="download" class="!w-3.5 !h-3.5"></i></a></div></td>
+            </tr>
+            <tr>
+              <td class="font-medium">Union narrative - March</td>
+              <td><span class="pill pill-info">Union</span></td>
+              <td>Marcus Chen</td>
+              <td>Mar 2026</td>
+              <td>North America</td>
+              <td>All languages</td>
+              <td class="text-[12px] text-[color:var(--muted)]">03 Apr 09:18</td>
+              <td><div class="table-actions"><a href="report.html" class="btn btn-secondary btn-sm action-icon" aria-label="View report"><i data-lucide="eye" class="!w-3.5 !h-3.5"></i></a><a href="#" class="btn btn-secondary btn-sm action-icon" aria-label="Download report"><i data-lucide="download" class="!w-3.5 !h-3.5"></i></a></div></td>
+            </tr>
+            <tr>
+              <td class="font-medium">Specialty share vs Blue Bottle</td>
+              <td><span class="pill pill-info">Reserve</span></td>
+              <td>Priya Shah</td>
+              <td>Q1 2026</td>
+              <td>All locations</td>
+              <td>English</td>
+              <td class="text-[12px] text-[color:var(--muted)]">28 Mar 14:50</td>
+              <td><div class="table-actions"><a href="report.html" class="btn btn-secondary btn-sm action-icon" aria-label="View report"><i data-lucide="eye" class="!w-3.5 !h-3.5"></i></a><a href="#" class="btn btn-secondary btn-sm action-icon" aria-label="Download report"><i data-lucide="download" class="!w-3.5 !h-3.5"></i></a></div></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="card">
+      <div class="px-4 py-3 border-b border-[color:var(--line-2)] flex flex-wrap items-center justify-between gap-3">
+        <div>
+          <h3 class="text-[14px] font-semibold">Scheduled report generation</h3>
+          <p class="text-[12px] text-[color:var(--muted)] mt-0.5">Automated reports generated and delivered on a recurring cadence.</p>
+        </div>
+      </div>
+      <div class="table-wrap">
+        <table class="table min-w-[980px]">
+          <thead>
+            <tr>
+              <th>Schedule</th>
+              <th>Tag</th>
+              <th>Cadence</th>
+              <th>Next run</th>
+              <th>Recipients</th>
+              <th>Format</th>
+              <th>Status</th>
+              <th class="text-right">Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="font-medium">Weekly KitKat pulse</td>
+              <td><span class="pill pill-info">KitKat</span></td>
+              <td>Every Monday - 08:00</td>
+              <td class="text-[12px] text-[color:var(--muted)]">29 Jun 2026, 08:00</td>
+              <td>sarah@, marcus@ + Slack</td>
+              <td>PDF</td>
+              <td><span class="pill pill-pos">Active</span></td>
+              <td><div class="table-actions"><button class="btn btn-secondary btn-sm action-icon" type="button" aria-label="Edit schedule"><i data-lucide="pencil" class="!w-3.5 !h-3.5"></i></button><button class="btn btn-secondary btn-sm action-icon" type="button" aria-label="Download latest report"><i data-lucide="download" class="!w-3.5 !h-3.5"></i></button></div></td>
+            </tr>
+            <tr>
+              <td class="font-medium">Daily launch monitor</td>
+              <td><span class="pill pill-info">#PSL2026</span></td>
+              <td>Daily - 06:00</td>
+              <td class="text-[12px] text-[color:var(--muted)]">01 Jul 2026, 06:00</td>
+              <td>campaign@ + #launch Slack</td>
+              <td>PDF + CSV</td>
+              <td><span class="pill pill-pos">Active</span></td>
+              <td><div class="table-actions"><button class="btn btn-secondary btn-sm action-icon" type="button" aria-label="Edit schedule"><i data-lucide="pencil" class="!w-3.5 !h-3.5"></i></button><button class="btn btn-secondary btn-sm action-icon" type="button" aria-label="Download latest report"><i data-lucide="download" class="!w-3.5 !h-3.5"></i></button></div></td>
+            </tr>
+            <tr>
+              <td class="font-medium">Monthly app sentiment</td>
+              <td><span class="pill pill-info">Mobile app</span></td>
+              <td>1st of every month - 09:00</td>
+              <td class="text-[12px] text-[color:var(--muted)]">01 Jul 2026, 09:00</td>
+              <td>product@, support@</td>
+              <td>PDF</td>
+              <td><span class="pill pill-neu">Paused</span></td>
+              <td><div class="table-actions"><button class="btn btn-secondary btn-sm action-icon" type="button" aria-label="Edit schedule"><i data-lucide="pencil" class="!w-3.5 !h-3.5"></i></button><button class="btn btn-secondary btn-sm action-icon" type="button" aria-label="Download latest report"><i data-lucide="download" class="!w-3.5 !h-3.5"></i></button></div></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
 
   </div>
 </main>
 
-<script src="../assets/shell.js?v=3"></script>
-<script>lucide.createIcons();</script>
+<div id="newReportModal" class="report-modal" role="dialog" aria-modal="true" aria-labelledby="newReportTitle">
+  <section class="report-dialog card p-5">
+    <div class="flex flex-wrap items-start justify-between gap-3 mb-4">
+      <div>
+        <h2 id="newReportTitle" class="text-[16px] font-semibold">Create new report</h2>
+        <p class="text-[12px] text-[color:var(--muted)] mt-1">Choose a tag and period to generate a detailed report.</p>
+      </div>
+      <button id="closeFormBtn" class="btn btn-ghost btn-sm" type="button" aria-label="Close form">
+        <i data-lucide="x" class="!w-3.5 !h-3.5"></i>
+      </button>
+    </div>
+
+    <form id="reportBuilder">
+      <div class="report-form-grid grid md:grid-cols-3 gap-4">
+        <div>
+          <label class="label" for="reportName">Report name</label>
+          <input id="reportName" class="input" required value="KitKat brand pulse - last 30 days"/>
+        </div>
+        <div>
+          <label class="label" for="reportTag">Select tag</label>
+          <select id="reportTag" class="select" required>
+            <option>KitKat</option>
+            <option>KitKat Chunky</option>
+            <option>#BreakTimeKitKat</option>
+            <option>KitKat India</option>
+            <option>Mobile app - order issues</option>
+            <option>Union / labour discussion</option>
+          </select>
+        </div>
+        <div>
+          <label class="label" for="reportPeriod">Date filter</label>
+          <select id="reportPeriod" class="select" required>
+            <option>Last 30 Days</option>
+            <option>Last 7 Days</option>
+            <option>This Month</option>
+            <option>Last Month</option>
+            <option>Quarter to Date</option>
+            <option>Custom Range</option>
+          </select>
+          <div class="help">May 19 - Jun 17, 2026</div>
+        </div>
+        <div>
+          <label class="label" for="reportLocation">Location optional</label>
+          <select id="reportLocation" class="select">
+            <option value="">All locations</option>
+            <option>India</option>
+            <option>United States</option>
+            <option>United Kingdom</option>
+            <option>Canada</option>
+          </select>
+        </div>
+        <div>
+          <label class="label" for="reportSentiment">Sentiment optional</label>
+          <select id="reportSentiment" class="select">
+            <option value="">All sentiments</option>
+            <option>Positive</option>
+            <option>Neutral</option>
+            <option>Negative</option>
+            <option>Mixed</option>
+          </select>
+        </div>
+        <div>
+          <label class="label" for="reportLanguage">Language optional</label>
+          <select id="reportLanguage" class="select">
+            <option value="">All languages</option>
+            <option>English</option>
+            <option>Hindi</option>
+            <option>Tamil</option>
+            <option>Spanish</option>
+          </select>
+        </div>
+        <div class="md:col-span-3 border border-[color:var(--line)] rounded-md p-3">
+          <label class="flex items-center gap-2 text-[13px] font-medium cursor-pointer" for="reportScheduleToggle">
+            <input id="reportScheduleToggle" type="checkbox" class="h-4 w-4 rounded border-[color:var(--line)]"/>
+            Schedule this report
+          </label>
+          <div id="reportScheduleFields" class="hidden grid md:grid-cols-3 gap-4 mt-3">
+            <div>
+              <label class="label" for="reportCadence">Cadence</label>
+              <select id="reportCadence" class="select">
+                <option>Weekly</option>
+                <option>Daily</option>
+                <option>Monthly</option>
+                <option>Quarterly</option>
+              </select>
+            </div>
+            <div>
+              <label class="label" for="reportRunDay">Run day</label>
+              <select id="reportRunDay" class="select">
+                <option>Monday</option>
+                <option>Tuesday</option>
+                <option>Wednesday</option>
+                <option>Thursday</option>
+                <option>Friday</option>
+                <option>1st of month</option>
+              </select>
+            </div>
+            <div>
+              <label class="label" for="reportScheduleTime">Schedule time</label>
+              <input id="reportScheduleTime" class="input" type="time" value="08:00"/>
+            </div>
+            <div>
+              <label class="label" for="reportScheduleFormat">Format</label>
+              <select id="reportScheduleFormat" class="select">
+                <option>PDF</option>
+                <option>PDF + CSV</option>
+                <option>Email digest</option>
+              </select>
+            </div>
+            <div class="md:col-span-2">
+              <label class="label" for="reportScheduleRecipients">Schedule recipients</label>
+              <input id="reportScheduleRecipients" class="input" value="sarah@company.com, marcus@company.com"/>
+              <div class="help">Use emails or Slack channels separated by commas.</div>
+            </div>
+          </div>
+        </div>
+        <div class="md:col-span-3 border border-[color:var(--line)] rounded-md p-3">
+          <label class="flex items-center gap-2 text-[13px] font-medium cursor-pointer" for="reportNotifyToggle">
+            <input id="reportNotifyToggle" type="checkbox" class="h-4 w-4 rounded border-[color:var(--line)]"/>
+            Notify user
+          </label>
+          <div id="reportNotifyFields" class="hidden mt-3">
+            <label class="label" for="reportNotifyEmail">Mail to forward</label>
+            <input id="reportNotifyEmail" class="input" type="email" placeholder="user@company.com"/>
+            <div class="help">A generated report notification will be forwarded to this email.</div>
+          </div>
+        </div>
+      </div>
+      <div class="flex flex-wrap justify-end gap-2 mt-5">
+        <button id="cancelReportBtn" class="btn btn-secondary" type="button">Cancel</button>
+        <button class="btn btn-primary" type="submit">
+          <i data-lucide="bar-chart-3" class="!w-3.5 !h-3.5"></i>Generate report
+        </button>
+      </div>
+    </form>
+  </section>
+</div>
+
+<script src="../assets/shell.js?v=4"></script>
 <script>
-// Viewer role restrictions
+lucide.createIcons();
+
 (function() {
+  const formCard = document.getElementById('newReportModal');
+  const newBtn = document.getElementById('newReportBtn');
+  const closeBtn = document.getElementById('closeFormBtn');
+  const cancelBtn = document.getElementById('cancelReportBtn');
+  const builder = document.getElementById('reportBuilder');
+  const scheduleToggle = document.getElementById('reportScheduleToggle');
+  const scheduleFields = document.getElementById('reportScheduleFields');
+  const notifyToggle = document.getElementById('reportNotifyToggle');
+  const notifyFields = document.getElementById('reportNotifyFields');
+
+  function setForm(open) {
+    formCard.classList.toggle('is-open', open);
+    document.body.classList.toggle('overflow-hidden', open);
+    if (open) {
+      document.getElementById('reportName').focus();
+    }
+  }
+
+  newBtn.addEventListener('click', () => setForm(true));
+  closeBtn.addEventListener('click', () => setForm(false));
+  cancelBtn.addEventListener('click', () => setForm(false));
+  formCard.addEventListener('click', (event) => {
+    if (event.target === formCard) setForm(false);
+  });
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape' && formCard.classList.contains('is-open')) setForm(false);
+  });
+  scheduleToggle.addEventListener('change', () => {
+    scheduleFields.classList.toggle('hidden', !scheduleToggle.checked);
+    document.getElementById('reportScheduleRecipients').required = scheduleToggle.checked;
+  });
+  notifyToggle.addEventListener('change', () => {
+    notifyFields.classList.toggle('hidden', !notifyToggle.checked);
+    document.getElementById('reportNotifyEmail').required = notifyToggle.checked;
+  });
+
+  builder.addEventListener('submit', (event) => {
+    event.preventDefault();
+    const params = new URLSearchParams({
+      name: document.getElementById('reportName').value.trim(),
+      tag: document.getElementById('reportTag').value,
+      period: document.getElementById('reportPeriod').value,
+      location: document.getElementById('reportLocation').value || 'All locations',
+      sentiment: document.getElementById('reportSentiment').value || 'All sentiments',
+      language: document.getElementById('reportLanguage').value || 'All languages',
+      scheduled: scheduleToggle.checked ? 'Yes' : 'No',
+      cadence: scheduleToggle.checked ? document.getElementById('reportCadence').value : '',
+      runDay: scheduleToggle.checked ? document.getElementById('reportRunDay').value : '',
+      scheduleTime: scheduleToggle.checked ? document.getElementById('reportScheduleTime').value : '',
+      notify: notifyToggle.checked ? 'Yes' : 'No',
+      notifyEmail: notifyToggle.checked ? document.getElementById('reportNotifyEmail').value.trim() : ''
+    });
+    window.location.href = `report.html?${params.toString()}`;
+  });
+
   const isViewer = document.body.dataset.role === 'viewer';
   if (isViewer) {
-    // Hide filter bar and action buttons for viewers
     document.querySelectorAll('.bk-viewer-hide').forEach(el => el.style.display = 'none');
   }
 })();

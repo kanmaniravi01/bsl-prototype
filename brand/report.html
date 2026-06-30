@@ -3,114 +3,349 @@
 <head>
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1"/>
-<title>Q1 2026 brand health — Brisk®</title>
+<title>Generated report - Brisk</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <script src="https://cdn.tailwindcss.com"></script>
 <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
 <link rel="stylesheet" href="../assets/brisk.css"/>
+<style>
+  .report-page { max-width: 1280px; }
+  .chart-box { position: relative; height: 260px; width: 100%; }
+  .post-rank {
+    width: 1.75rem;
+    height: 1.75rem;
+    border-radius: 999px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--line-2);
+    color: var(--muted);
+    font-size: .75rem;
+    font-weight: 600;
+    flex: 0 0 auto;
+  }
+  .source-icon {
+    width: 1.5rem;
+    height: 1.5rem;
+    border-radius: 999px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+  }
+  @media print {
+    .no-print { display: none !important; }
+    body { background: #fff; }
+    .card { box-shadow: none; break-inside: avoid; }
+  }
+</style>
 </head>
-<body data-role="brand" data-active="reports" data-title="Q1 2026 brand health" data-subtitle="Brand health · Sarah Mitchell · 21 Apr 17:09">
+<body data-role="brand" data-active="reports" data-title="Generated report" data-subtitle="Tag performance summary">
 
 <main id="bk-main">
-  <div class="px-5 py-5 max-w-5xl mx-auto">
+  <div class="report-page px-5 py-5 mx-auto">
 
-    <!-- Breadcrumb + actions -->
-    <div class="flex items-center justify-between mb-4">
+    <div class="no-print flex flex-wrap items-center justify-between gap-3 mb-4">
       <div class="flex items-center gap-2 text-[12px] text-[color:var(--muted)]">
         <a href="reports.html" class="hover:text-[color:var(--ink)]">Reports</a>
         <i data-lucide="chevron-right" class="!w-3 !h-3"></i>
-        <span class="text-[color:var(--ink)]">Q1 2026 brand health</span>
+        <span id="crumbTitle" class="text-[color:var(--ink)]">KitKat brand pulse - last 30 days</span>
       </div>
-      <div class="flex items-center gap-2">
-        <button class="btn btn-ghost btn-sm" onclick="window.print()"><i data-lucide="printer" class="!w-3.5 !h-3.5"></i>Print</button>
-        <a href="reports.html" class="btn btn-secondary btn-sm"><i data-lucide="download" class="!w-3.5 !h-3.5"></i>Download PDF</a>
-        <a href="mailto:?subject=Q1%202026%20brand%20health" class="btn btn-secondary btn-sm"><i data-lucide="share-2" class="!w-3.5 !h-3.5"></i>Share</a>
-        <a href="reports.html" class="btn btn-primary btn-sm"><i data-lucide="edit-3" class="!w-3.5 !h-3.5"></i>Edit report</a>
+      <div class="flex flex-wrap items-center gap-2">
+        <button class="btn btn-secondary btn-sm" type="button" onclick="window.print()">
+          <i data-lucide="download" class="!w-3.5 !h-3.5"></i>Download PDF
+        </button>
+        <button class="btn btn-primary btn-sm" type="button">
+          <i data-lucide="save" class="!w-3.5 !h-3.5"></i>Save
+        </button>
       </div>
     </div>
 
-    <!-- Report header -->
-    <div class="card p-6 mb-4">
-      <div class="flex items-start justify-between mb-3">
+    <section class="card p-5 mb-4">
+      <div class="flex flex-wrap items-start justify-between gap-4">
         <div>
-          <span class="pill pill-info">Brand health</span>
-          <h1 class="text-[22px] font-semibold mt-2">Q1 2026 brand health</h1>
-          <p class="text-[13px] text-[color:var(--muted)] mt-1">Period: 1 January – 31 March 2026 · Brand: Starbucks (primary) · Channels: X, Reddit, YouTube, News</p>
+          <span id="tagPill" class="pill pill-info">KitKat</span>
+          <h1 id="reportTitle" class="text-[24px] font-semibold mt-2">KitKat brand pulse - last 30 days</h1>
+          <p id="reportMeta" class="text-[13px] text-[color:var(--muted)] mt-1">Period: Last 30 Days - Location: India - Sentiment: All sentiments - Language: English</p>
+          <p id="reportScheduleMeta" class="hidden text-[13px] text-[color:var(--muted)] mt-1"></p>
         </div>
-        <div class="text-right text-[12px] text-[color:var(--muted)]">
-          <div>Generated 21 Apr 17:09</div>
-          <div>Author: Sarah Mitchell</div>
-          <div>Format: PDF · 24 pages</div>
+        <div class="text-[12px] text-[color:var(--muted)] md:text-right">
+          <div>Generated 23 Apr 2026, 09:18</div>
+          <div>Owner: Sarah Mitchell</div>
+          <div>Format: PDF - 18 pages</div>
         </div>
       </div>
-    </div>
+    </section>
 
-    <!-- KPIs -->
-    <div class="grid grid-cols-2 md:grid-cols-4 gap-3 mb-4">
-      <div class="card kpi"><div class="kpi-label"><i data-lucide="smile"></i>Sentiment</div><div class="kpi-value">+0.42</div><div class="kpi-delta text-[color:var(--pos)]">▲ 8 pts vs Q4</div></div>
-      <div class="card kpi"><div class="kpi-label"><i data-lucide="message-square"></i>Mentions</div><div class="kpi-value">38,420</div><div class="kpi-delta text-[color:var(--pos)]">▲ 14% vs Q4</div></div>
-      <div class="card kpi"><div class="kpi-label"><i data-lucide="pie-chart"></i>Share of voice</div><div class="kpi-value">38.4%</div><div class="kpi-delta text-[color:var(--neg)]">▼ 2 pts vs Q4</div></div>
-      <div class="card kpi"><div class="kpi-label"><i data-lucide="megaphone"></i>EMV</div><div class="kpi-value">$1.04M</div><div class="kpi-delta text-[color:var(--pos)]">▲ $128K vs Q4</div></div>
-    </div>
-
-    <!-- Trend chart -->
-    <div class="card p-4 mb-4">
-      <h3 class="text-[13px] font-semibold mb-3">Sentiment &amp; volume trend</h3>
-      <div class="h-64"><canvas id="trend"></canvas></div>
-    </div>
-
-    <!-- Themes -->
-    <div class="card p-4 mb-4">
-      <h3 class="text-[13px] font-semibold mb-3">Top themes (Q1)</h3>
-      <table class="table">
-        <thead><tr><th>Theme</th><th>Mentions</th><th>Sentiment</th><th>Δ vs Q4</th></tr></thead>
-        <tbody>
-          <tr><td>Mobile app — order issues</td><td class="font-mono">4,210</td><td><span class="pill pill-neg">−0.41</span></td><td class="text-[color:var(--neg)]">+62%</td></tr>
-          <tr><td>Barista experience</td><td class="font-mono">8,140</td><td><span class="pill pill-pos">+0.58</span></td><td>±2%</td></tr>
-          <tr><td>Loyalty / Stars program</td><td class="font-mono">5,810</td><td><span class="pill pill-neu">+0.12</span></td><td class="text-[color:var(--muted)]">−8%</td></tr>
-          <tr><td>Sustainability / cups</td><td class="font-mono">2,612</td><td><span class="pill pill-neu">+0.04</span></td><td class="text-[color:var(--muted)]">±3%</td></tr>
-          <tr><td>Union / labour discussion</td><td class="font-mono">2,124</td><td><span class="pill pill-neg">−0.32</span></td><td class="text-[color:var(--neg)]">+12%</td></tr>
-        </tbody>
-      </table>
-    </div>
-
-    <!-- Narrative -->
-    <div class="card p-6 mb-4">
-      <h3 class="text-[14px] font-semibold mb-3">Quarter summary</h3>
-      <div class="text-[13.5px] leading-relaxed space-y-3 text-[color:var(--ink)]">
-        <p>Q1 2026 saw <strong>net-positive sentiment recovery</strong> after the December app outage, driven primarily by the new loyalty tier and the "Reserve Roastery NY" reopening. Total mention volume grew 14% quarter-over-quarter, but share-of-voice dipped 2 points as Dunkin' and Tim Hortons amplified value-pricing messaging in February.</p>
-        <p>The single biggest <strong>negative driver</strong> remains the mobile app order-fulfilment theme (−0.41 sentiment, +62% volume). Two distinct outage windows (Jan 18, Mar 04) accounted for 38% of negative mentions in the quarter. ORM response time improved from 14h to 4.2h median.</p>
-        <p>Recommended focus for Q2: (1) ship the order-status push-notification fix scheduled for May, (2) lean into Reserve / specialty coverage where competitor SoV is rising fastest, (3) prepare crisis playbook for the seasonal union vote in late June.</p>
+    <section class="grid grid-cols-2 lg:grid-cols-4 gap-3 mb-4">
+      <div class="card kpi">
+        <div class="kpi-label"><i data-lucide="message-circle"></i>Mentions</div>
+        <div class="kpi-value">12,842</div>
+        <div class="kpi-delta text-[color:var(--pos)]">32% vs prior period</div>
       </div>
-    </div>
+      <div class="card kpi">
+        <div class="kpi-label"><i data-lucide="heart"></i>Engagement</div>
+        <div class="kpi-value">94.2K</div>
+        <div class="kpi-delta text-[color:var(--pos)]">21% vs prior period</div>
+      </div>
+      <div class="card kpi">
+        <div class="kpi-label"><i data-lucide="users"></i>Reach</div>
+        <div class="kpi-value">5.4M</div>
+        <div class="kpi-delta text-[color:var(--pos)]">18% vs prior period</div>
+      </div>
+      <div class="card kpi">
+        <div class="kpi-label"><i data-lucide="smile"></i>Sentiment</div>
+        <div class="kpi-value">72%</div>
+        <div class="kpi-delta text-[color:var(--pos)]">4 pts positive lift</div>
+      </div>
+    </section>
 
-    <!-- Footer -->
+    <section class="grid lg:grid-cols-[minmax(0,1fr)_360px] gap-4 mb-4">
+      <div class="card p-4">
+        <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+          <h2 class="text-[14px] font-semibold">Mentions and engagement trend</h2>
+          <span class="text-[12px] text-[color:var(--muted)]">Daily volume</span>
+        </div>
+        <div class="chart-box"><canvas id="trendChart"></canvas></div>
+      </div>
+      <aside class="card p-4">
+        <h2 class="text-[14px] font-semibold mb-3">Tag details</h2>
+        <div class="space-y-3 text-[13px]">
+          <div class="flex justify-between gap-4"><span class="text-[color:var(--muted)]">Primary tag</span><strong id="tagDetail">KitKat</strong></div>
+          <div class="flex justify-between gap-4"><span class="text-[color:var(--muted)]">Channels</span><strong>X, Reddit, YouTube, News</strong></div>
+          <div class="flex justify-between gap-4"><span class="text-[color:var(--muted)]">Positive share</span><strong class="text-[color:var(--pos)]">72%</strong></div>
+          <div class="flex justify-between gap-4"><span class="text-[color:var(--muted)]">Neutral share</span><strong>18%</strong></div>
+          <div class="flex justify-between gap-4"><span class="text-[color:var(--muted)]">Negative share</span><strong class="text-[color:var(--neg)]">10%</strong></div>
+        </div>
+        <div class="divider my-4"></div>
+        <h3 class="text-[13px] font-semibold mb-2">Key drivers</h3>
+        <div class="flex flex-wrap gap-2">
+          <span class="pill pill-pos">Taste nostalgia</span>
+          <span class="pill pill-pos">Creator reviews</span>
+          <span class="pill pill-neu">Price discussion</span>
+          <span class="pill pill-info">New flavours</span>
+        </div>
+      </aside>
+    </section>
+
+    <section class="grid md:grid-cols-2 gap-4 mb-4">
+      <div class="card p-4">
+        <h2 class="text-[14px] font-semibold mb-3">Mention breakdown</h2>
+        <table class="table">
+          <thead><tr><th>Source</th><th>Mentions</th><th>Sentiment</th><th>Engagement</th></tr></thead>
+          <tbody>
+            <tr><td>X</td><td class="font-mono">5,120</td><td><span class="pill pill-pos">+0.62</span></td><td class="font-mono">42.1K</td></tr>
+            <tr><td>Reddit</td><td class="font-mono">2,846</td><td><span class="pill pill-neu">+0.14</span></td><td class="font-mono">18.4K</td></tr>
+            <tr><td>YouTube</td><td class="font-mono">1,984</td><td><span class="pill pill-pos">+0.48</span></td><td class="font-mono">24.7K</td></tr>
+            <tr><td>News</td><td class="font-mono">1,208</td><td><span class="pill pill-pos">+0.36</span></td><td class="font-mono">6.2K</td></tr>
+            <tr><td>Instagram</td><td class="font-mono">1,684</td><td><span class="pill pill-pos">+0.58</span></td><td class="font-mono">2.8K</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="card p-4">
+        <h2 class="text-[14px] font-semibold mb-3">Executive summary</h2>
+        <div class="text-[13.5px] leading-relaxed space-y-3">
+          <p>The selected tag gained strong visibility across social and creator channels, with mention volume rising 32% and engagement rising 21% against the prior period.</p>
+          <p>Positive conversation was driven by nostalgia, flavour discovery and creator-led taste reviews. Price comments created a neutral-to-negative pocket, but did not materially reduce overall sentiment.</p>
+          <p>Recommended action: amplify high-engagement creator posts, answer price-related questions with value messaging and keep monitoring Reddit threads where purchase intent is strongest.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="card mb-4">
+      <div class="px-4 py-3 border-b border-[color:var(--line-2)] flex items-center justify-between gap-3">
+        <h2 class="text-[14px] font-semibold">Top 10 highlight posts</h2>
+        <span class="text-[12px] text-[color:var(--muted)]">Ranked by engagement</span>
+      </div>
+      <div class="divide-y divide-[color:var(--line-2)]">
+        <article class="p-4 flex gap-3">
+          <span class="post-rank">1</span>
+          <div class="flex-1">
+            <div class="flex flex-wrap items-center justify-between gap-2 mb-1">
+              <div class="flex items-center gap-2 text-[12px]"><span class="source-icon bg-black"><i data-lucide="twitter" class="!w-3 !h-3"></i></span><strong>@foodielife</strong><span class="text-[color:var(--muted)]">X - Jun 12</span></div>
+              <span class="pill pill-pos">4.1K engagement</span>
+            </div>
+            <p class="text-[13px]">Nothing beats a KitKat break after a long day. The classic still wins.</p>
+          </div>
+        </article>
+        <article class="p-4 flex gap-3">
+          <span class="post-rank">2</span>
+          <div class="flex-1">
+            <div class="flex flex-wrap items-center justify-between gap-2 mb-1">
+              <div class="flex items-center gap-2 text-[12px]"><span class="source-icon bg-orange-500"><i data-lucide="message-square" class="!w-3 !h-3"></i></span><strong>r/India</strong><span class="text-[color:var(--muted)]">Reddit - Jun 10</span></div>
+              <span class="pill pill-neu">2.7K engagement</span>
+            </div>
+            <p class="text-[13px]">KitKat prices have gone up again? Still worth it for the occasional break.</p>
+          </div>
+        </article>
+        <article class="p-4 flex gap-3">
+          <span class="post-rank">3</span>
+          <div class="flex-1">
+            <div class="flex flex-wrap items-center justify-between gap-2 mb-1">
+              <div class="flex items-center gap-2 text-[12px]"><span class="source-icon bg-pink-500"><i data-lucide="camera" class="!w-3 !h-3"></i></span><strong>@kitkat_india</strong><span class="text-[color:var(--muted)]">Instagram - Jun 8</span></div>
+              <span class="pill pill-pos">2.1K engagement</span>
+            </div>
+            <p class="text-[13px]">Have you taken your break today? Fans responded with flavour requests and nostalgia.</p>
+          </div>
+        </article>
+        <article class="p-4 flex gap-3">
+          <span class="post-rank">4</span>
+          <div class="flex-1">
+            <div class="flex flex-wrap items-center justify-between gap-2 mb-1">
+              <div class="flex items-center gap-2 text-[12px]"><span class="source-icon bg-blue-600"><i data-lucide="globe" class="!w-3 !h-3"></i></span><strong>NDTV</strong><span class="text-[color:var(--muted)]">News - Jun 7</span></div>
+              <span class="pill pill-pos">1.4K engagement</span>
+            </div>
+            <p class="text-[13px]">Nestle expands KitKat range in India with new limited-time flavours.</p>
+          </div>
+        </article>
+        <article class="p-4 flex gap-3">
+          <span class="post-rank">5</span>
+          <div class="flex-1">
+            <div class="flex flex-wrap items-center justify-between gap-2 mb-1">
+              <div class="flex items-center gap-2 text-[12px]"><span class="source-icon bg-red-600"><i data-lucide="youtube" class="!w-3 !h-3"></i></span><strong>Tech Burner</strong><span class="text-[color:var(--muted)]">YouTube - Jun 5</span></div>
+              <span class="pill pill-pos">1.1K engagement</span>
+            </div>
+            <p class="text-[13px]">Trying every KitKat flavour in India. Viewers heavily discussed favourites.</p>
+          </div>
+        </article>
+        <article class="p-4 flex gap-3">
+          <span class="post-rank">6</span>
+          <div class="flex-1">
+            <div class="flex flex-wrap items-center justify-between gap-2 mb-1">
+              <div class="flex items-center gap-2 text-[12px]"><span class="source-icon bg-black"><i data-lucide="twitter" class="!w-3 !h-3"></i></span><strong>@snackwatch</strong><span class="text-[color:var(--muted)]">X - Jun 4</span></div>
+              <span class="pill pill-pos">980 engagement</span>
+            </div>
+            <p class="text-[13px]">Ranking classic chocolate wafer snacks. KitKat took the top spot in replies.</p>
+          </div>
+        </article>
+        <article class="p-4 flex gap-3">
+          <span class="post-rank">7</span>
+          <div class="flex-1">
+            <div class="flex flex-wrap items-center justify-between gap-2 mb-1">
+              <div class="flex items-center gap-2 text-[12px]"><span class="source-icon bg-orange-500"><i data-lucide="message-square" class="!w-3 !h-3"></i></span><strong>r/IndianFood</strong><span class="text-[color:var(--muted)]">Reddit - Jun 3</span></div>
+              <span class="pill pill-neu">860 engagement</span>
+            </div>
+            <p class="text-[13px]">Thread comparing imported snack pricing and availability in metro cities.</p>
+          </div>
+        </article>
+        <article class="p-4 flex gap-3">
+          <span class="post-rank">8</span>
+          <div class="flex-1">
+            <div class="flex flex-wrap items-center justify-between gap-2 mb-1">
+              <div class="flex items-center gap-2 text-[12px]"><span class="source-icon bg-pink-500"><i data-lucide="camera" class="!w-3 !h-3"></i></span><strong>@dessertdiary</strong><span class="text-[color:var(--muted)]">Instagram - Jun 1</span></div>
+              <span class="pill pill-pos">790 engagement</span>
+            </div>
+            <p class="text-[13px]">Recipe post using crushed KitKat as a topping for summer desserts.</p>
+          </div>
+        </article>
+        <article class="p-4 flex gap-3">
+          <span class="post-rank">9</span>
+          <div class="flex-1">
+            <div class="flex flex-wrap items-center justify-between gap-2 mb-1">
+              <div class="flex items-center gap-2 text-[12px]"><span class="source-icon bg-red-600"><i data-lucide="youtube" class="!w-3 !h-3"></i></span><strong>Food Trails</strong><span class="text-[color:var(--muted)]">YouTube - May 29</span></div>
+              <span class="pill pill-pos">720 engagement</span>
+            </div>
+            <p class="text-[13px]">Short review of new wafers drove comments about older favourite variants.</p>
+          </div>
+        </article>
+        <article class="p-4 flex gap-3">
+          <span class="post-rank">10</span>
+          <div class="flex-1">
+            <div class="flex flex-wrap items-center justify-between gap-2 mb-1">
+              <div class="flex items-center gap-2 text-[12px]"><span class="source-icon bg-blue-600"><i data-lucide="globe" class="!w-3 !h-3"></i></span><strong>Brand Desk</strong><span class="text-[color:var(--muted)]">News - May 26</span></div>
+              <span class="pill pill-neu">640 engagement</span>
+            </div>
+            <p class="text-[13px]">Retail availability story sparked regional comments and store-level requests.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
     <div class="text-center text-[11px] text-[color:var(--soft)] py-4">
-      Brisk® · Generated from live data on 21 Apr 17:09 · Brand: Starbucks · Workspace: starbucks
+      Brisk - Generated from monitored mentions - Workspace: Brand intelligence
     </div>
 
   </div>
 </main>
 
-<script src="../assets/shell.js?v=3"></script>
+<script src="../assets/shell.js?v=4"></script>
 <script>
 lucide.createIcons();
-new Chart(document.getElementById('trend'), {
-  type:'line',
-  data:{
-    labels:['Jan 1','Jan 15','Feb 1','Feb 15','Mar 1','Mar 15','Mar 31'],
-    datasets:[
-      { label:'Sentiment', data:[0.32,0.28,0.34,0.41,0.36,0.44,0.46], borderColor:'#22C55E', backgroundColor:'rgba(34,197,94,.08)', borderWidth:1.8, tension:.35, yAxisID:'y' },
-      { label:'Mentions', data:[4200,4800,5100,5400,6200,6800,7100], borderColor:'#1E293B', backgroundColor:'rgba(30,41,59,.06)', borderWidth:1.8, borderDash:[4,3], tension:.35, yAxisID:'y1' }
+
+(function hydrateReportFromQuery() {
+  const params = new URLSearchParams(window.location.search);
+  const name = params.get('name') || 'KitKat brand pulse - last 30 days';
+  const tag = params.get('tag') || 'KitKat';
+  const period = params.get('period') || 'Last 30 Days';
+  const location = params.get('location') || 'India';
+  const sentiment = params.get('sentiment') || 'All sentiments';
+  const language = params.get('language') || 'English';
+  const scheduled = params.get('scheduled') || 'No';
+  const cadence = params.get('cadence') || '';
+  const runDay = params.get('runDay') || '';
+  const scheduleTime = params.get('scheduleTime') || '';
+  const notify = params.get('notify') || 'No';
+  const notifyEmail = params.get('notifyEmail') || '';
+
+  document.title = `${name} - Brisk`;
+  document.body.dataset.title = name;
+  document.body.dataset.subtitle = `${tag} - ${period}`;
+  document.getElementById('crumbTitle').textContent = name;
+  document.getElementById('reportTitle').textContent = name;
+  document.getElementById('tagPill').textContent = tag;
+  document.getElementById('tagDetail').textContent = tag;
+  document.getElementById('reportMeta').textContent = `Period: ${period} - Location: ${location} - Sentiment: ${sentiment} - Language: ${language}`;
+  if (scheduled === 'Yes' || notify === 'Yes') {
+    const scheduleText = scheduled === 'Yes' ? `Scheduled: ${cadence} on ${runDay} at ${scheduleTime}` : 'Scheduled: No';
+    const notifyText = notify === 'Yes' ? `Notify: ${notifyEmail || 'email not set'}` : 'Notify: No';
+    const scheduleMeta = document.getElementById('reportScheduleMeta');
+    scheduleMeta.textContent = `${scheduleText} - ${notifyText}`;
+    scheduleMeta.classList.remove('hidden');
+  }
+})();
+
+const labels = ['May 19','May 24','May 29','Jun 03','Jun 08','Jun 13','Jun 17'];
+new Chart(document.getElementById('trendChart'), {
+  type: 'line',
+  data: {
+    labels,
+    datasets: [
+      {
+        label: 'Mentions',
+        data: [820, 760, 1220, 1540, 1320, 2410, 1770],
+        borderColor: '#2563EB',
+        backgroundColor: 'rgba(37, 99, 235, .1)',
+        borderWidth: 2,
+        fill: true,
+        tension: .32,
+        yAxisID: 'y'
+      },
+      {
+        label: 'Engagement',
+        data: [5200, 6100, 8900, 7400, 6800, 12800, 9700],
+        borderColor: '#059669',
+        borderWidth: 2,
+        borderDash: [5, 4],
+        fill: false,
+        tension: .32,
+        yAxisID: 'y1'
+      }
     ]
   },
-  options:{
-    responsive:true, maintainAspectRatio:false,
-    plugins:{ legend:{ position:'bottom', labels:{ font:{ size:11 } } } },
-    scales:{
-      y:{ position:'left', beginAtZero:false, ticks:{ font:{ size:10 } } },
-      y1:{ position:'right', grid:{ display:false }, ticks:{ font:{ size:10 } } }
+  options: {
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: {
+      legend: {
+        position: 'bottom',
+        labels: { usePointStyle: true, boxWidth: 6, font: { size: 11 } }
+      }
+    },
+    scales: {
+      x: { grid: { display: false }, ticks: { font: { size: 10 } } },
+      y: { border: { display: false }, grid: { color: '#f1f5f9' }, ticks: { font: { size: 10 } } },
+      y1: { position: 'right', border: { display: false }, grid: { display: false }, ticks: { font: { size: 10 } } }
     }
   }
 });
