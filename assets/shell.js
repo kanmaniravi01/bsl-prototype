@@ -57,7 +57,7 @@ const NAV = {
         { id:'audit',        icon:'shield-check',label:'Audit log',    href:R('app/settings/audit.html') },
       ]},
     ],
-    user: { name:'Marcus Chen', role:'Tenant Owner', initials:'MC', tenant:'Starbucks Workspace' }
+    user: { name:'owner@demo.local', role:'tenant_admin', initials:'O', tenant:'Cafe marketing' }
   },
   brand: {
     sections: [
@@ -141,10 +141,10 @@ function renderShell() {
   const sidebar = `
     <aside id="bk-sidebar" class="hidden lg:flex fixed inset-y-0 left-0 w-60 flex-col border-r border-[color:var(--line)] bg-white z-30">
       <div class="px-4 h-14 flex items-center gap-2 border-b border-[color:var(--line)]">
-        <div class="w-6 h-6 rounded-md bg-[color:var(--accent)] text-white flex items-center justify-center">
-          <i data-lucide="${isAdmin?'shield':'activity'}" class="!w-3.5 !h-3.5"></i>
+        <div class="${isAdmin ? 'w-6 h-6 rounded-md bg-[color:var(--accent)] text-white flex items-center justify-center' : 'brisk-logo-mark'}">
+          ${isAdmin ? '<i data-lucide="shield" class="!w-3.5 !h-3.5"></i>' : '<span>B</span>'}
         </div>
-        <span class="wordmark">brisk<sup>Â®</sup></span>
+        <span class="wordmark">Brisk</span>
         ${isAdmin ? '<span class="pill pill-accent ml-auto">Admin</span>' : ''}
       </div>
       ${!isAdmin ? `

@@ -3,245 +3,361 @@
 <head>
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1"/>
-<title>ORM inbox — Brisk®</title>
+<title>ORM Inbox - Brisk</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <script src="https://cdn.tailwindcss.com"></script>
 <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
 <link rel="stylesheet" href="../assets/brisk.css"/>
 </head>
-<body data-role="orm" data-active="inbox" data-title="ORM inbox" data-subtitle="3 open · 1 critical · SLA 15 min">
+<body data-role="owner" data-active="inbox" data-title="ORM Inbox" data-subtitle="">
 
-<main id="bk-main">
-  <div class="px-5 py-5 max-w-[1400px] mx-auto">
-
-    <!-- Universal Filter Bar -->
-    <div class="card p-4 mb-5 bk-viewer-hide">
-      <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-3">
-        <div>
-          <label class="block text-[11px] font-medium text-[color:var(--ink)] mb-1">Date Range</label>
-          <select class="select !text-[11px] !py-1">
-            <option>Last 30 days</option>
-            <option>Last 7 days</option>
-            <option>Last 90 days</option>
-            <option>YTD</option>
-            <option>Custom...</option>
-          </select>
-        </div>
-        <div>
-          <label class="block text-[11px] font-medium text-[color:var(--ink)] mb-1">Channels</label>
-          <select class="select !text-[11px] !py-1" multiple size="1">
-            <option selected>All channels</option>
-            <option>X</option>
-            <option>Reddit</option>
-            <option>YouTube</option>
-            <option>News</option>
-            <option>Instagram</option>
-          </select>
-        </div>
-        <div>
-          <label class="block text-[11px] font-medium text-[color:var(--ink)] mb-1">Languages</label>
-          <select class="select !text-[11px] !py-1">
-            <option>All languages</option>
-            <option>English</option>
-            <option>Spanish</option>
-            <option>French</option>
-          </select>
-        </div>
-        <div>
-          <label class="block text-[11px] font-medium text-[color:var(--ink)] mb-1">Locations</label>
-          <select class="select !text-[11px] !py-1">
-            <option>All regions</option>
-            <option>North America</option>
-            <option>EMEA</option>
-            <option>APAC</option>
-          </select>
-        </div>
-
-        <div>
-          <label class="block text-[11px] font-medium text-[color:var(--ink)] mb-1">Sentiment</label>
-          <select class="select !text-[11px] !py-1">
-            <option>All sentiments</option>
-            <option>Positive</option>
-            <option>Neutral</option>
-            <option>Negative</option>
-          </select>
-        </div>
-        </div>
-      <div class="flex items-center justify-end mt-3 pt-3 border-t border-[color:var(--line)]">
-        <div class="flex items-center gap-2">
-          <span class="text-[11px] text-[color:var(--soft)]">3 alerts match filters</span>
-          <button class="btn btn-secondary btn-xs"><i data-lucide="download" class="!w-3 !h-3"></i>Export</button>
-        </div>
+<main id="bk-main" class="orm-inbox-page">
+  <div class="px-5 py-6 max-w-[1580px] mx-auto">
+    <div class="flex flex-wrap items-start justify-between gap-4 mb-9">
+      <div>
+        <h1 class="text-[20px] font-semibold leading-tight">ORM Inbox</h1>
+        <p id="orm-page-count" class="text-[13px] text-[color:var(--muted)] mt-1">8 posts match filters</p>
+      </div>
+      <div class="flex items-center gap-3">
+        <button class="btn btn-secondary h-9 px-4">Last 7 days <i data-lucide="chevron-down" class="!w-3.5 !h-3.5"></i></button>
+        <button class="btn btn-secondary h-9 w-10 !px-0 justify-center" aria-label="Filter"><i data-lucide="filter" class="!w-4 !h-4"></i></button>
+        <button class="btn btn-ghost h-9 text-[color:var(--soft)]"><i data-lucide="refresh-cw" class="!w-4 !h-4"></i>Refresh</button>
       </div>
     </div>
 
-    <!-- KPI strip -->
-    <div class="grid sm:grid-cols-4 gap-3 mb-4">
-      <div class="card p-3"><div class="text-[10px] uppercase tracking-wider text-[color:var(--soft)]">Open</div><div class="text-[20px] font-semibold mt-1">3</div></div>
-      <div class="card p-3"><div class="text-[10px] uppercase tracking-wider text-[color:var(--soft)]">Critical / unowned</div><div class="text-[20px] font-semibold mt-1 text-[color:var(--neg)]">1</div></div>
-      <div class="card p-3"><div class="text-[10px] uppercase tracking-wider text-[color:var(--soft)]">Avg first response</div><div class="text-[20px] font-semibold mt-1">8m 42s</div></div>
-      <div class="card p-3"><div class="text-[10px] uppercase tracking-wider text-[color:var(--soft)]">Resolved today</div><div class="text-[20px] font-semibold mt-1">12</div></div>
-    </div>
-
-    <!-- Filter chips -->
-    <div class="flex flex-wrap items-center gap-2 mb-4">
-      <button class="pill pill-accent">All open · 3</button>
-      <button class="pill pill-neutral">Mine · 1</button>
-      <button class="pill pill-neutral">Unassigned · 2</button>
-      <button class="pill pill-neg">Critical · 1</button>
-      <button class="pill pill-neu">High · 2</button>
-      <button class="pill pill-neutral">Resolved · 12</button>
-      <div class="flex-1"></div>
-      <select class="select !w-auto"><option>Sort: severity × reach</option><option>Sort: newest</option><option>Sort: SLA at risk</option></select>
-    </div>
-
-    <!-- Two-pane: list + preview -->
-    <div class="grid lg:grid-cols-[420px_1fr] gap-4">
-
-      <!-- List -->
-      <div class="card overflow-hidden">
-        <!-- Critical -->
-        <a href="alert.html" class="block p-3 border-l-2 border-l-[color:var(--neg)] bg-[#FEF2F2]/40 hover:bg-[#FEF2F2]">
-          <div class="flex items-start justify-between mb-1">
-            <div class="flex items-center gap-2">
-              <span class="pill pill-neg">Critical</span>
-              <span class="text-[11px] text-[color:var(--muted)]">SLA 7m left</span>
-            </div>
-            <span class="text-[11px] text-[color:var(--muted)]">8m ago</span>
-          </div>
-          <div class="text-[13px] font-medium leading-snug mb-1">Mobile app outage thread spreading on Reddit</div>
-          <div class="text-[12px] text-[color:var(--muted)] line-clamp-2">189 comments · 842 upvotes · est. reach 124K · velocity ↑↑↑</div>
-          <div class="flex items-center gap-2 mt-2 text-[11px] text-[color:var(--muted)]">
-            <i data-lucide="message-circle" class="!w-3 !h-3"></i>Reddit
-            <span>·</span>
-            <i data-lucide="user" class="!w-3 !h-3"></i>Unassigned
-          </div>
-        </a>
-        <!-- High -->
-        <a href="alert.html" class="block p-3 border-l-2 border-l-[color:var(--neu)] hover:bg-[color:var(--line-2)]/40 border-t border-[color:var(--line-2)]">
-          <div class="flex items-start justify-between mb-1">
-            <div class="flex items-center gap-2">
-              <span class="pill pill-neu">High</span>
-              <span class="text-[11px] text-[color:var(--muted)]">SLA 2h left</span>
-            </div>
-            <span class="text-[11px] text-[color:var(--muted)]">42m ago</span>
-          </div>
-          <div class="text-[13px] font-medium leading-snug mb-1">Influencer @cafe_critic posted a negative review</div>
-          <div class="text-[12px] text-[color:var(--muted)] line-clamp-2">3.2K likes · 84 RTs · est. reach 412K · sentiment −0.71</div>
-          <div class="flex items-center gap-2 mt-2 text-[11px] text-[color:var(--muted)]">
-            <i data-lucide="at-sign" class="!w-3 !h-3"></i>X
-            <span>·</span>
-            <i data-lucide="user" class="!w-3 !h-3"></i>Priya R.
-          </div>
-        </a>
-        <!-- High 2 -->
-        <a href="alert.html" class="block p-3 border-l-2 border-l-[color:var(--neu)] hover:bg-[color:var(--line-2)]/40 border-t border-[color:var(--line-2)]">
-          <div class="flex items-start justify-between mb-1">
-            <div class="flex items-center gap-2">
-              <span class="pill pill-neu">High</span>
-              <span class="text-[11px] text-[color:var(--muted)]">SLA 4h left</span>
-            </div>
-            <span class="text-[11px] text-[color:var(--muted)]">1h ago</span>
-          </div>
-          <div class="text-[13px] font-medium leading-snug mb-1">News: Reuters picks up union story</div>
-          <div class="text-[12px] text-[color:var(--muted)] line-clamp-2">3 syndications · est. reach 2.1M · sentiment −0.34</div>
-          <div class="flex items-center gap-2 mt-2 text-[11px] text-[color:var(--muted)]">
-            <i data-lucide="newspaper" class="!w-3 !h-3"></i>News
-            <span>·</span>
-            <i data-lucide="user" class="!w-3 !h-3"></i>Unassigned
-          </div>
-        </a>
-
-        <!-- Section header -->
-        <div class="px-3 py-2 bg-[color:var(--line-2)] text-[10px] uppercase tracking-wider text-[color:var(--soft)] font-medium border-t border-[color:var(--line-2)]">Resolved today</div>
-
-        <a href="alert.html" class="block p-3 border-l-2 border-l-[color:var(--pos)] hover:bg-[color:var(--line-2)]/40 opacity-70">
-          <div class="flex items-start justify-between mb-1">
-            <div class="flex items-center gap-2">
-              <span class="pill pill-pos">Resolved</span>
-              <span class="text-[11px] text-[color:var(--muted)]">→ 4m response</span>
-            </div>
-            <span class="text-[11px] text-[color:var(--muted)]">2h ago</span>
-          </div>
-          <div class="text-[13px] font-medium leading-snug mb-1">YouTube comment storm on PSL ad</div>
-          <div class="text-[12px] text-[color:var(--muted)] line-clamp-1">Pinned response · sentiment recovered to +0.12</div>
-        </a>
-        <a href="alert.html" class="block p-3 border-l-2 border-l-[color:var(--pos)] hover:bg-[color:var(--line-2)]/40 opacity-70 border-t border-[color:var(--line-2)]">
-          <div class="flex items-start justify-between mb-1">
-            <div class="flex items-center gap-2">
-              <span class="pill pill-pos">Resolved</span>
-              <span class="text-[11px] text-[color:var(--muted)]">→ 11m response</span>
-            </div>
-            <span class="text-[11px] text-[color:var(--muted)]">3h ago</span>
-          </div>
-          <div class="text-[13px] font-medium leading-snug mb-1">Viral TikTok crossposted to X</div>
-          <div class="text-[12px] text-[color:var(--muted)] line-clamp-1">DM'd creator · escalation closed</div>
-        </a>
+    <section class="orm-split-card">
+      <div class="orm-split-header">
+        <h2 id="orm-list-title">Input posts</h2>
+        <p id="orm-list-subtitle">Showing all 8 posts sorted by priority</p>
       </div>
 
-      <!-- Preview pane -->
-      <div class="card p-5">
-        <div class="flex items-start justify-between mb-4">
-          <div>
-            <div class="flex items-center gap-2 mb-1">
-              <span class="pill pill-neg">Critical</span>
-              <span class="text-[11.5px] text-[color:var(--muted)]">Alert #A-2026-04-22-1422 · auto-created from rule "Outage burst"</span>
-            </div>
-            <h2 class="text-[16px] font-semibold">Mobile app outage thread spreading on Reddit</h2>
-          </div>
-          <div class="text-right">
-            <div class="text-[11px] text-[color:var(--muted)]">SLA timer</div>
-            <div class="text-[18px] font-semibold font-mono text-[color:var(--neg)]">07:24</div>
-          </div>
-        </div>
-
-        <div class="grid grid-cols-4 gap-3 mb-4 pb-4 border-b border-[color:var(--line-2)]">
-          <div><div class="text-[10px] uppercase tracking-wider text-[color:var(--soft)]">Mentions</div><div class="text-[16px] font-semibold">17 in 6h</div></div>
-          <div><div class="text-[10px] uppercase tracking-wider text-[color:var(--soft)]">Est. reach</div><div class="text-[16px] font-semibold">124K</div></div>
-          <div><div class="text-[10px] uppercase tracking-wider text-[color:var(--soft)]">Sentiment</div><div class="text-[16px] font-semibold text-[color:var(--neg)]">−0.74</div></div>
-          <div><div class="text-[10px] uppercase tracking-wider text-[color:var(--soft)]">Velocity</div><div class="text-[16px] font-semibold text-[color:var(--neg)]">+318%/h</div></div>
-        </div>
-
-        <div class="flex items-center gap-2 mb-4">
-          <button class="btn btn-primary"><i data-lucide="reply" class="!w-3.5 !h-3.5"></i>Respond</button>
-          <button class="btn btn-secondary"><i data-lucide="user-plus" class="!w-3.5 !h-3.5"></i>Assign</button>
-          <button class="btn btn-secondary"><i data-lucide="phone" class="!w-3.5 !h-3.5"></i>Escalate to on-call</button>
-          <button class="btn btn-secondary"><i data-lucide="check" class="!w-3.5 !h-3.5"></i>Mark resolved</button>
-          <div class="flex-1"></div>
-          <a href="alert.html" class="btn btn-ghost btn-sm">Open full detail →</a>
-        </div>
-
-        <h3 class="text-[12px] uppercase tracking-wider text-[color:var(--soft)] font-medium mb-2">Source mentions (top 3)</h3>
-        <div class="space-y-2">
-          <a href="../brand/mention.html" class="block card p-3 hover:border-[color:var(--ink)]">
-            <div class="flex items-center gap-2 text-[11.5px] text-[color:var(--muted)] mb-1"><span class="font-medium text-[color:var(--ink)]">u/coffee_grind_42</span> · r/Starbucks · 4h ago · 842 upvotes</div>
-            <p class="text-[13px] line-clamp-2">Mobile order has been "preparing" for 25 minutes — anyone else? Walked into the Madison Ave store and the barista said the system has been broken since 6am…</p>
-          </a>
-          <a href="alert.html" class="block card p-3 hover:border-[color:var(--ink)]">
-            <div class="flex items-center gap-2 text-[11.5px] text-[color:var(--muted)] mb-1"><span class="font-medium text-[color:var(--ink)]">u/morning_brew_99</span> · r/Starbucks · 3h ago · 312 upvotes</div>
-            <p class="text-[13px] line-clamp-2">Same issue Brooklyn. Stars credited but no order. Refund process is a nightmare.</p>
-          </a>
-          <a href="alert.html" class="block card p-3 hover:border-[color:var(--ink)]">
-            <div class="flex items-center gap-2 text-[11.5px] text-[color:var(--muted)] mb-1"><span class="font-medium text-[color:var(--ink)]">@CityBites</span> · X · 2h ago · 4.2K likes</div>
-            <p class="text-[13px] line-clamp-2">If you're going to take my money instantly, at least tell me when the order is actually broken. @Starbucks app has been like this all morning.</p>
-          </a>
-        </div>
+      <div class="orm-priority-strip" aria-label="Priority filters">
+        <button class="orm-priority-box active" type="button" data-filter="all">
+          <span>Total posts</span>
+          <strong data-count="all">0</strong>
+        </button>
+        <button class="orm-priority-box critical" type="button" data-filter="critical">
+          <span>Critical</span>
+          <strong data-count="critical">0</strong>
+          <small>-1.00 to -0.75</small>
+        </button>
+        <button class="orm-priority-box high" type="button" data-filter="high">
+          <span>High</span>
+          <strong data-count="high">0</strong>
+          <small>-0.74 to -0.50</small>
+        </button>
+        <button class="orm-priority-box medium" type="button" data-filter="medium">
+          <span>Medium</span>
+          <strong data-count="medium">0</strong>
+          <small>-0.49 to -0.20</small>
+        </button>
+        <button class="orm-priority-box low" type="button" data-filter="low">
+          <span>Low</span>
+          <strong data-count="low">0</strong>
+          <small>-0.19 to +1.00</small>
+        </button>
       </div>
 
-    </div>
+      <div class="orm-split-body">
+        <aside class="orm-post-list" aria-label="Input posts">
+          <article class="orm-post-row selected" data-priority="critical" data-score="-0.92" data-title="@letsblinkit @blinkitcares spoiled ice cream complaint" data-author="Roshan_230404" data-posted="Jul 1, 2026, 10:18 AM" data-language="en" data-location="Mumbai, IN" data-engagement="84" data-reach="920" data-replies="17" data-views="920">
+            <div class="flex items-start justify-between gap-3">
+              <div class="min-w-0">
+                <div class="orm-post-meta">
+                  <span class="orm-channel"><i data-lucide="message-square" class="!w-3.5 !h-3.5"></i></span>
+                  <span>X</span>
+                  <span class="orm-status">Processed</span>
+                  <span class="orm-priority-pill critical">Critical</span>
+                </div>
+                <p class="orm-post-copy">@letsblinkit @blinkitcares the ice cream arrived melted and spoiled. This is unacceptable and unsafe.</p>
+                <div class="orm-mini-metrics">
+                  <span><i data-lucide="user" class="!w-3 !h-3"></i>Roshan_230404</span>
+                  <span><i data-lucide="heart" class="!w-3 !h-3"></i>22</span>
+                  <span><i data-lucide="eye" class="!w-3 !h-3"></i>920</span>
+                  <span class="orm-score negative">-0.92</span>
+                </div>
+              </div>
+              <time>1m ago</time>
+            </div>
+          </article>
+
+          <article class="orm-post-row" data-priority="critical" data-score="-0.78" data-title="Worst delivery experience with damaged dessert pack" data-author="foodwatch_india" data-posted="Jul 1, 2026, 10:11 AM" data-language="en" data-location="Delhi, IN" data-engagement="61" data-reach="780" data-replies="13" data-views="780">
+            <div class="flex items-start justify-between gap-3">
+              <div class="min-w-0">
+                <div class="orm-post-meta">
+                  <span class="orm-channel"><i data-lucide="message-square" class="!w-3.5 !h-3.5"></i></span>
+                  <span>X</span>
+                  <span class="orm-status">Processed</span>
+                  <span class="orm-priority-pill critical">Critical</span>
+                </div>
+                <p class="orm-post-copy">Worst delivery experience. Damaged dessert pack, no refund, and support keeps closing the chat.</p>
+                <div class="orm-mini-metrics">
+                  <span><i data-lucide="user" class="!w-3 !h-3"></i>foodwatch_india</span>
+                  <span><i data-lucide="heart" class="!w-3 !h-3"></i>19</span>
+                  <span><i data-lucide="eye" class="!w-3 !h-3"></i>780</span>
+                  <span class="orm-score negative">-0.78</span>
+                </div>
+              </div>
+              <time>3m ago</time>
+            </div>
+          </article>
+
+          <article class="orm-post-row" data-priority="high" data-score="-0.70" data-title="@creamcart delayed order and poor support" data-author="cafe_critic" data-posted="Jul 1, 2026, 9:58 AM" data-language="en" data-location="Bengaluru, IN" data-engagement="45" data-reach="510" data-replies="8" data-views="510">
+            <div class="flex items-start justify-between gap-3">
+              <div class="min-w-0">
+                <div class="orm-post-meta">
+                  <span class="orm-channel"><i data-lucide="message-square" class="!w-3.5 !h-3.5"></i></span>
+                  <span>X</span>
+                  <span class="orm-status">Processed</span>
+                  <span class="orm-priority-pill high">High</span>
+                </div>
+                <p class="orm-post-copy">@creamcart order came 90 minutes late and support did nothing. Really disappointed.</p>
+                <div class="orm-mini-metrics">
+                  <span><i data-lucide="user" class="!w-3 !h-3"></i>cafe_critic</span>
+                  <span><i data-lucide="heart" class="!w-3 !h-3"></i>11</span>
+                  <span><i data-lucide="eye" class="!w-3 !h-3"></i>510</span>
+                  <span class="orm-score negative">-0.70</span>
+                </div>
+              </div>
+              <time>7m ago</time>
+            </div>
+          </article>
+
+          <article class="orm-post-row" data-priority="high" data-score="-0.55" data-title="Ice cream delivered without dry ice" data-author="ass_thick834" data-posted="Jun 30, 2026, 3:42 PM" data-language="en" data-location="Unknown" data-engagement="14" data-reach="220" data-replies="2" data-views="220">
+            <div class="flex items-start justify-between gap-3">
+              <div class="min-w-0">
+                <div class="orm-post-meta">
+                  <span class="orm-channel"><i data-lucide="message-square" class="!w-3.5 !h-3.5"></i></span>
+                  <span>X</span>
+                  <span class="orm-status">Processed</span>
+                  <span class="orm-priority-pill high">High</span>
+                </div>
+                <p class="orm-post-copy">Ice cream delivered without dry ice again. Product was soft and leaking by the time it arrived.</p>
+                <div class="orm-mini-metrics">
+                  <span><i data-lucide="user" class="!w-3 !h-3"></i>ass_thick834</span>
+                  <span><i data-lucide="heart" class="!w-3 !h-3"></i>4</span>
+                  <span><i data-lucide="eye" class="!w-3 !h-3"></i>220</span>
+                  <span class="orm-score negative">-0.55</span>
+                </div>
+              </div>
+              <time>18m ago</time>
+            </div>
+          </article>
+
+          <article class="orm-post-row" data-priority="medium" data-score="-0.42" data-title="Packaging was messy on arrival" data-author="I_heart_yunah" data-posted="Jul 1, 2026, 9:30 AM" data-language="en" data-location="Chennai, IN" data-engagement="8" data-reach="140" data-replies="1" data-views="140">
+            <div class="flex items-start justify-between gap-3">
+              <div class="min-w-0">
+                <div class="orm-post-meta">
+                  <span class="orm-channel"><i data-lucide="message-square" class="!w-3.5 !h-3.5"></i></span>
+                  <span>X</span>
+                  <span class="orm-status">Processed</span>
+                  <span class="orm-priority-pill medium">Medium</span>
+                </div>
+                <p class="orm-post-copy">Packaging was messy on arrival. Taste was fine, but the box looked like it had been tossed around.</p>
+                <div class="orm-mini-metrics">
+                  <span><i data-lucide="user" class="!w-3 !h-3"></i>I_heart_yunah</span>
+                  <span><i data-lucide="heart" class="!w-3 !h-3"></i>2</span>
+                  <span><i data-lucide="eye" class="!w-3 !h-3"></i>140</span>
+                  <span class="orm-score negative">-0.42</span>
+                </div>
+              </div>
+              <time>31m ago</time>
+            </div>
+          </article>
+
+          <article class="orm-post-row" data-priority="medium" data-score="-0.24" data-title="Late but the replacement helped" data-author="troshkoff" data-posted="Jul 1, 2026, 9:12 AM" data-language="en" data-location="Pune, IN" data-engagement="6" data-reach="86" data-replies="1" data-views="86">
+            <div class="flex items-start justify-between gap-3">
+              <div class="min-w-0">
+                <div class="orm-post-meta">
+                  <span class="orm-channel"><i data-lucide="message-square" class="!w-3.5 !h-3.5"></i></span>
+                  <span>X</span>
+                  <span class="orm-status">Processed</span>
+                  <span class="orm-priority-pill medium">Medium</span>
+                </div>
+                <p class="orm-post-copy">Order was late and partially melted, but the replacement coupon helped a little.</p>
+                <div class="orm-mini-metrics">
+                  <span><i data-lucide="user" class="!w-3 !h-3"></i>troshkoff</span>
+                  <span><i data-lucide="heart" class="!w-3 !h-3"></i>1</span>
+                  <span><i data-lucide="eye" class="!w-3 !h-3"></i>86</span>
+                  <span class="orm-score negative">-0.24</span>
+                </div>
+              </div>
+              <time>44m ago</time>
+            </div>
+          </article>
+
+          <article class="orm-post-row" data-priority="low" data-score="0.00" data-title="@KethylinCampb1 Perfect body cream" data-author="KethylinCampb1" data-posted="Jun 30, 2026, 3:42 PM" data-language="en" data-location="Unknown" data-engagement="0" data-reach="4" data-replies="0" data-views="4">
+            <div class="flex items-start justify-between gap-3">
+              <div class="min-w-0">
+                <div class="orm-post-meta">
+                  <span class="orm-channel"><i data-lucide="message-square" class="!w-3.5 !h-3.5"></i></span>
+                  <span>X</span>
+                  <span class="orm-status">Processed</span>
+                  <span class="orm-priority-pill low">Low</span>
+                </div>
+                <p class="orm-post-copy">@KethylinCampb1 Perfect body cream</p>
+                <div class="orm-mini-metrics">
+                  <span><i data-lucide="user" class="!w-3 !h-3"></i>KethylinCampb1</span>
+                  <span><i data-lucide="heart" class="!w-3 !h-3"></i>0</span>
+                  <span><i data-lucide="eye" class="!w-3 !h-3"></i>4</span>
+                  <span class="orm-score neutral">0.00</span>
+                </div>
+              </div>
+              <time>2m ago</time>
+            </div>
+          </article>
+
+          <article class="orm-post-row" data-priority="low" data-score="0.80" data-title="Sunday matcha ice cream post" data-author="nyartem69" data-posted="Jul 1, 2026, 8:54 AM" data-language="en" data-location="Unknown" data-engagement="3" data-reach="34" data-replies="0" data-views="34">
+            <div class="flex items-start justify-between gap-3">
+              <div class="min-w-0">
+                <div class="orm-post-meta">
+                  <span class="orm-channel"><i data-lucide="message-square" class="!w-3.5 !h-3.5"></i></span>
+                  <span>X</span>
+                  <span class="orm-status">Processed</span>
+                  <span class="orm-priority-pill low">Low</span>
+                </div>
+                <p class="orm-post-copy">Just binged our favorite show and split the last matcha ice cream-best lazy Sunday ever.</p>
+                <div class="orm-mini-metrics">
+                  <span><i data-lucide="user" class="!w-3 !h-3"></i>nyartem69</span>
+                  <span><i data-lucide="heart" class="!w-3 !h-3"></i>3</span>
+                  <span><i data-lucide="eye" class="!w-3 !h-3"></i>34</span>
+                  <span class="orm-score positive">+0.80</span>
+                </div>
+              </div>
+              <time>58m ago</time>
+            </div>
+          </article>
+        </aside>
+
+        <section class="orm-post-detail" aria-label="Selected post details">
+          <div class="orm-detail-head">
+            <div id="orm-detail-meta-row" class="orm-post-meta"></div>
+            <h2 id="orm-detail-title"></h2>
+          </div>
+
+          <div class="orm-stat-grid">
+            <div><span>Mentions</span><strong id="orm-detail-mentions">0</strong></div>
+            <div><span>Views</span><strong id="orm-detail-views">0</strong></div>
+            <div><span>Reposts</span><strong id="orm-detail-reposts">0</strong></div>
+            <div><span>Engagement</span><strong id="orm-detail-engagement">0</strong></div>
+          </div>
+
+          <div class="orm-detail-meta">
+            <div><strong>Author:</strong> <span id="orm-detail-author"></span></div>
+            <div><strong>Posted:</strong> <span id="orm-detail-posted"></span></div>
+            <div><strong>Language:</strong> <span id="orm-detail-language"></span></div>
+            <div><strong>Location:</strong> <span id="orm-detail-location"></span></div>
+          </div>
+
+          <div class="orm-detail-actions">
+            <a id="orm-detail-link" href="alert.html" class="btn btn-primary"><i data-lucide="external-link" class="!w-3.5 !h-3.5"></i>Detailed view</a>
+          </div>
+
+          <div class="orm-engagement-row">
+            <span><i data-lucide="heart" class="!w-3.5 !h-3.5"></i><span id="orm-detail-heart">0</span></span>
+            <span><i data-lucide="message-circle" class="!w-3.5 !h-3.5"></i><span id="orm-detail-comments">0</span></span>
+            <span><i data-lucide="repeat-2" class="!w-3.5 !h-3.5"></i><span id="orm-detail-repost-icon">0</span></span>
+            <span><i data-lucide="eye" class="!w-3.5 !h-3.5"></i><span id="orm-detail-eye">0</span></span>
+          </div>
+        </section>
+      </div>
+    </section>
   </div>
 </main>
 
+<script>localStorage.setItem('briskSelectedRole', 'owner');</script>
 <script src="../assets/shell.js?v=3"></script>
-<script>lucide.createIcons();</script>
 <script>
-// Viewer role restrictions
 (function() {
-  const isViewer = document.body.dataset.role === 'viewer';
-  if (isViewer) {
-    // Hide filter bar and action buttons for viewers
-    document.querySelectorAll('.bk-viewer-hide').forEach(el => el.style.display = 'none');
+  const rows = Array.from(document.querySelectorAll('.orm-post-row'));
+  const filterButtons = Array.from(document.querySelectorAll('.orm-priority-box'));
+
+  function scoreToPriority(score) {
+    if (score <= -0.75) return 'critical';
+    if (score <= -0.50) return 'high';
+    if (score <= -0.20) return 'medium';
+    return 'low';
   }
+
+  function priorityLabel(value) {
+    return value.charAt(0).toUpperCase() + value.slice(1);
+  }
+
+  rows.forEach(row => {
+    const priority = scoreToPriority(Number(row.dataset.score));
+    row.dataset.priority = priority;
+    const pill = row.querySelector('.orm-priority-pill');
+    if (pill) {
+      pill.className = `orm-priority-pill ${priority}`;
+      pill.textContent = priorityLabel(priority);
+    }
+  });
+
+  const counts = rows.reduce((acc, row) => {
+    const priority = row.dataset.priority;
+    acc.all += 1;
+    acc[priority] = (acc[priority] || 0) + 1;
+    return acc;
+  }, { all: 0, critical: 0, high: 0, medium: 0, low: 0 });
+
+  Object.entries(counts).forEach(([key, value]) => {
+    const countEl = document.querySelector(`[data-count="${key}"]`);
+    if (countEl) countEl.textContent = value;
+  });
+
+  function scoreClass(score) {
+    if (score >= -0.19) return score >= 0 ? 'positive' : 'neutral';
+    return 'negative';
+  }
+
+  function updateDetail(row) {
+    if (!row) return;
+    rows.forEach(item => item.classList.toggle('selected', item === row));
+    const priority = row.dataset.priority;
+    const score = Number(row.dataset.score);
+    const formattedScore = score > 0 ? `+${score.toFixed(2)}` : score.toFixed(2);
+    document.getElementById('orm-detail-meta-row').innerHTML = `
+      <span class="orm-channel"><i data-lucide="message-square" class="!w-3.5 !h-3.5"></i></span>
+      <span>X</span>
+      <span class="orm-status">Processed</span>
+      <span class="orm-priority-pill ${priority}">${priorityLabel(priority)}</span>
+      <span class="orm-score ${scoreClass(score)}">${formattedScore}</span>
+    `;
+    document.getElementById('orm-detail-title').textContent = row.dataset.title;
+    document.getElementById('orm-detail-engagement').textContent = row.dataset.engagement;
+    document.getElementById('orm-detail-mentions').textContent = row.dataset.replies;
+    document.getElementById('orm-detail-views').textContent = row.dataset.views;
+    document.getElementById('orm-detail-reposts').textContent = row.dataset.reposts || Math.max(0, Math.round(Number(row.dataset.engagement) * 0.18));
+    document.getElementById('orm-detail-author').textContent = row.dataset.author;
+    document.getElementById('orm-detail-posted').textContent = row.dataset.posted;
+    document.getElementById('orm-detail-language').textContent = row.dataset.language;
+    document.getElementById('orm-detail-location').textContent = row.dataset.location;
+    document.getElementById('orm-detail-heart').textContent = row.dataset.engagement;
+    document.getElementById('orm-detail-comments').textContent = row.dataset.replies;
+    document.getElementById('orm-detail-repost-icon').textContent = row.dataset.reposts || Math.max(0, Math.round(Number(row.dataset.engagement) * 0.18));
+    document.getElementById('orm-detail-eye').textContent = row.dataset.views;
+    document.getElementById('orm-detail-link').href = `alert.html?post=${encodeURIComponent(row.dataset.title)}`;
+    if (window.lucide) lucide.createIcons();
+  }
+
+  function applyFilter(filter) {
+    const visibleRows = rows.filter(row => filter === 'all' || row.dataset.priority === filter);
+    rows.forEach(row => row.hidden = !visibleRows.includes(row));
+    filterButtons.forEach(button => button.classList.toggle('active', button.dataset.filter === filter));
+    document.getElementById('orm-list-title').textContent = filter === 'all' ? 'Input posts' : `${priorityLabel(filter)} priority posts`;
+    document.getElementById('orm-list-subtitle').textContent = filter === 'all'
+      ? `Showing all ${visibleRows.length} posts sorted by priority`
+      : `Showing top ${visibleRows.length} ${filter} posts by sentiment score`;
+    document.getElementById('orm-page-count').textContent = `${visibleRows.length} posts match filters`;
+    updateDetail(visibleRows[0]);
+  }
+
+  filterButtons.forEach(button => {
+    button.addEventListener('click', () => applyFilter(button.dataset.filter));
+  });
+  rows.forEach(row => row.addEventListener('click', () => updateDetail(row)));
+
+  applyFilter('all');
 })();
 </script>
 </body>
